@@ -42,8 +42,6 @@
 
 ## 使用素材
 - メイン使用写真
-Daniel Triay on Unsplash
-Jennifer Trovato on Unsplash
+Daniel Triay on Unsplash & Jennifer Trovato on Unsplash
 - about使用写真
-engin akyurt on Unsplash
-Stacey Gabrielle Koenitz Rozells on Unsplash
+engin akyurt on Unsplash & Stacey Gabrielle Koenitz Rozells on Unsplash
