@@ -28,7 +28,7 @@
 2. 写真を撮影してくれる人を探している人にとっては、身近で写真を撮影してくれるカメラマンを探すことができます。>
 
 ## 設計書
-<...>
+<https://drive.google.com/drive/folders/1uJw3QuFLVQohGWpl_vP89YkYfOJMutOa?usp=sharing>
 
 ## チャレンジ要素一覧
 <https://docs.google.com/spreadsheets/d/1C6Nojt0xQFJO09dfi6m85IChlbPrbFUtJ1UyBFOTGV8/edit?usp=sharing>
