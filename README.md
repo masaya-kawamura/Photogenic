@@ -1,5 +1,5 @@
-# <Weekly Photogenic>
-<- Photograper Profile ->
+# Weekly Photogenic
+- Photograper Profile -
 ## サイト概要
 <「Weekly Photogenic」と題し、写真が好きな人を中心に最近１週間のうちで最も満足に撮影できた写真を共有するサイトです。サイト内では投稿された写真に対してコメントや評価できるだけではなく、撮影者は写真とともにバックストーリーや撮影方法などの詳細を共有したり自分のプロフィールを公開することもできます。>
 
