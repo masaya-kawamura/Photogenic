@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
 
+  get '/' => 'homes#top'
+  get 'mypage' => 'users#mypage'
+
   #===== deviseルーティング設定 ======
   devise_for :users,
     path: '',
@@ -15,5 +18,4 @@ Rails.application.routes.draw do
       session: "users/sessions"
     }
 
-  get '/' => 'homes#top'
 end
