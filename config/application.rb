@@ -13,7 +13,9 @@ module Photogenic
 
     Rails.application.configure do
       config.imgix = {
-        source: ENV['IMGIX_SOURCE']
+        source: ENV['IMGIX_SOURCE'],
+        use_https: true,
+        include_library_param: true
       }
     end
 
