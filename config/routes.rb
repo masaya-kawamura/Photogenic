@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  get '/' => 'homes#top'
+  root to: 'homes#top'
   get 'mypage' => 'users#mypage'
 
   #===== deviseルーティング設定 ======

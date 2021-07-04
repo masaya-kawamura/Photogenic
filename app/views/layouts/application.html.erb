@@ -12,8 +12,32 @@
 
   <body>
     <header>
-      <h1>Photographers Profile</h1>
+      <nav class="navbar navbar-expand nabvar-light shadow-sm">
+        <div class="container">
+          <%= link_to "Photographer's Profile", root_path, class:'navbar-brand p-2' %>
+          <ul class="navbar-nav ml-auto">
+            <!--------- ログイン時 ----------->
+            <% if user_signed_in? %>
+             <li class="nav-item"><%= link_to 'マイページ', mypage_path, class:'nav-link' %></li>
+             <li class="nav-item"><%= link_to 'フォトグラファー一覧', '#', class:'nav-link' %></li>
+             <li class="nav-item"><%= link_to 'ギャラリー',  '#' , class:'nav-link' %></li>
+             <li class="nav-item"><%= link_to 'ログアウト', '#', class:'nav-link' %></li>
+            <!----------ログアウト時 --------->
+            <% else %>
+             <li class="nav-item"><%= link_to 'フォトグラファー一覧', '#', class:'nav-link' %></li>
+             <li class="nav-item"><%= link_to 'ギャラリー', '#', class:'nav-link' %></li>
+             <li class="nav-item"><%= link_to '新規登録', '#', class:'nav-link' %></li>
+             <li class="nav-item"><%= link_to 'ログイン', '#', class:'nav-link' %></li>
+            <% end %>
+          </ul>
+        </div>
+      </nav>
     </header>
+    <main>
     <%= yield %>
+    </main>
+    <footer>
+
+    </footer>
   </body>
 </html>
