@@ -1,3 +1,161 @@
-// Place all the styles related to the homes controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+@charset "utf-8"
+
+.about-title:before {
+  border-top: 1px solid black;
+  content: "";
+  width: 3em;
+  margin-left: 1em;
+}
+
+.subtitle {
+  font-family: 'AntroVectra';
+  margin: 50px 0;
+  font-size: 60px;
+  color: #2b2a27;
+}
+
+.menu-title {
+  position: relative;
+  display: inline-block;
+  padding: 0 60px;
+  font-size: 25px;
+  font-family: 'Futura';
+}
+
+.menu-title:before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  display: inline-block;
+  width: 40px;
+  height: 1px;
+  background-color: black;
+}
+
+.menu-title:before {
+  left: 0;
+}
+
+.about-contents p {
+  font-family: 'Kiwi Maru', serif;
+  font-size: 20px;
+  line-height: 200%;
+}
+
+#mainvisual {
+  height: 95vh;
+  background-image: image-url('top-main.jpg');
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  margin-bottom: 50px;
+}
+
+.concept {
+  text-align: center;
+  position: absolute;
+  top: 30%;
+  left: 10%;
+}
+.concept h1 {
+  color: white;
+}
+
+.concept h2 {
+  color: white;
+  text-align: justify;
+  text-align-last: justify;
+  text-justify: inter-character;
+  padding: 5px 0;
+  font-family: 'Kiwi Maru', serif;
+}
+
+.title {
+  display: flex;
+  align-items: center;
+  font-family: 'Futura';
+}
+
+.title:before,
+.title:after {
+  content: "";
+  height: 1px;
+  flex-grow: 1;
+  background-color: white;
+}
+
+.title:before {
+  margin-right: 1rem;
+}
+.title:after {
+  margin-left: 1rem;
+}
+
+.concept-border {
+  border-bottom: 1px solid white;
+  margin: 20px 0;
+}
+
+//===== about関連 ======
+
+.about-container {
+  margin: 0 10% 200px 10%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.about-contents {
+  margin: 0 30px;
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+}
+
+.about-contents img {
+  ofject-fit: cover;
+  max-width: 100%;
+}
+
+.about-btn {
+  margin-top: auto;
+}
+
+// ===== Photographer関連 =====
+
+.photographer-container {
+  margin: 0 10% 100px 10%;
+}
+
+.photographer {
+  display: flex;
+}
+.photographer li {
+  width: 23%;
+  text-align: center;
+  border: 1px solid black;
+}
+.photographer li img {
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+  vertical-align: center;
+}
+.btn-wrapper {
+  display: flex;
+  text-align: center;
+  margin-top: 50px;
+}
+
+// ======== Gallery関連 ==========
+.gallery-container {
+    margin: 0 10% 100px 10%;
+}
+.photos-wrapper {
+  display: flex;
+}
+.photos-wrapper img {
+  width: 23%;
+  height: 300px;
+  object-fit: cover;
+  vertical-align: center;
+}

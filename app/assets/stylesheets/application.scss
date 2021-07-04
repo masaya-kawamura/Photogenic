@@ -17,3 +17,34 @@
  @import "bootstrap";
  @import 'font-awesome-sprockets';
  @import 'font-awesome';
+
+ @font-face {
+  font-family: 'AntroVectra';
+  src: font-url('Antro_Vectra.otf');
+ }
+ @font-face {
+  font-family: 'Futura';
+  src: font-url('futura');
+ }
+ @import url('https://fonts.googleapis.com/css2?family=Kiwi+Maru:wght@300&display=swap');
+
+html {
+  font-size: 100%;
+}
+
+body p {
+  color: #2b2a27;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+a {
+ color: #2b2a27;
+}
+
+h2 {
+ color: #2b2a27;
+}
