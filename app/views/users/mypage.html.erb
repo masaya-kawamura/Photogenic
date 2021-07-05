@@ -1,6 +1,23 @@
-<h1>マイページ</h1>
-<%= ix_image_tag @user.cover_image_url %>
-<%= ix_image_tag @user.profile_image.url %>
-<%= @user.name %>
-<%= @user.email %>
+<div class="all">
+  <div class="cover-image">
+    <%= ix_image_tag @user.cover_image.url  %>
+  </div>
+  <div class="profile-wrapper">
+    <div class="profile-image">
+        <%= ix_image_tag @user.profile_image.url %>
+    </div>
+    <div class="profile-detail">
+      <div class="profile-contents">
+        <h1><%= @user.name %></h1>
+        <div class="follower">
+          <p>フォロワー</p>
+          <p>フォロー中</p>
+        </div>
+        <%= link_to '登録情報を編集する', '#', class:'btn btn-dark' %>
+      </div>
+    </div>
+  </div>
+</div>
+
+
 
