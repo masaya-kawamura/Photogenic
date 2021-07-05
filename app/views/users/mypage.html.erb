@@ -1,10 +1,18 @@
 <div class="all">
   <div class="cover-image">
-    <%= ix_image_tag @user.cover_image.url  %>
+    <% if @user.cover_image.blank? %>
+      <%= image_tag('no_cover_image.jpg') %>
+    <% else %>
+      <%= image_tag @user.cover_image.url %>
+    <% end %>
   </div>
   <div class="profile-wrapper">
     <div class="profile-image">
-        <%= ix_image_tag @user.profile_image.url %>
+      <% if @user.profile_image.blank? %>
+        <%= image_tag('no_profile_image.jpeg') %>
+      <% else %>
+        <%= image_tag @user.profile_image.url %>
+      <% end %>
     </div>
     <div class="profile-detail">
       <div class="profile-contents">
@@ -13,7 +21,7 @@
           <p>フォロワー</p>
           <p>フォロー中</p>
         </div>
-        <%= link_to '登録情報を編集する', '#', class:'btn btn-dark' %>
+        <%= link_to '登録情報を編集する', edit_user_path(@user), class:'btn btn-dark' %>
       </div>
     </div>
   </div>
