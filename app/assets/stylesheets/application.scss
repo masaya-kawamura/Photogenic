@@ -76,5 +76,13 @@ h2 {
 }
 .users-wrapper {
  margin: 0 auto;
- max-width: 400px;
+ width: 400px;
 }
+
+.field {
+ margin-bottom: 20px;
+}
+.users-wrapper .field:first-of-type  {
+ padding-top: 40px;
+}
+
