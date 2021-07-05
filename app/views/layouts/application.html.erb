@@ -21,13 +21,13 @@
              <li class="nav-item"><%= link_to 'マイページ', mypage_path, class:'nav-link' %></li>
              <li class="nav-item"><%= link_to 'フォトグラファー一覧', '#', class:'nav-link' %></li>
              <li class="nav-item"><%= link_to 'ギャラリー',  '#' , class:'nav-link' %></li>
-             <li class="nav-item"><%= link_to 'ログアウト', '#', class:'nav-link' %></li>
+             <li class="nav-item"><%= link_to 'ログアウト', destroy_user_session_path,method: :DELETE, class:'nav-link' %></li>
             <!----------ログアウト時 --------->
             <% else %>
              <li class="nav-item"><%= link_to 'フォトグラファー一覧', '#', class:'nav-link' %></li>
              <li class="nav-item"><%= link_to 'ギャラリー', '#', class:'nav-link' %></li>
-             <li class="nav-item"><%= link_to '新規登録', '#', class:'nav-link' %></li>
-             <li class="nav-item"><%= link_to 'ログイン', '#', class:'nav-link' %></li>
+             <li class="nav-item"><%= link_to '新規登録', new_user_registration_path, class:'nav-link' %></li>
+             <li class="nav-item"><%= link_to 'ログイン', new_user_session_path, class:'nav-link' %></li>
             <% end %>
           </ul>
         </div>

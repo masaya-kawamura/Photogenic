@@ -15,7 +15,7 @@ Rails.application.routes.draw do
     controllers: {
       registrations: "users/registrations",
       passwords: "users/passwords",
-      session: "users/sessions"
+      sessions: "users/sessions"
     }
 
 end
