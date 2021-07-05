@@ -1,1 +1,44 @@
+.cover-image img {
+  height: 45vh;
+    width: 100%;
+  object-fit: cover;
+  vertical-align: center;
+}
+
+.profile-wrapper {
+  display: flex;
+  justify-content: space-between;
+  position: absolute;
+  top: 25%;
+  width: 100%;
+  padding: 0 10%;
+}
+.profile-image {
+  width: 50vh;
+  height: 60vh;
+  border: solid 4px white;
+  overflow: hidden;
+  margin-right: 30px;
+}
+.profile-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.profile-detail{
+  width: 60%;
+  position: relative;
+}
+.profile-contents {
+  position: absolute;
+  top: 50%;
+}
+.profile-contents h1 {
+  font-size: 70px;
+}
+
+.follower {
+  display: flex;
+}
+
 
