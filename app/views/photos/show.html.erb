@@ -1,2 +1,24 @@
-<h1>Photos#show</h1>
-<p>Find me in app/views/photos/show.html.erb</p>
+<div class="photos-container">
+  <div class="contents-wrapper">
+    <div class="photo-contents">
+      <div class="user-information">
+        <%= link_to photographer_path(@user.photographer), class: "user-image" do %>
+          <div class="round-circle"><%= image_tag(@user.profile_image.url) %></div>
+        <% end %>
+        <h3><%= @user.name %></h3>
+      </div>
+      <div class="photo-flame">
+        <div class="square"><%= image_tag @photo.photo_image.url %></div>
+      </div>
+      <div class="photo-story">
+        <h2 class="menu-title">PHOTO STORY</h2>
+        <p><%= @photo.story %></p>
+      </div>
+      <div class="photo-detail">
+        <h2 class="menu-title">PHOTO DETAIL</h2>
+        <p><%= @photo.detail %></p>
+      </div>
+    </div>
+  </div>
+</div>
+

@@ -1,2 +1,25 @@
-<h1>Photos#new</h1>
-<p>Find me in app/views/photos/new.html.erb</p>
+<div class="users-container">
+  <div class="users-wrapper">
+    <%= form_with model: @photo, local: true do |f| %>
+
+      <div class="field">
+        <%= f.label :photo_image, '投稿写真' %>
+        <%= f.file_field :photo_image, class:'form-control', type:'file', id:'formFile' %>
+      </div>
+
+      <div class="field">
+        <%= f.label :story, 'フォトストーリー' %>
+        <textarea class="form-control" rows="5" name="photo[story]" id="photo_story"></textarea>
+      </div>
+
+      <div class="field">
+        <%= f.label :detail, '撮影詳細' %>
+        <textarea class="form-control" rows="5" name="photo[detail]" id="photo_detail"></textarea>
+      </div>
+
+      <div class="action field">
+        <%= f.submit '写真を投稿', class:'form-control btn btn-dark' %>
+      </div>
+    <% end %>
+  </div>
+</div>

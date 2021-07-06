@@ -6,28 +6,30 @@
       <%= image_tag @user.cover_image.url %>
     <% end %>
   </div>
-  <div class="profile-wrapper">
-    <div class="profile-image">
-      <% if @user.profile_image.blank? %>
-        <%= image_tag('no_profile_image.jpeg') %>
-      <% else %>
-        <%= image_tag @user.profile_image.url %>
-      <% end %>
-    </div>
-    <div class="profile-detail">
-      <div class="profile-contents">
-        <h1><%= @user.name %></h1>
-        <div class="follower">
-          <p>フォロワー</p>
-          <p>フォロー中</p>
-        </div>
-        <div class="setting-link">
-          <%= link_to '登録情報を編集する', edit_user_path(@user), class:'btn btn-dark' %>
-          <% if @user.user_status == '一般ユーザー' %>
-            <%= link_to 'フォトグラファー登録する', new_photographer_path, class:'btn btn-dark' %>
-          <% elsif @user.user_status == 'フォトグラファー' %>
-            <%= link_to 'プロフィールページを見る', photographer_path(@user.photographer.id), class:'btn btn-dark' %>
-          <% end %>
+  <div class="contents-container">
+    <div class="profile-wrapper">
+      <div class="profile-image">
+        <% if @user.profile_image.blank? %>
+          <%= image_tag('no_profile_image.jpeg') %>
+        <% else %>
+          <%= image_tag @user.profile_image.url %>
+        <% end %>
+      </div>
+      <div class="profile-detail">
+        <div class="profile-contents">
+          <h1><%= @user.name %></h1>
+          <div class="follower">
+            <p>フォロワー</p>
+            <p>フォロー中</p>
+          </div>
+          <div class="setting-link">
+            <%= link_to '登録情報を編集する', edit_user_path(@user), class:'btn btn-dark' %>
+            <% if @user.user_status == '一般ユーザー' %>
+              <%= link_to 'フォトグラファー登録する', new_photographer_path, class:'btn btn-dark' %>
+            <% elsif @user.user_status == 'フォトグラファー' %>
+              <%= link_to 'プロフィールページを見る', photographer_path(@user.photographer.id), class:'btn btn-dark' %>
+            <% end %>
+          </div>
         </div>
       </div>
     </div>

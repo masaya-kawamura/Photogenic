@@ -1,3 +1,36 @@
-// Place all the styles related to the photos controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+.photos-container {
+  margin: 50px 10%;
+}
+.contents-wrapper {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+.photo-contents {
+  width: 60%;
+}
+.user-information {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+.user-image {
+  width: 20%;
+  margin-right: 5%;
+}
+.user-information h3 {
+  width: 75%;
+  font-size: 50px;
+}
+
+.photo-flame {
+  width: 100%;
+  margin-bottom: 40px;
+}
+.photo-story {
+  overflow-wrap:  break-word;
+  margin-bottom: 30px;
+}
+.photo-detail {
+  overflow-wrap:  break-word;
+}

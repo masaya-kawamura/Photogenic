@@ -1,2 +1,9 @@
-<h1>Photos#index</h1>
-<p>Find me in app/views/photos/index.html.erb</p>
+<div class="photos-container">
+  <h2 class="menu-title">GALLERY</h2>
+  <h2 class="subtitle">Photo Gallery</h2>
+  <div class="photos-wrapper">
+    <% @photos.each do |photo| %>
+      <%= link_to image_tag photo.photo_image.url, photo_path(photo.id) %>
+    <% end %>
+  </div>
+</div>

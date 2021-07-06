@@ -83,6 +83,37 @@ h2 {
  margin-bottom: 20px;
 }
 .users-wrapper .field:first-of-type  {
- padding-top: 40px;
+ padding-top: 50px;
 }
 
+// レスポンシブな正円画像を生成
+.round-circle { position: relative; }
+.round-circle::before {
+  display: block;
+  content: "";
+  padding-top: 100%;
+}
+.round-circle > img {
+  object-fit: cover;
+  border-radius: 100%;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 100%;
+}
+
+// レスポンシブな正方形を生成
+.square { position: relative; }
+.square::before {
+  display: block;
+  content: "";
+  padding-top: 100%;
+}
+.square > img {
+  object-fit: cover;
+  border: solid 1px gray;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 100%;
+}
