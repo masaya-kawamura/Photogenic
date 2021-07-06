@@ -8,6 +8,7 @@ Rails.application.routes.draw do
       post :public_status_switching
     end
   end
+  resources :photos
 
 
   #===== deviseルーティング設定 ======

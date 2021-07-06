@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_07_06_121417) do
+ActiveRecord::Schema.define(version: 2021_07_06_161411) do
 
   create_table "photographers", force: :cascade do |t|
     t.integer "user_id", null: false
@@ -22,6 +22,15 @@ ActiveRecord::Schema.define(version: 2021_07_06_121417) do
     t.datetime "updated_at", null: false
     t.string "area"
     t.boolean "public_status", default: false, null: false
+  end
+
+  create_table "photos", force: :cascade do |t|
+    t.integer "user_id"
+    t.text "photo_image"
+    t.text "story"
+    t.text "detail"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|
