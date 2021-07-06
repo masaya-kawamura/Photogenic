@@ -20,7 +20,7 @@
             <% if user_signed_in? %>
              <li class="nav-item"><%= link_to 'マイページ', mypage_path, class:'nav-link' %></li>
              <li class="nav-item"><%= link_to 'フォトグラファー一覧', photographers_path, class:'nav-link' %></li>
-             <li class="nav-item"><%= link_to 'ギャラリー',  '#' , class:'nav-link' %></li>
+             <li class="nav-item"><%= link_to 'ギャラリー', photos_path, class:'nav-link' %></li>
              <li class="nav-item"><%= link_to 'ログアウト', destroy_user_session_path,method: :DELETE, class:'nav-link' %></li>
               <% if current_user.user_status == 'フォトグラファー' %>
                 <li class="nav-item"><%= link_to '写真投稿', new_photo_path, class:'nav-link' %></li>

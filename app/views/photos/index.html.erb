@@ -3,7 +3,9 @@
   <h2 class="subtitle">Photo Gallery</h2>
   <div class="photos-wrapper">
     <% @photos.each do |photo| %>
-      <%= link_to image_tag photo.photo_image.url, photo_path(photo.id) %>
+        <%= link_to photo_path(photo.id), class: "photo-item" do %>
+          <div class="square"><%= image_tag photo.photo_image.url %></div>
+        <% end %>
     <% end %>
   </div>
 </div>
