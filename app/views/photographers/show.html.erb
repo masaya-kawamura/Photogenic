@@ -1,0 +1,44 @@
+<div class="all">
+  <div class="cover-image">
+    <% if @user.cover_image.blank? %>
+      <%= image_tag('no_cover_image.jpg') %>
+    <% else %>
+      <%= image_tag @user.cover_image.url %>
+    <% end %>
+  </div>
+  <div class="contents-container">
+  <div class="profile-wrapper">
+    <div class="profile-image">
+      <% if @user.profile_image.blank? %>
+        <%= image_tag('no_profile_image.jpeg') %>
+      <% else %>
+        <%= image_tag @user.profile_image.url %>
+      <% end %>
+    </div>
+    <div class="profile-detail">
+      <div class="profile-contents">
+        <h1><%= @photographer.name %></h1>
+        <div class="follower">
+          <p>フォロワー</p>
+          <p>フォロー中</p>
+        </div>
+        <p><%= @photographer.area %></p>
+        <div class="setting-link">
+          <% if @user == current_user %>
+            <%= link_to 'プロフィールを編集する', edit_photographer_path(current_user.photographer), class:'btn btn-dark' %>
+              <% if @photographer.public_status == false %>
+                <%= link_to 'プロフィールを公開する', public_status_switching_photographer_path(@photographer), method: :POST, data: {confirm: "プロフィールを公開してもよろしいですか?"}, class:'btn btn-dark' %>
+              <% else %>
+                <%= link_to 'プロフィールを非公開する', public_status_switching_photographer_path(@photographer), method: :POST, data: {confirm: "プロフィールを非公開にしますか?"}, class:'btn btn-dark' %>
+              <% end %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+    <br/>
+  </div>
+  <h2 class="menu-title">INTRODUCTION</h2>
+  <p><%= @photographer.introduction %></p>
+  </div>
+</div>
+

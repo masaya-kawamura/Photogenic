@@ -5,13 +5,20 @@
   vertical-align: center;
 }
 
-.profile-wrapper {
-  display: flex;
-  justify-content: space-between;
+.contents-container {
   position: absolute;
   top: 25%;
   width: 100%;
   padding: 0 10%;
+}
+.profile-wrapper {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 50px;
+  // position: absolute;
+  // top: 25%;
+  // width: 100%;
+  // padding: 0 10%;
 }
 .profile-image {
   width: 50vh;

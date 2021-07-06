@@ -1,0 +1,14 @@
+<div class="gallery-container">
+  <h2 class="menu-title">PHOTOGRAPHER'S</h2>
+  <h2 class="subtitle">Leading Photogprapher</h2>
+  <ul class="photographer">
+    <% @photographers.each do |photographer| %>
+      <li>
+        <%= image_tag photographer.user.profile_image.url %>
+        <h4><%= photographer.name %></h4>
+        <p>ここにジャンル</p>
+      </li>
+    <% end %>
+  </ul>
+</div>
+

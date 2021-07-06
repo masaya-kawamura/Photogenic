@@ -3,6 +3,12 @@ Rails.application.routes.draw do
   root to: 'homes#top'
   resources :users, only: [:edit, :update, :destroy]
   get 'mypage' => 'users#mypage'
+  resources :photographers do
+    member do
+      post :public_status_switching
+    end
+  end
+
 
   #===== deviseルーティング設定 ======
   devise_for :users,

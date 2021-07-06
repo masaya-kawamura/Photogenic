@@ -1,0 +1,43 @@
+<div class="users-container">
+  <div class="users-wrapper">
+    <%= form_with model:@photographer, local: true do |f| %>
+
+      <div class="field">
+        <%= f.label :name, 'フォトグラファーネーム' %>
+        <%= f.text_field :name, value: @user.name, autofocus: true, class:'form-control' %>
+      </div>
+
+      <div class="field">
+        <%= f.label :area, '活動地域' %>
+        <%= f.text_field :area, value: @user.area, class:'form-control' %>
+      </div>
+
+      <div class="field">
+        <%= f.label :introduction, '紹介文' %>
+        <textarea class="form-control" rows="5" name="photographer[introduction]" id="photographer_introduction"></textarea>
+      </div>
+
+      <div class="field">
+        <%= f.label :instagram_url, 'インスタグラムURL' %>
+        <%= f.text_field :instagram_url, class: 'form-control' %>
+      </div>
+
+      <div class="field">
+        <%= f.label :facebook_url, 'フェイスブックURL' %>
+        <%= f.text_field :facebook_url, class:'form-control' %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :public_status, 'プロフィール公開設定' %>
+        <select class="form-control" id="sel1" aria-label="Default select example" name="photographer[public_status]" id="photographer_public_status">
+          <option value="true">公開する</option>
+          <option selected="selected" value="false">まだ公開しない</option>
+        </select>
+      </div>
+
+      <div class="action field">
+        <%= f.submit '登録を完了する' %>
+      </div>
+    <% end %>
+  </div>
+</div>
