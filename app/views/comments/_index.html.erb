@@ -1,7 +1,7 @@
-<!---------------コメント表示部分------------------>
-
-<%= comments.count %>件のコメント
-<% comments.each do |comment| %>
+<div id="comment_count">
+  <%= photo.comments.count %>件のコメント
+</div>
+<% photo.comments.each do |comment| %>
   <% unless comment.id.nil? %>
     <li class="comment-container">
       <div class="comment-wwrapper">
@@ -25,11 +25,4 @@
       </div>
     </li>
   <% end %>
-<% end %>
-
-<!----------- コメント入力フォーム ------------>
-
-<%= form_with(model: [@photo, @comment], url: photo_comments_path(@photo)) do |f| %>
-  <%= f.text_field :comment, class: 'form_control' %>
-  <%= f.submit '送信', class:'btn btn-outline-dark' %>
 <% end %>

@@ -26,7 +26,7 @@
 
     <div class="photo-social">
 
-      <!---------- ここからいいねの記述部分 ------------->
+      <!---------- ここからFavoriteの記述部分 ------------->
 
       <div class="social-icon">
         <li id="favorites_btn_<%= @photo.id %>">
@@ -36,16 +36,20 @@
         <li></li>
       </div>
 
-      <!--------- ここからコメントの記述部分 ------------>
+      <!--------- ここからCommentの記述部分 ------------>
 
-      <div id="comments-area">
-        <%= render 'comments/comment', comments: @comments %>
+      <div id="photo-comments">
+        <%= render 'comments/index', photo: @photo %>
       </div>
+
+      <!------------- Comment入力フォーム -------------->
+
+      <%= form_with model: [@photo, @comment] do |f| %>
+        <%= f.text_area :comment, class: 'form_control' %>
+        <%= f.submit '送信', class:'btn btn-outline-dark' %>
+      <% end %>
+
     </div>
-
-
-
-
   </div>
 </div>
 
