@@ -118,4 +118,22 @@ h2 {
   height: 100%;
 }
 
+// ===photographer一覧用===
+.photographer-info {
+  width: 23%;
+  margin: 1%;
+  border: solid 1px gray;
+}
+.photographer-image {
+  width: 100%;
+}
 
+// === 写真一覧用(Gallery) ===
+.photos-wrapper {
+  display: flax;
+  flex-wrap: wrap;
+}
+.photo-item {
+    width: 23%;
+    margin: 1%;
+}

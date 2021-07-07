@@ -3,7 +3,7 @@
 }
 .contents-wrapper {
   display: flex;
-  justify-content: space-between;
+  flex-wrap: wrap;
   width: 100%;
 }
 .photo-contents {
@@ -33,14 +33,4 @@
 }
 .photo-detail {
   overflow-wrap:  break-word;
-}
-
-// === index用スタイル ===
-.photos-wrapper {
-  display: flax;
-  justify-content: flex-start;
-}
-.photo-item {
-    width: 23%;
-    margin: 1%;
 }
