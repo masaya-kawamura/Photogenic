@@ -3,7 +3,7 @@
 }
 .contents-wrapper {
   display: flex;
-  flex-wrap: wrap;
+  justify-content: space-between;
   width: 100%;
 }
 .photo-contents {
@@ -33,4 +33,11 @@
 }
 .photo-detail {
   overflow-wrap:  break-word;
+}
+
+// ソーシャル用のスタイル
+.photo-social {
+  width: 39%;
+  list-style: none;
+  text-decoration: none;
 }

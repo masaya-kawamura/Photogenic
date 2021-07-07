@@ -23,6 +23,13 @@
         <p><%= @photo.detail %></p>
       </div>
     </div>
+    <div class="photo-social">
+      <div class="social-icon">
+        <li><%= render 'favorites/favorite', photo: @photo %></li>
+        <li></li>
+        <li></li>
+      </div>
+    </div>
   </div>
 </div>
 
