@@ -18,10 +18,17 @@
       <div class="profile-detail">
         <div class="profile-contents">
           <h1><%= @photographer.name %></h1>
-          <div class="follower">
-            <p>フォロワー</p>
-            <p>フォロー中</p>
+
+          <!--------- ここからフォロー関連 ----------->
+          <div class="follower-wrapper">
+            <section class="stats">
+              <%= render 'relationships/stats', user: @user %>
+            </section>
+            <section class="follw-btn">
+              <%= render 'relationships/follow_form', user: @user if user_signed_in? %>
+            </section>
           </div>
+
           <p><%= @photographer.area %></p>
           <div class="setting-link">
             <% if @user == current_user %>

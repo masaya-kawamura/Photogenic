@@ -1,8 +1,13 @@
 Rails.application.routes.draw do
 
   root to: 'homes#top'
-  resources :users, only: [:edit, :update, :destroy]
   get 'mypage' => 'users#mypage'
+  resources :users, only: [:edit, :update, :destroy] do
+    member do
+      get :following, :followers
+    end
+  end
+  resources :relationships, only: [:create, :destroy]
   resources :photographers do
     member do
       post :public_status_switching
