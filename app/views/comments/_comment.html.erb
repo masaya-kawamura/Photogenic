@@ -1,0 +1,35 @@
+<!---------------コメント表示部分------------------>
+
+<%= comments.count %>件のコメント
+<% comments.each do |comment| %>
+  <% unless comment.id.nil? %>
+    <li class="comment-container">
+      <div class="comment-wwrapper">
+        <div class="comment-avatar">
+          <%= image_tag comment.user.profile_image.url %>
+        </div>
+        <div class="comment-text">
+          <p><%= "@#{comment.user.name}" %></p>
+          <div class="comment-content">
+            <%= comment.comment %>
+            <% if comment.user == current_user %>
+              <%= link_to photo_comment_path(comment.photo.id, comment.id), method: :DELETE, remote: true do %>
+                <p>コメント削除</p>
+              <% end %>
+            <% end %>
+          </div>
+          <span class="comment-date pull-right">
+            <%= comment.created_at.strftime('%Y/%m/%d %H:%M%S') %>
+          </span>
+        </div>
+      </div>
+    </li>
+  <% end %>
+<% end %>
+
+<!----------- コメント入力フォーム ------------>
+
+<%= form_with(model: [@photo, @comment], url: photo_comments_path(@photo)) do |f| %>
+  <%= f.text_field :comment, class: 'form_control' %>
+  <%= f.submit '送信', class:'btn btn-outline-dark' %>
+<% end %>

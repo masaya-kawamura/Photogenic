@@ -23,7 +23,11 @@
         <p><%= @photo.detail %></p>
       </div>
     </div>
+
     <div class="photo-social">
+
+      <!---------- ここからいいねの記述部分 ------------->
+
       <div class="social-icon">
         <li id="favorites_btn_<%= @photo.id %>">
           <%= render 'favorites/favorite', photo: @photo %>
@@ -31,7 +35,17 @@
         <li></li>
         <li></li>
       </div>
+
+      <!--------- ここからコメントの記述部分 ------------>
+
+      <div id="comments-area">
+        <%= render 'comments/comment', comments: @comments %>
+      </div>
     </div>
+
+
+
+
   </div>
 </div>
 
