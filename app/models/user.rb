@@ -9,6 +9,7 @@ class User < ApplicationRecord
 
   belongs_to :photographer, dependent: :destroy
   has_many :photos, dependent: :destroy
+  has_many :favorites, dependent: :destroy
 
   enum user_status: { '一般ユーザー': 0, 'フォトグラファー': 1, '退会済みユーザー': 2 }
 

@@ -8,7 +8,9 @@ Rails.application.routes.draw do
       post :public_status_switching
     end
   end
-  resources :photos
+  resources :photos do
+    resource :favorites, only: [:create, :destroy]
+  end
 
 
   #===== deviseルーティング設定 ======
