@@ -25,7 +25,9 @@
     </div>
     <div class="photo-social">
       <div class="social-icon">
-        <li><%= render 'favorites/favorite', photo: @photo %></li>
+        <li id="favorites_btn_<%= @photo.id %>">
+          <%= render 'favorites/favorite', photo: @photo %>
+        </li>
         <li></li>
         <li></li>
       </div>
