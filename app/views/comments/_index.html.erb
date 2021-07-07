@@ -1,0 +1,28 @@
+<div id="comment_count">
+  <%= photo.comments.count %>件のコメント
+</div>
+<% photo.comments.each do |comment| %>
+  <% unless comment.id.nil? %>
+    <li class="comment-container">
+      <div class="comment-wwrapper">
+        <div class="comment-avatar">
+          <%= image_tag comment.user.profile_image.url %>
+        </div>
+        <div class="comment-text">
+          <p><%= "@#{comment.user.name}" %></p>
+          <div class="comment-content">
+            <%= comment.comment %>
+            <% if comment.user == current_user %>
+              <%= link_to photo_comment_path(comment.photo.id, comment.id), method: :DELETE, remote: true do %>
+                <p>コメント削除</p>
+              <% end %>
+            <% end %>
+          </div>
+          <span class="comment-date pull-right">
+            <%= comment.created_at.strftime('%Y/%m/%d %H:%M%S') %>
+          </span>
+        </div>
+      </div>
+    </li>
+  <% end %>
+<% end %>
