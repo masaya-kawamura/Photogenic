@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   get 'mypage' => 'users#mypage'
   resources :users, only: [:edit, :update, :destroy] do
     member do
-      get :following, :followers
+      get :following, :follower
     end
   end
   resources :relationships, only: [:create, :destroy]

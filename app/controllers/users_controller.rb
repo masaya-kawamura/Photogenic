@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  before_action :user_signed_in?
 
   def mypage
     @user = current_user
@@ -19,6 +20,20 @@ class UsersController < ApplicationController
   end
 
   def destroy
+  end
+
+  def follower
+    @title = "Follower"
+    @user = User.find(params[:id])
+    @users = @user.follower
+    render 'show_follow'
+  end
+
+  def following
+    @title = "Following"
+    @user = User.find(params[:id])
+    @users = @user.following
+    render 'show_follow'
   end
 
     private
