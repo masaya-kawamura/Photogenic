@@ -21,12 +21,12 @@
 
           <!--------- ここからフォロー関連 ----------->
           <div class="follower-wrapper">
-            <section class="stats">
+            <div id="stats">
               <%= render 'relationships/stats', user: @user %>
-            </section>
-            <section class="follw-btn">
+            </div>
+            <div id="follow-btn">
               <%= render 'relationships/follow_form', user: @user if user_signed_in? %>
-            </section>
+            </div>
           </div>
 
           <p><%= @photographer.area %></p>
