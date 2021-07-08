@@ -1,0 +1,8 @@
+<div class="follower-wrapper">
+  <div id="stats">
+    <%= render 'relationships/stats', user: user %>
+  </div>
+  <div id="follow-btn">
+    <%= render 'relationships/follow_form', user: user if user_signed_in? %>
+  </div>
+</div>

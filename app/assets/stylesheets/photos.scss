@@ -2,27 +2,34 @@
   margin: 50px 10%;
 }
 .contents-wrapper {
+  position: static;
   display: flex;
   justify-content: space-between;
   width: 100%;
 }
-.photo-contents {
-  width: 60%;
-}
-.user-information {
-  display: flex;
-  align-items: center;
-  margin-bottom: 20px;
+.photographer-wrapper {
+  width: 30%;
+  height: 80vh;
+  padding: 3%;
+  position: fixed;
+  box-shadow: 1px 1px 10px gray;
 }
 .user-image {
-  width: 20%;
-  margin-right: 5%;
+  width: 70%;
+  margin: 0 auto;
 }
-.user-information h3 {
-  width: 75%;
-  font-size: 50px;
+.photographer-wrapper h3 {
+  margin: 20px auto;
+  font-size: 30px;
+  text-align: center;
 }
 
+.photo-contents {
+  width: 60%;
+  padding: 0 3%;
+  margin-left: 40%;
+  z-index: 1;
+}
 .photo-flame {
   width: 100%;
   margin-bottom: 40px;
@@ -37,7 +44,7 @@
 
 // ソーシャル用のスタイル
 .photo-social {
-  width: 39%;
+  width: 100%;
   list-style: none;
   text-decoration: none;
 }

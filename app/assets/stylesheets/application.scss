@@ -49,6 +49,18 @@ h2 {
  color: #2b2a27;
 }
 
+header {
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 10;
+  background-color: white;
+}
+
+main {
+  margin-top: 130px;
+}
+
 .menu-title {
   position: relative;
   display: inline-block;

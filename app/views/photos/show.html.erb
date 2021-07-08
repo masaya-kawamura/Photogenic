@@ -1,12 +1,15 @@
 <div class="photos-container">
   <div class="contents-wrapper">
-    <div class="photo-contents">
-      <div class="user-information">
-        <%= link_to photographer_path(@user.photographer), class: "user-image" do %>
+    <div class="photographer-wrapper">
+      <div class="user-image ">
+        <%= link_to photographer_path(@user.photographer) do %>
           <div class="round-circle"><%= image_tag(@user.profile_image.url) %></div>
         <% end %>
-        <h3><%= @user.name %></h3>
       </div>
+      <h3><%= @user.photographer.name %></h3>
+      <%= render 'relationships/follow-contents', user: @user %>
+    </div>
+    <div class="photo-contents">
       <div class="photo-flame">
         <div class="square"><%= image_tag @photo.photo_image.url %></div>
       </div>
@@ -22,34 +25,34 @@
         <h2 class="menu-title">PHOTO DETAIL</h2>
         <p><%= @photo.detail %></p>
       </div>
+      <div class="photo-social">
+
+        <!---------- ここからFavoriteの記述部分 ------------->
+
+        <div class="social-icon">
+          <li id="favorites_btn_<%= @photo.id %>">
+            <%= render 'favorites/favorite', photo: @photo %>
+          </li>
+          <li></li>
+          <li></li>
+        </div>
+
+        <!--------- ここからCommentの記述部分 ------------>
+
+        <div id="photo-comments">
+          <%= render 'comments/index', photo: @photo %>
+        </div>
+
+        <!------------- Comment入力フォーム -------------->
+
+        <%= form_with model: [@photo, @comment] do |f| %>
+          <%= f.text_area :comment, class: 'form_control' %>
+          <%= f.submit '送信', class:'btn btn-outline-dark', data: { disable_with: '投稿中...' } %>
+        <% end %>
+
+      </div>
     </div>
 
-    <div class="photo-social">
-
-      <!---------- ここからFavoriteの記述部分 ------------->
-
-      <div class="social-icon">
-        <li id="favorites_btn_<%= @photo.id %>">
-          <%= render 'favorites/favorite', photo: @photo %>
-        </li>
-        <li></li>
-        <li></li>
-      </div>
-
-      <!--------- ここからCommentの記述部分 ------------>
-
-      <div id="photo-comments">
-        <%= render 'comments/index', photo: @photo %>
-      </div>
-
-      <!------------- Comment入力フォーム -------------->
-
-      <%= form_with model: [@photo, @comment] do |f| %>
-        <%= f.text_area :comment, class: 'form_control' %>
-        <%= f.submit '送信', class:'btn btn-outline-dark', data: { disable_with: '投稿中...' } %>
-      <% end %>
-
-    </div>
   </div>
 </div>
 
