@@ -1,0 +1,2 @@
+class PhotoGenre < ApplicationRecord
+end
