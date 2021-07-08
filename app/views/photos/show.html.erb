@@ -46,7 +46,7 @@
 
       <%= form_with model: [@photo, @comment] do |f| %>
         <%= f.text_area :comment, class: 'form_control' %>
-        <%= f.submit '送信', class:'btn btn-outline-dark' %>
+        <%= f.submit '送信', class:'btn btn-outline-dark', data: { disable_with: '投稿中...' } %>
       <% end %>
 
     </div>

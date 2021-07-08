@@ -36,7 +36,7 @@
       </div>
 
       <div class="action field">
-        <%= f.submit '登録を完了する' %>
+        <%= f.submit '登録を完了する', data: { disable_with: '登録中...' } %>
       </div>
     <% end %>
   </div>

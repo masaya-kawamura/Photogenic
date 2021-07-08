@@ -36,7 +36,7 @@
       </div>
 
       <div class="action field">
-        <%= f.submit '編集内容を保存する', class:"form-control btn btn-dark" %>
+        <%= f.submit '編集内容を保存する', class:"form-control btn btn-dark", data: { disable_with: '保存中...' } %>
       </div>
     <% end %>
   </div>

@@ -18,7 +18,7 @@
       </div>
 
       <div class="action field">
-        <%= f.submit '写真を投稿', class:'form-control btn btn-dark' %>
+        <%= f.submit '写真を投稿', class:'form-control btn btn-dark', data: { disable_with: '投稿中...' } %>
       </div>
     <% end %>
   </div>
