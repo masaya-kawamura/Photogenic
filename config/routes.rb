@@ -19,6 +19,7 @@ Rails.application.routes.draw do
   end
 
   get 'search' => "searches#search"
+  get "/genres/:id" => 'genres#index', as: 'genre'
 
   #===== deviseルーティング設定 ======
   devise_for :users,

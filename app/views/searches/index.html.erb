@@ -1,6 +1,6 @@
 <div class="search-container">
   <h2 class="menu-title">SEARCHES</h2>
-  
+
   <% if @photographers.present? %>
     <% @photographers.each do |photographer| %>
       <%= image_tag photographer.user.profile_image.url %>
@@ -9,9 +9,9 @@
   <% else %>
     <p>条件に言い値するものが見つかりませんでした</p>
   <% end %>
-  
+
   <% if @photos.present? %>
-    <%= @photos.each do |photo| %>
+    <% @photos.each do |photo| %>
     <%= image_tag photo.photo_image.url %>
     <% end %>
   <% end %>

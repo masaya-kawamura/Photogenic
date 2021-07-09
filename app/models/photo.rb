@@ -16,7 +16,7 @@ class Photo < ApplicationRecord
     favorites.where(user_id: user.id).exists?
   end
 
-  # ========= ジャンル保存メソッド ===========
+  # =============== ジャンル保存メソッド =================
   def save_photos(save_genres)
     current_genres = self.genres.pluck(:name) unless self.genres.nil?
     old_genres = current_genres - save_genres
@@ -29,6 +29,19 @@ class Photo < ApplicationRecord
     new_genres.each do |new_name|
       photo_genre = Genre.find_or_create_by(name: new_name)
       self.genres << photo_genre
+    end
+  end
+
+  # ================ 写真検索用の記述 ==================
+  def self.search(word)
+    unless word == ""
+      name = Photo.where('story LIKE? OR detail LIKE?', "%#{word}%", "%#{word}%")
+      genres = Photo.joins(:genres).where('genres.name LIKE?', "%#{word}%")
+      name += genres
+      photos = name.uniq
+      return photos.sort.reverse
+    else
+      Photo.includes(:user).order(id: "DESC")
     end
   end
 
