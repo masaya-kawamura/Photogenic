@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class PhotographerGenreTest < ActiveSupport::TestCase
+class PhotographerGenreMapTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end

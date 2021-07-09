@@ -13,6 +13,11 @@
       </div>
 
       <div class="field">
+        <%= f.label :genre, '撮影ジャンル（半角スペースで区切って複数入力できます。' %>
+        <%= f.text_field :genre, placeholder: "人物 料理 風景", class: 'form-control' %>
+      </div>
+
+      <div class="field">
         <%= f.label :introduction, '紹介文' %>
         <textarea class="form-control" rows="5" name="photographer[introduction]" id="photographer_introduction"></textarea>
       </div>

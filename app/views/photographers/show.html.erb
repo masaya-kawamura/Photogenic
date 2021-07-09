@@ -22,6 +22,10 @@
           <!--------- ここからフォロー関連 ----------->
           <%= render 'relationships/follow-contents', user: @user %>
 
+          <% @photographer.genres.each do |genre| %>
+          <%= genre.name %>
+          <% end %>
+
           <p><%= @photographer.area %></p>
           <div class="setting-link">
             <% if @user == current_user %>

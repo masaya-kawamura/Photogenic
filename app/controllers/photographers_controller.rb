@@ -9,10 +9,11 @@ class PhotographersController < ApplicationController
     photographer = Photographer.new(photographer_params)
     photographer.user_id = current_user.id
     if photographer.save
-      user = current_user
-      if user.user_status != "フォトグラファー"
-        user.update(user_status: "フォトグラファー", photographer_id: photographer.id)
-      end
+      genres = params[:genre].split(" ")
+      # photographerインスタンスに対してsave_photographerメソッド呼び出し
+      photographer.save_photographer_genres(genres)
+      user = photographer.user
+      user.update(user_status: "フォトグラファー", photographer_id: photographer.id)
       flash[:notice] = "フォトグラファー登録が完了しました"
       redirect_to mypage_path
     else
@@ -33,6 +34,9 @@ class PhotographersController < ApplicationController
   def update
     photographer = Photographer.find(params[:id])
     if photographer.update(photographer_params)
+      genres = params[:photographer][:genre].split(" ")
+      # photographerインスタンスに対してsave_photographerメソッド呼び出し
+      photographer.save_photographer_genres(genres)
       flash[:notice] = "プロフィールを編集しました"
       redirect_to photographer_path(photographer)
     else

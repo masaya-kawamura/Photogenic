@@ -7,6 +7,10 @@ class PhotosController < ApplicationController
   def create
     photo = current_user.photos.new(photo_params)
     if photo.save
+      # ======= ジャンル保存メソッドへ =========
+      genres = params[:photo][:genre].split(' ')
+      photo.save_photos(genres)
+      # ========================================
       flash[:notice] = "写真を投稿しました"
       redirect_to photo_path(photo.id)
     else
@@ -34,6 +38,10 @@ class PhotosController < ApplicationController
   def update
     photo = Photo.find(params[:id])
     if photo.update(photo_params)
+      # ======= ジャンル保存メソッドへ =========
+      genres = params[:photo][:genre].split(' ')
+      photo.save_photos(genres)
+      # ========================================
       flash[:notice] = "投稿を編集しました"
       redirect_to photo_path(photo)
     else
