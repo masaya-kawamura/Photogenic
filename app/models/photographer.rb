@@ -21,4 +21,17 @@ class Photographer < ApplicationRecord
     end
   end
 
+  # =========== フォトグラファー検索用の記述 ==============
+  def self.search(word)
+    unless word == ""
+      name = Photographer.where('name LIKE?', "%#{word}%")
+      genres = Photographer.joins(:genres).where('genres.name LIKE?', "%#{word}%")
+      name += genres
+      photographers = name.uniq
+      return photographers
+    else
+      Photographer.includes(:user).order(id: "DESC")
+    end
+  end
+
 end

@@ -18,6 +18,7 @@ Rails.application.routes.draw do
     resources :comments, only: [:create, :destroy]
   end
 
+  get 'search' => "searches#search"
 
   #===== deviseルーティング設定 ======
   devise_for :users,
