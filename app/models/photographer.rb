@@ -30,7 +30,7 @@ class Photographer < ApplicationRecord
       photographers = name.uniq
       return photographers
     else
-      Photo.all.order(id: "DESC")
+      Photographer.includes(:user).order(id: "DESC")
     end
   end
 

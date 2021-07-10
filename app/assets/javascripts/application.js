@@ -18,3 +18,12 @@
 //= require activestorage
 //= require turbolinks
 //= require_tree .
+
+/*global $*/
+document.addEventListener("turbolinks:load", function() {
+  $(document).ready(function (){
+    $('#open-nav').on('click', function (){
+      $('#nav').toggleClass('show');
+    });
+  });
+});

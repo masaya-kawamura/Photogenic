@@ -41,7 +41,7 @@ class Photo < ApplicationRecord
       photos = name.uniq
       return photos.sort.reverse
     else
-      Photo.includes(:user).order(id: "DESC")
+      Photo.all.order(id: "DESC")
     end
   end
 
