@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
 
+  get 'rates/create'
+  get 'rates/edit'
+  get 'rates/update'
+  get 'rates/destroy'
   root to: 'homes#top'
   get 'mypage' => 'users#mypage'
   resources :users, only: [:edit, :update, :destroy] do
@@ -16,6 +20,7 @@ Rails.application.routes.draw do
   resources :photos do
     resource :favorites, only: [:create, :destroy]
     resources :comments, only: [:create, :destroy]
+    resources :rates, onry: [:create, :destroy]
   end
 
   get 'search' => "searches#search"

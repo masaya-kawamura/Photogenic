@@ -1,0 +1,20 @@
+
+<% photo.rates.each do |rate| %>
+  <%= image_tag rate.user.profile_image.url %>
+  <%= rate.user.name %>
+  <div id="rate_<%= rate.id %>"></div>
+  <%= rate.comment %>
+  <%= link_to '評価を削除する', photo_rate_path(photo, rate), method: :DELETE %>
+
+  <script>
+    $('#rate_<%= rate.id %>').raty({
+      size: 20,
+      starOff:  '<%= asset_path('star-off.png') %>',
+      starOn:   '<%= asset_path('star-on.png') %>',
+      starHalf: '<%= asset_path('star-half.png') %>',
+      half: true,
+      readOnly: true,
+      score: <%= rate.rate %>
+    });
+  </script>
+<% end %>

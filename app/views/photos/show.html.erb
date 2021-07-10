@@ -39,18 +39,53 @@
         </div>
 
         <!--------- ここからCommentの記述部分 ------------>
-
         <div id="photo-comments">
           <%= render 'comments/index', photo: @photo %>
         </div>
 
         <!------------- Comment入力フォーム -------------->
 
-        <%= form_with model: [@photo, @comment] do |f| %>
+        <%= form_with(model: [@photo, @comment], url: photo_comments_path(@photo), method: :POST, remote: true) do |f| %>
           <%= f.text_area :comment, class: 'form_control' %>
           <%= f.submit '送信', class:'btn btn-outline-dark', data: { disable_with: '投稿中...' } %>
         <% end %>
 
+        <!---------------ここからRateの記述--------------->
+          <div id="photo-rates">
+            <%= render 'rates/index', photo: @photo %>
+          </div>
+
+        <!--------------- Rate入力フォーム --------------->
+        <div class="rate-form">
+          <%= form_with(model: [@photo, @rate], url: photo_rates_path(@photo), method: :POST, remote: true) do |f| %>
+
+            <div class="form-group" id="star">
+              <%= f.label :rate %>
+              <%= f.hidden_field :rate, id: :review_star, class: 'form-control' %>
+            </div>
+
+            <div class="form-group">
+              <%= f.label :comment, '評価コメント' %>
+              <%= f.text_area :comment %>
+            </div>
+
+            <div class="form-group">
+              <%= f.submit '評価する' %>
+            </div>
+          <% end %>
+
+          <script>
+            $('#star').raty({
+              size: 36,
+              starOff:  '<%= asset_path('star-off.png') %>',
+              starOn:   '<%= asset_path('star-on.png') %>',
+              starHalf: '<%= asset_path('star-half.png') %>',
+              scoreName: 'rate[rate]',
+              half: true,
+            });
+          </script>
+
+        </div>
       </div>
     </div>
 

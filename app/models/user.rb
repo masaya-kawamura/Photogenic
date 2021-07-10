@@ -23,6 +23,7 @@ class User < ApplicationRecord
                                   foreign_key: "followed_id",
                                     dependent: :destroy
   has_many :follower, through: :passive_relationships, source: :follower
+  has_many :rates, dependent: :destroy
 
   # ========== フォロワー関連メソッド============
   def follow(other_user)

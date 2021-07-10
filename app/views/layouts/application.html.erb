@@ -23,6 +23,11 @@
           </div>
         </nav>
       </header>
+      <% if flash[:notice] %>
+        <p id='notice'><%= flash[:notice]%></p>
+      <% elsif flash[:alert]%>
+        <p id='alert'><%= flash[:alert] %></p>
+      <% end %>
       <main>
       <%= yield %>
       </main>

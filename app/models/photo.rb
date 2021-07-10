@@ -6,6 +6,7 @@ class Photo < ApplicationRecord
   has_many :photo_genre_maps, foreign_key: 'photo_id',
                                 dependent: :destroy
   has_many :genres, through: :photo_genre_maps
+  has_many :rates, dependent: :destroy
 
   mount_uploader :photo_image, PhotoUploader
 

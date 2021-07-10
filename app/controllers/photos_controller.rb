@@ -25,6 +25,7 @@ class PhotosController < ApplicationController
     @user = @photo.user
     @comments = @photo.comments
     @comment = Comment.new
+    @rate = Rate.new
   end
 
   def index
