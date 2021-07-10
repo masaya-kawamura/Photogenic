@@ -4,7 +4,7 @@
   <%= rate.user.name %>
   <div id="rate_<%= rate.id %>"></div>
   <%= rate.comment %>
-  <%= link_to '評価を削除する', photo_rate_path(photo, rate), method: :DELETE %>
+  <%= link_to '評価を削除する', photo_rate_path(photo, rate), method: :DELETE, remote: true, data: {confirm: "評価を削除しますか？"} %>
 
   <script>
     $('#rate_<%= rate.id %>').raty({

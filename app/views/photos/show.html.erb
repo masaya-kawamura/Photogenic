@@ -51,44 +51,17 @@
         <% end %>
 
         <!---------------ここからRateの記述--------------->
-          <div id="photo-rates">
-            <%= render 'rates/index', photo: @photo %>
-          </div>
+        <div id="photo-rates">
+          <%= render 'rates/index', photo: @photo %>
+        </div>
 
         <!--------------- Rate入力フォーム --------------->
-        <div class="rate-form">
-          <%= form_with(model: [@photo, @rate], url: photo_rates_path(@photo), method: :POST, remote: true) do |f| %>
-
-            <div class="form-group" id="star">
-              <%= f.label :rate %>
-              <%= f.hidden_field :rate, id: :review_star, class: 'form-control' %>
-            </div>
-
-            <div class="form-group">
-              <%= f.label :comment, '評価コメント' %>
-              <%= f.text_area :comment %>
-            </div>
-
-            <div class="form-group">
-              <%= f.submit '評価する' %>
-            </div>
-          <% end %>
-
-          <script>
-            $('#star').raty({
-              size: 36,
-              starOff:  '<%= asset_path('star-off.png') %>',
-              starOn:   '<%= asset_path('star-on.png') %>',
-              starHalf: '<%= asset_path('star-half.png') %>',
-              scoreName: 'rate[rate]',
-              half: true,
-            });
-          </script>
-
+        <div id="rate-form">
+          <%= render 'rates/form', photo: @photo, rate: @rate %>
         </div>
+
       </div>
     </div>
-
   </div>
 </div>
 
