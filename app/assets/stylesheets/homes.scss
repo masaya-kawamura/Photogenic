@@ -37,7 +37,6 @@
 }
 
 .about-contents p {
-  font-family: 'Kiwi Maru', serif;
   font-size: 20px;
   line-height: 200%;
 }
@@ -54,20 +53,31 @@
 .concept {
   text-align: center;
   position: absolute;
-  top: 30%;
+  bottom: 10%;
   left: 10%;
+  width: 30%;
+}
+.concept-title {
+  color: white;
+  font-size: 85px;
+  font-weight: bold;
+  font-family: 'Futura';
+  margin-bottom: 30px;
+  text-align: left;
 }
 .concept h1 {
   color: white;
 }
 
-.concept h2 {
+.concept h3 {
   color: white;
   text-align: justify;
   text-align-last: justify;
   text-justify: inter-character;
   padding: 5px 0;
   font-family: 'Kiwi Maru', serif;
+  line-height: 180%;
+  font-size: 25px;
 }
 
 .title {
@@ -152,6 +162,7 @@
 }
 .photos-wrapper {
   display: flex;
+  width: 100%;
 }
 .photos-wrapper img {
   width: 23%;

@@ -1,19 +1,18 @@
-<div class="main-wrapper">
-  <div id='mainvisual'></div>
-  <div class="concept">
-    <h1 class="title">CONCEPT</h1>
-    <h2 class="caption">カメラが好きな人とつながる</h2>
-    <h2 class="caption">写真が欲しい人とつながる</h2>
-    <h2 class="caption">共有・依頼をもっと手軽に</h2>
-    <h2 class="caption">カメラマンプロフィールサイト</h2>
-    <div class="concept-border"></div>
-    <div class="d-grid gap-2">
+<div id='mainvisual'></div>
+<div class="concept">
+  <h1 class="concept-title">Weekly Photogenic</h1>
+  <h1 class="title">CONCEPT</h1>
+  <h3 class="caption">
+  カメラが好きな人とつながる<br>
+  写真が欲しい人とつながる<br>
+  共有・依頼をもっと手軽に<br>
+  カメラマンプロフィールサイト</h3>
+  <div class="concept-border"></div>
+  <div class="d-grid gap-2">
     <%= link_to '写真ギャラリーを見る', '#', class:'btn btn-outline-light btn-lg btn-block' %><br>
     <%= link_to 'フォトギャラリーを見る', '#', class:'btn btn-outline-light btn-lg btn-block' %>
-    </div>
   </div>
 </div>
-
 <div class="about-container">
   <div class="about-contents">
     <img src="/assets/about_image.png">
@@ -37,38 +36,35 @@
     <% @photographers.each do |photographer| %>
       <div class="photographer-info">
         <%= link_to photographer_path(photographer), class: "photographer-image" do %>
-          <div class="square"><%= image_tag photographer.user.profile_image.url %></div>
+          <div class="square">
+            <%= image_tag photographer.user.profile_image.url %>
+          </div>
         <% end %>
         <h3><%= photographer.name %></h3>
         <p>tesutesttesttest</p>
       </div>
     <% end %>
-    </div>
-  </div>
-  <div class="btn-wrapper">
-    <%= link_to '写真ギャラリーを見る', '#', class:'btn btn-outline-dark btn-block mr-2' %>
-    <%= link_to 'フォトギャラリーを見る', '#', class:'btn btn-outline-dark btn-block mt-0 ml-2' %>
   </div>
 </div>
-
+<div class="btn-wrapper">
+  <%= link_to '写真ギャラリーを見る', '#', class:'btn btn-outline-dark btn-block mr-2' %>
+  <%= link_to 'フォトギャラリーを見る', '#', class:'btn btn-outline-dark btn-block mt-0 ml-2' %>
+</div>
 <div class="gallery-container">
   <h2 class="menu-title">GALLERY</h2>
   <h2 class="subtitle">Photo Gallery</h2>
   <div class="photos-wrapper">
     <% @photos.each do |photo| %>
       <%= link_to photo_path(photo), class: "photo-item" do %>
-        <div class="square"><%= image_tag photo.photo_image.url %></div>
+        <div class="square">
+          <%= image_tag photo.photo_image.url %>
+        </div>
       <% end %>
     <% end %>
   </div>
   <%= link_to '写真ギャラリーを見る', '#', class:'btn btn-outline-dark btn-block mr-2' %>
   <%= link_to 'フォトギャラリーを見る', '#', class:'btn btn-outline-dark btn-block mt-0 ml-2' %>
 </div>
-   <div class="btn-wrapper">
-
-    </div>
-</div>
-
 <div class="about-container">
   <div class="about-contents">
     <img src="/assets/mypage_image.png">

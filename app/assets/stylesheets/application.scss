@@ -49,12 +49,40 @@ h2 {
  color: #2b2a27;
 }
 
+// デフォルトの幅
+.default-width{
+  margin: 0 10%;
+}
+
+// ヘッダーのスタイル
 header {
   position: fixed;
   width: 100%;
+  height: 70px;
   top: 0;
   z-index: 10;
-  background-color: white;
+  background-color: rgb(255, 255, 255);
+  backdrop-filter: blur(10px);
+  padding: 0 10px;
+}
+.header-icon {
+  display: flex;
+  justify-content: space-between;
+}
+.header-icon img {
+  width: 50px;
+  margin-top: 10px;
+}
+.header-logo {
+  font-family: 'Futura';
+  font-size: 30px;
+  line-height: center;
+  margin-top: 13px;
+}
+
+// メインのスタイル
+main {
+  padding-top: 70px;
 }
 
 .menu-title {
@@ -144,4 +172,17 @@ header {
 .photo-item {
     width: 23%;
     margin: 1%;
+}
+
+#nav {
+  position: fixed;
+  right: -300px;
+  top: 70px;
+  width: 300px;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.5);
+  backdrop-filter: blur(20px);
+}
+.show {
+  transform: translate3d(-300px, 0, 0);
 }
