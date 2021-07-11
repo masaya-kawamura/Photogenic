@@ -1,18 +1,16 @@
-<div class="search-container">
-  <h2 class="menu-title">SEARCHES</h2>
-
-  <% if @photographers.present? %>
-    <% @photographers.each do |photographer| %>
-      <%= image_tag photographer.user.profile_image.url %>
-      <%= photographer.name %>
+<div class="main-container">
+    <h2 class="menu-title mt-5">GENRE SEARCH</h2>
+    <h2 class="subtitle">Photo & Human</h2>
+    <% if @photographers.present? %>
+      <%= render 'photographers/list',  photographer: @photographers %>
+    <% else %>
+      <p>条件に一致するものが見つかりませんでした</p>
     <% end %>
-  <% else %>
-    <p>条件に一致するものが見つかりませんでした</p>
-  <% end %>
 
-  <% if @photos.present? %>
-    <% @photos.each do |photo| %>
-    <%= image_tag photo.photo_image.url %>
+    <% if @photos.present? %>
+      <%= render 'photos/list', photos: @photos %>
+    <% else %>
+      <p>条件に一致するものが見つかりませんでした</p>
     <% end %>
-  <% end %>
+
 </div>

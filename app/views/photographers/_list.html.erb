@@ -1,0 +1,19 @@
+<div class="photos-wrapper">
+  <% @photographers.each do |photographer| %>
+    <div class="photographer-info">
+      <%= link_to photographer_path(photographer), class: "photographer-image" do %>
+        <div class="square">
+          <%= image_tag photographer.user.profile_image.url %>
+        </div>
+        <h5><%= photographer.name %></h5>
+      <% end %>
+      <span class="genres">
+        <% photographer.genres.each do |genre| %>
+          <p class="mx-1">
+            <%= link_to genre.name, genre_path(genre.id) %>
+          </p>
+        <% end %>
+      </span>
+    </div>
+  <% end %>
+</div>

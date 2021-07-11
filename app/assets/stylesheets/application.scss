@@ -24,16 +24,23 @@
  }
  @font-face {
   font-family: 'Futura';
-  src: font-url('futura');
+  src: font-url('Futura.ttf');
  }
+
+.futura {
+  font-family: 'Futura';
+ }
+
  @import url('https://fonts.googleapis.com/css2?family=Kiwi+Maru:wght@300&display=swap');
+ @import url('https://fonts.googleapis.com/css2?family=Kosugi+Maru&display=swap');
+
+.maru-font {
+  font-family: 'Kosugi Maru', sans-serif;
+}
+
 
 html {
   font-size: 100%;
-}
-
-body p {
-  color: #2b2a27;
 }
 
 ul {
@@ -46,15 +53,6 @@ a {
  text-decoration:none;
 }
 
-h2 {
- color: #2b2a27;
-}
-
-// デフォルトの幅
-.default-width{
-  margin: 0 10%;
-}
-
 // ヘッダーのスタイル
 header {
   position: fixed;
@@ -62,7 +60,7 @@ header {
   height: 70px;
   top: 0;
   z-index: 10;
-  background-color: rgb(255, 255, 255);
+  background-color: rgba(255, 255, 255, 0.8);
   backdrop-filter: blur(10px);
   padding: 0 10px;
   box-shadow: 0px 2px 6px 2px rgba(0, 0, 0, 0.1);
@@ -88,16 +86,17 @@ header {
 
 }
 .header-logo:hover {
-  font-size: 31px;
   text-decoration: none;
-  color: gray;
+  color: black;
 }
 
-// メインのスタイル
-main {
-  padding-top: 70px;
+// メインコンテンツのコンテナ
+.main-container {
+  margin: 100px 10% 100px 10%;
+  width: 80%;
 }
 
+// メニュータイトル用の記述
 .menu-title {
   position: relative;
   display: inline-block;
@@ -114,6 +113,15 @@ main {
   width: 40px;
   height: 1px;
   background-color: black;
+  left: 0;
+}
+
+// サブタイトル用の記述
+.subtitle {
+  font-family: 'AntroVectra';
+  margin: 50px 0;
+  font-size: 60px;
+  color: #2b2a27;
 }
 
 .users-container {
@@ -164,24 +172,55 @@ main {
 }
 
 // ===photographer一覧用===
+.photographer-container {
+  margin: 0 10%;
+}
+
 .photographer-info {
+  deisplay: flex;
+  flex-wrap: wrap;
   width: 23%;
   margin: 1%;
   border: solid 1px gray;
+}
+.photographer-info h5 {
+  text-align: center;
+  margin: 10px 0;
+  text-decoration: none;
 }
 .photographer-image {
   width: 100%;
 }
 
+// ジャンル用一覧用
+.genres {
+  display: flex;
+  justify-content: center;
+}
+
+// topのリンクボタン用
+.btn-wrapper {
+  display: flex;
+  margin-top: 30px;
+}
+
 // === 写真一覧用(Gallery) ===
 .photos-wrapper {
-  display: flax;
+  width: 100%;
+  display: flex;
   flex-wrap: wrap;
 }
 .photo-item {
     width: 23%;
     margin: 1%;
 }
+
+// コンテンツ間の余白
+.contents-margin {
+  height: 140px;
+}
+
+// ヘッダーナビゲーションのスタイル
 
 #nav {
   position: fixed;
@@ -208,7 +247,7 @@ main {
   display: inline-block;
   padding: 0 30px;
   font-size: 25px;
-  margin: 20px 0;
+  margin: 30px 0;
   transition: font-size 0.4s;
 }
 .nav-item:before {

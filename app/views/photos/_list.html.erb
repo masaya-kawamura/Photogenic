@@ -1,0 +1,9 @@
+<div class="photos-wrapper">
+  <% photos.each do |photo| %>
+    <%= link_to photo_path(photo), class: "photo-item" do %>
+      <div class="square">
+        <%= image_tag photo.photo_image.url %>
+      </div>
+    <% end %>
+  <% end %>
+</div>

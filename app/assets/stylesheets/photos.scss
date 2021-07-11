@@ -1,5 +1,6 @@
 .photos-container {
-  margin: 130px 10% 50px 10%;
+  margin: 130px 15% 50px 15%;
+  max-width: 1200px;
 }
 .contents-wrapper {
   position: static;
@@ -8,26 +9,26 @@
   width: 100%;
 }
 .photographer-wrapper {
-  width: 25%;
-  height: 80vh;
-  padding: 3%;
-  position: fixed;
-  box-shadow: 1px 1px 10px gray;
+  margin-bottom: 10px;
+  display: flex;
 }
-.user-image {
-  width: 70%;
-  margin: 0 auto;
+.photographer-icon {
+  width: 20%;
+  min-width: 50px;
 }
-.photographer-wrapper h3 {
-  margin: 20px auto;
-  font-size: 30px;
+.photographer-information {
+  width: 75%;
+  margin : auto 0 auto 5%;
   text-align: center;
+  align-content: space-around;
+}
+.photographer-wrapper h4 {
+  font-size: 30px;
 }
 
 .photo-contents {
   width: 60%;
   padding: 0 3%;
-  margin-left: 40%;
   z-index: 1;
 }
 .photo-flame {

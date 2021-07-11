@@ -48,10 +48,10 @@
             <% end %>
           <!----------ログアウト時 --------->
           <% else %>
-           <li class="nav-item"><%= link_to 'フォトグラファー一覧', '#', class:'nav-link' %></li>
-           <li class="nav-item"><%= link_to 'ギャラリー', '#', class:'nav-link' %></li>
-           <li class="nav-item"><%= link_to '新規登録', new_user_registration_path, class:'nav-link' %></li>
-           <li class="nav-item"><%= link_to 'ログイン', new_user_session_path, class:'nav-link' %></li>
+           <li class="nav-item"><%= link_to "Photographer's", photographers_path %></li><br>
+           <li class="nav-item"><%= link_to 'Gallery', photos_path %></li><br>
+           <li class="nav-item"><%= link_to 'Signup', new_user_registration_path %></li><br>
+           <li class="nav-item"><%= link_to 'Login', new_user_session_path %></li>
           <% end %>
         </ul>
       </nav>

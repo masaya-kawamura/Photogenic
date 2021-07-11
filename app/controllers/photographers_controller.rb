@@ -9,7 +9,7 @@ class PhotographersController < ApplicationController
     photographer = Photographer.new(photographer_params)
     photographer.user_id = current_user.id
     if photographer.save
-      genres = params[:genre].split(" ")
+      genres = params[:photographer][:genre].split(" ")
       # photographerインスタンスに対してsave_photographerメソッド呼び出し
       photographer.save_photographer_genres(genres)
       user = photographer.user
