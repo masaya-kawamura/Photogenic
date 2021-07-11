@@ -17,11 +17,10 @@
     </div>
     <div class="photo-flame">
       <div class="square"><%= image_tag @photo.photo_image.url %></div>
+      <div class="photo-edit-menu">
+        <%= render 'photos/photo_edit_menu' %>
+      </div>
     </div>
-    <% if @photo.user == current_user %>
-      <%= link_to '投稿情報を編集する', edit_photo_path(@photo), class: "btn btn-dark mb-5 " %>
-      <%= link_to '投稿を削除する', photo_path(@photo),method: :DELETE,  class: "btn btn-dark mb-5" %>
-    <% end %>
     <%= render 'genres/tags', genres: @photo.genres %>
     <div class="photo-story">
       <h2 class="menu-title">PHOTO STORY</h2>

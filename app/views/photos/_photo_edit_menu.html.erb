@@ -1,0 +1,6 @@
+    <div class="photo-edit-icon">
+      <% if @photo.user == current_user %>
+        <%= link_to image_tag('photo_edit_image.png'), edit_photo_path(@photo) %>
+        <%= link_to image_tag('photo_destroy_image.png'), photo_path(@photo),method: :DELETE  %>
+      <% end %>
+    </div>
