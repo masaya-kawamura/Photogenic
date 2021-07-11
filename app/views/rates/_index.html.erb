@@ -1,20 +1,38 @@
-
+<%= photo.rates.count %>件の評価
 <% photo.rates.each do |rate| %>
-  <%= image_tag rate.user.profile_image.url %>
-  <%= rate.user.name %>
-  <div id="rate_<%= rate.id %>"></div>
-  <%= rate.comment %>
-  <%= link_to '評価を削除する', photo_rate_path(photo, rate), method: :DELETE, remote: true, data: {confirm: "評価を削除しますか？"} %>
+  <div class="rates-wrapper">
+    <div class="rate-value">
+      <div class="rate-user-avatar">
+        <div class="round-circle"><%= image_tag rate.user.profile_image.url %></div>
+      </div>
+      <div class="rate-box">
+        <div id="rate_<%= rate.id %>"></div>
+        <p><%= rate.created_at.strftime('%Y年%m月%d日 %H:%M:%S') %></p>
+      </div>
+    </div>
+    <% if rate.comment.present? %>
+      <hr class="rate-border">
+      <%= rate.comment %>
+    <% end %>
+    <% if rate.user == current_user %>
+      <%= link_to photo_rate_path(photo, rate), method: :DELETE, remote: true, data: {confirm: "評価を削除しますか？"} do %>
+      <%= image_tag 'comment_destroy.png', class: 'rate-destroy-icon' %>
+    <% end %>
+  <% end %>
 
-  <script>
-    $('#rate_<%= rate.id %>').raty({
-      size: 20,
-      starOff:  '<%= asset_path('star-off.png') %>',
-      starOn:   '<%= asset_path('star-on.png') %>',
-      starHalf: '<%= asset_path('star-half.png') %>',
-      half: true,
-      readOnly: true,
-      score: <%= rate.rate %>
-    });
-  </script>
+    <script>
+      $('#rate_<%= rate.id %>').raty({
+        size: 20,
+        starOff:  '<%= asset_path('star-off.png') %>',
+        starOn:   '<%= asset_path('star-on.png') %>',
+        starHalf: '<%= asset_path('star-half.png') %>',
+        half: true,
+        readOnly: true,
+        score: <%= rate.rate %>
+      });
+    </script>
+</div>
 <% end %>
+
+
+

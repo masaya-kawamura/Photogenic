@@ -1,27 +1,40 @@
-<div id="comment_count">
-  <%= photo.comments.count %>件のコメント
-</div>
+<%= render 'comments/comment_count', photo: @photo %>
 <% photo.comments.each do |comment| %>
-  <% unless comment.id.nil? %>
-    <li class="comment-container">
-      <div class="comment-wwrapper">
-        <div class="comment-avatar">
-          <%= image_tag comment.user.profile_image.url %>
-        </div>
-        <div class="comment-text">
-          <p><%= "@#{comment.user.name}" %></p>
-          <div class="comment-content">
-            <%= comment.comment %>
-            <% if comment.user == current_user %>
-              <%= link_to photo_comment_path(comment.photo.id, comment.id), method: :DELETE, remote: true do %>
-                <p>コメント削除</p>
-              <% end %>
-            <% end %>
-          </div>
-          <span class="comment-date pull-right">
-            <%= comment.created_at.strftime('%Y/%m/%d %H:%M%S') %>
-          </span>
-        </div>
+  <% if comment.user == current_user %>
+    <li class="current_user_comment-wrapper">
+      <div class="comment-avatar">
+        <%= link_to photographer_path(comment.user.photographer) do %>
+          <div class="round-circle"><%= image_tag(comment.user.profile_image.url) %></div>
+        <% end %>
+      </div>
+      <div class="comment-content">
+        <h6><%= "@ #{comment.user.name}" %></h6>
+        <p><%= comment.comment %></p>
+        <span class="comment-date-time"><%= comment.created_at.strftime('%Y年%m月%d日 %H:%M:%S') %></span>
+        <% if comment.user == current_user %>
+          <%= link_to photo_comment_path(comment.photo.id, comment.id), method: :DELETE, remote: true do %>
+            <%= image_tag 'comment_destroy.png' %>
+          <% end %>
+        <% end %>
+      </div>
+    </li>
+  <% else %>
+    <li class="comment-wrapper">
+      <div class="comment-avatar">
+        <%= link_to photographer_path(comment.user.photographer) do %>
+          <div class="round-circle"><%= image_tag(comment.user.profile_image.url) %></div>
+        <% end %>
+      </div>
+
+      <div class="comment-content">
+        <h6><%= "@ #{comment.user.name}" %></h6>
+        <p><%= comment.comment %></p>
+        <span class="comment-date-time"><%= comment.created_at.strftime('%Y年%m月%d日 %H:%M:%S') %>
+        <% if comment.user == current_user %>
+          <%= link_to photo_comment_path(comment.photo.id, comment.id), method: :DELETE, remote: true do %>
+            <%= image_tag 'comment_destroy.png' %>
+          <% end %>
+        <% end %>
       </div>
     </li>
   <% end %>

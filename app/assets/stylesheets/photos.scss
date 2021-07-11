@@ -34,7 +34,6 @@
 }
 .photo-flame {
   width: 100%;
-  margin-bottom: 40px;
   position: relative;
 }
 
@@ -65,6 +64,35 @@
 
 
 // ソーシャル用のスタイル
+.social-menu {
+  display: flex;
+  margin-bottom: 30px;
+  height: 50px;
+  line-height: 70px;
+}
+.social-icon:last-child {
+  margin-left: auto;
+}
+.social-icon {
+  display: flex;
+  margin-right: 15px;
+  height: 50px;
+  font-family: 'Futura';
+}
+.social-icon li {
+  list-style: none;
+  heigth: 100%
+}
+.social-icon img {
+  height: 60%;
+}
+#photo-rate {
+  display: flex;
+  text-align: center;
+}
+
+
+
 .photo-social {
   width: 100%;
   list-style: none;

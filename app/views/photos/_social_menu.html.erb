@@ -1,0 +1,35 @@
+<div class="social-menu">
+  <!---------- ここからFavoriteの記述部分 ------------->
+  <div class="social-icon">
+    <li id="favorites_btn_<%= photo.id %>">
+      <%= render 'favorites/favorite', photo: photo %>
+    </li>
+  </div>
+  <div class="social-icon">
+    <li>
+      <%= image_tag 'comment_icon.png' %>
+      <%= photo.comments.count %>
+    </li>
+  </div>
+
+  <div class="social-icon">
+    <div id="photo-rate">
+      <div id="rate"></div>
+      <% if photo.rates.count != 0 %>
+        <p><%= photo.rates.count %></p>
+      <% end %>
+      <script>
+        $('#rate').raty({
+          size: 20,
+          starOff:  '<%= asset_path('star-off.png') %>',
+          starOn:   '<%= asset_path('star-on.png') %>',
+          starHalf: '<%= asset_path('star-half.png') %>',
+          half: true,
+          readOnly: true,
+          score: <%= photo.rates.average(:rate) %>
+        });
+      </script>
+    </div>
+  </div>
+
+</div>

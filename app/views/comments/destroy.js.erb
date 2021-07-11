@@ -1,2 +1,3 @@
 $("#photo-comments").html("<%= j(render 'comments/index', photo: @photo) %>");
 $("textarea").val('');
+$("#social-menu").html("<%= j(render 'photos/social_menu', photo: @photo) %>");

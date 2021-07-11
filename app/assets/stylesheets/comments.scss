@@ -1,0 +1,35 @@
+.comment-wrapper {
+  display: flex;
+  width: 100%;
+  box-shadow: 1px 1px 3px rgba(200,200,200, 1);
+  padding: 2%;
+  margin-bottom: 15px;
+}
+.comment-avatar {
+  width: 15%;
+}
+.comment-content {
+  width: 80%;
+  margin-left: 5%;
+  position: relative;
+}
+.comment-date-time {
+  font-size: 11px;
+}
+.comment-content img {
+  position: absolute;
+  bottom: 2%;
+  right: 1%;
+  width: 6%;
+  min-width: 20px;
+}
+
+// コメントユーザーが自分だったら
+.current_user_comment-wrapper {
+  display: flex;
+  background-color: #eeeeee;
+  width: 100%;
+  box-shadow: 1px 1px 3px rgba(200,200,200, 1);
+  padding: 2%;
+  margin-bottom: 15px;
+}

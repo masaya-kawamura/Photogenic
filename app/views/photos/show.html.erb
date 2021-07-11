@@ -4,6 +4,7 @@
 
   </div>
   <div class="photo-contents">
+
     <div class="photographer-wrapper">
       <div class="photographer-icon">
         <%= link_to photographer_path(@user.photographer) do %>
@@ -15,13 +16,21 @@
         <%= render 'relationships/follow-contents', user: @user %>
       </div>
     </div>
+
     <div class="photo-flame">
-      <div class="square"><%= image_tag @photo.photo_image.url %></div>
+      <div class="square">
+        <%= image_tag @photo.photo_image.url %>
+      </div>
       <div class="photo-edit-menu">
         <%= render 'photos/photo_edit_menu' %>
       </div>
     </div>
-    <%= render 'genres/tags', genres: @photo.genres %>
+    <div id='social-menu'>
+      <%= render 'photos/social_menu', photo: @photo %>
+    </div>
+    <div class="mb-5">
+      <%= render 'genres/tags', genres: @photo.genres %>
+    </div>
     <div class="photo-story">
       <h2 class="menu-title">PHOTO STORY</h2>
       <p><%= @photo.story %></p>
@@ -32,12 +41,6 @@
     </div>
     <div class="photo-social">
 
-      <!---------- ここからFavoriteの記述部分 ------------->
-      <div class="social-icon">
-        <li id="favorites_btn_<%= @photo.id %>">
-          <%= render 'favorites/favorite', photo: @photo %>
-        </li>
-      </div>
       <!--------- ここからCommentの記述部分 ------------>
       <div id="photo-comments">
         <%= render 'comments/index', photo: @photo %>
