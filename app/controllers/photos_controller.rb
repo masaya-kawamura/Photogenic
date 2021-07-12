@@ -27,6 +27,7 @@ class PhotosController < ApplicationController
     @comment = Comment.new
     @rate = Rate.new
     @genres = @photo.genres
+    # ========= recomendデータ取得用 ===========
     photos = []
     @genres.each do |genre|
       genre.photos.each do |photo|
@@ -34,6 +35,7 @@ class PhotosController < ApplicationController
       end
     end
     @photos =  photos.uniq.sort.reverse - [@photo]
+    # ==========================================
   end
 
   def index
