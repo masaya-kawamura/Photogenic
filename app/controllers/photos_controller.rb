@@ -26,6 +26,14 @@ class PhotosController < ApplicationController
     @comments = @photo.comments
     @comment = Comment.new
     @rate = Rate.new
+    @genres = @photo.genres
+    photos = []
+    @genres.each do |genre|
+      genre.photos.each do |photo|
+        photos << photo
+      end
+    end
+    @photos =  photos.uniq.sort.reverse - [@photo]
   end
 
   def index
@@ -34,6 +42,8 @@ class PhotosController < ApplicationController
 
   def edit
     @photo = Photo.find(params[:id])
+    genre_names_array = @photo.genres.pluck(:name)
+    @genre_names = genre_names_array.join(' ')
   end
 
   def update

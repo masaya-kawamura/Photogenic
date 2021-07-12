@@ -1,61 +1,68 @@
 <div class="photos-container">
-  <div class="photographer-wrapper">
-
-
-  </div>
-  <div class="photo-contents">
-
-    <div class="photographer-wrapper">
-      <div class="photographer-icon">
-        <%= link_to photographer_path(@user.photographer) do %>
-          <div class="round-circle"><%= image_tag(@user.profile_image.url) %></div>
-        <% end %>
-      </div>
-      <div class="photographer-information">
-        <h4><%= @user.photographer.name %></h4>
-        <%= render 'relationships/follow-contents', user: @user %>
-      </div>
-    </div>
-
-    <div class="photo-flame">
-      <div class="square">
-        <%= image_tag @photo.photo_image.url %>
-      </div>
-      <div class="photo-edit-menu">
-        <%= render 'photos/photo_edit_menu' %>
-      </div>
-    </div>
-    <div id='social-menu'>
-      <%= render 'photos/social_menu', photo: @photo %>
-    </div>
-    <div class="mb-5">
-      <%= render 'genres/tags', genres: @photo.genres %>
-    </div>
-    <div class="photo-story">
-      <h2 class="menu-title">PHOTO STORY</h2>
-      <p><%= @photo.story %></p>
-    </div>
-    <div class="photo-detail">
-      <h2 class="menu-title">PHOTO DETAIL</h2>
-      <p><%= @photo.detail %></p>
-    </div>
-    <div class="photo-social">
-
-      <!--------- ここからCommentの記述部分 ------------>
-      <div id="photo-comments">
-        <%= render 'comments/index', photo: @photo %>
-      </div>
-      <!------------- Comment入力フォーム -------------->
-      <%= render 'comments/form', photo: @photo, comment: @comment %>
-      <!---------------ここからRateの記述--------------->
-      <div id="photo-rates">
-        <%= render 'rates/index', photo: @photo %>
-      </div>
-      <!--------------- Rate入力フォーム --------------->
-      <div id="rate-form">
-        <%= render 'rates/form', photo: @photo, rate: @rate %>
+  <div class="flex">
+    <div class="photo-contents">
+      <div class="photographer-wrapper">
+        <div class="photographer-icon">
+          <%= link_to photographer_path(@user.photographer) do %>
+            <div class="round-circle"><%= image_tag(@user.profile_image.url) %></div>
+          <% end %>
+        </div>
+        <div class="photographer-information">
+          <h4><%= @user.photographer.name %></h4>
+          <%= render 'relationships/follow-contents', user: @user %>
+        </div>
       </div>
 
+      <div class="photo-flame">
+        <div class="square">
+          <%= image_tag @photo.photo_image.url %>
+        </div>
+        <div class="photo-edit-menu">
+          <%= render 'photos/photo_edit_menu' %>
+        </div>
+      </div>
+      <div id='social-menu'>
+        <%= render 'photos/social_menu', photo: @photo %>
+      </div>
+      <div class="mb-5">
+        <%= render 'genres/tags', genres: @photo.genres %>
+      </div>
+      <% if @photo.story.present? %>
+        <div class="photo-story">
+          <h2 class="menu-title">PHOTO STORY</h2>
+          <p><%= @photo.story %></p>
+        </div>
+      <% end %>
+      <% if @photo.detail.present? %>
+        <div class="photo-detail">
+          <h2 class="menu-title">PHOTO DETAIL</h2>
+          <p><%= @photo.detail %></p>
+        </div>
+        <div class="photo-social">
+      <% end %>
+
+        <!--------- ここからCommentの記述部分 ------------>
+        <div id="photo-comments">
+          <%= render 'comments/index', photo: @photo %>
+        </div>
+        <!------------- Comment入力フォーム -------------->
+        <%= render 'comments/form', photo: @photo, comment: @comment %>
+        <!---------------ここからRateの記述--------------->
+        <div id="photo-rates">
+          <%= render 'rates/index', photo: @photo %>
+        </div>
+        <!--------------- Rate入力フォーム --------------->
+        <div id="rate-form">
+          <%= render 'rates/form', photo: @photo, rate: @rate %>
+        </div>
+
+      </div>
+    </div>
+    <div class="recomend-wrapper">
+      <h2 class="menu-title">RECOMENDS</h2>
+      <% @photos.each do |photo| %>
+        <%= image_tag photo.photo_image.url %>
+      <% end %>
     </div>
   </div>
 </div>
