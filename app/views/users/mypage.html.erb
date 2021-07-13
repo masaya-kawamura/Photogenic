@@ -1,40 +1,84 @@
-<div class="all">
-  <div class="cover-image">
-    <% if @user.cover_image.blank? %>
-      <%= image_tag('no_cover_image.jpg') %>
-    <% else %>
-      <%= image_tag @user.cover_image.url %>
-    <% end %>
+<div class="mypage-container">
+  <div class="mypage-title-fixed">
+    <h2 class="menu-title mt-4 mb-4">MY PAGE</h2>
   </div>
-  <div class="contents-container">
-    <div class="profile-wrapper">
-      <div class="profile-image">
-        <% if @user.profile_image.blank? %>
-          <%= image_tag('no_profile_image.jpeg') %>
-        <% else %>
-          <%= image_tag @user.profile_image.url %>
-        <% end %>
-      </div>
-      <div class="profile-detail">
-        <div class="profile-contents">
-          <h1><%= @user.name %></h1>
-          <div class="follower">
-            <p>フォロワー</p>
-            <p>フォロー中</p>
-          </div>
-          <div class="setting-link">
-            <%= link_to '登録情報を編集する', edit_user_path(@user), class:'btn btn-dark' %>
-            <% if @user.user_status == '一般ユーザー' %>
-              <%= link_to 'フォトグラファー登録する', new_photographer_path, class:'btn btn-dark' %>
-            <% elsif @user.user_status == 'フォトグラファー' %>
-              <%= link_to 'プロフィールページを見る', photographer_path(@user.photographer.id), class:'btn btn-dark' %>
+  <div clsss="mypage-wrapper">
+    <div class="mypage-profile-wrapper">
+      <h4 class="mypage-user-status"><%= @user.user_status %></h4>
+      <div class="mypage-user-top">
+        <div class="mypage-user-image">
+          <div class="round-circle">
+            <% if @user.profile_image.blank? %>
+              <%= image_tag('no_profile_image.jpeg') %>
+            <% else %>
+              <%= image_tag @user.profile_image.url %>
             <% end %>
           </div>
         </div>
+        <h2 class="mb-0 mt-2"><%= @user.name %></h2>
       </div>
+      <table class="table table-borderless text-center mb-0 mt-2">
+        <% if @user.user_status == 'フォトグラファー' %>
+          <tr>
+            <td class="p-1">フォロワー</td>
+            <td class="p-1">フォロー中</td>
+            <td class="p-1">　投稿数　</td>
+          </tr>
+          <tr>
+            <th class="p-1"><%= link_to @user.follower.count, follower_user_path(@user) %></th>
+            <th class="p-1"><%= link_to @user.following.count, following_user_path(@user) %></th>
+            <th class="p-1"><%= link_to @user.photos.count, photographer_path(@user.photographer) %></th>
+          </tr>
+        <% else %>
+          <p>フォロー中：<%= link_to @user.following.count, following_user_path(@user) %></p>
+        <% end %>
+      </table>
+      <%= link_to '登録情報を変更する', edit_user_path(@user), class: 'btn btn-outline-dark mt-1 form-control' %>
+      <% if @user.user_status == 'フォトグラファー' %>
+        <%= link_to 'プロフィールページを見る', photographer_path(@user.photographer), class: 'btn btn-outline-dark form-control mt-1' %>
+      <% else %>
+        <%= link_to 'フォトグラファー登録する', new_photographer_path, class: 'btn btn-outline-dark form-control mt-1' %>
+      <% end %>
+      <hr class="mb-0">
+    </div>
+
+    <!--ここからフィードの記述-->
+    <div class="mypage-photos-wrapper">
+      <% @photos.each do |photo| %>
+        <%= link_to photo_path(photo) do %>
+          <div class="photo-flame">
+            <div class="square">
+              <%= image_tag photo.photo_image.url %>
+            </div>
+            <%= link_to photographer_path(photo.user.photographer) do %>
+            <div class="mypage-feed-user-profile">
+              <div class="mypage-fiid-user-profile-image">
+                <div class="round-circle">
+                  <%= image_tag(photo.user.profile_image.url) %>
+                </div>
+              </div>
+              <h3 class="mypage-feed-profile-name">
+                <%= photo.user.photographer.name %>
+              </h3>
+            </div>
+            <% end %>
+            <div class="photo-edit-menu">
+              <%= render 'photos/photo_edit_menu', photo: photo %>
+            </div>
+            <div class="mypage-favorite-btn" id="favorites_btn_<%= photo.id %>">
+              <%= render 'favorites/favorite', photo: photo %>
+            </div>
+          </div>
+          <div class="mypage-feed-datetime">
+            <%= photo.created_at.strftime('%Y年%m月%d日 %H:%M:%S') %>
+          </div>
+        <% end %>
+        <hr class="mt-1">
+      <% end %>
     </div>
   </div>
 </div>
+
 
 
 

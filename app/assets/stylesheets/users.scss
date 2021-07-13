@@ -15,10 +15,6 @@
   display: flex;
   justify-content: space-between;
   margin-bottom: 50px;
-  // position: absolute;
-  // top: 25%;
-  // width: 100%;
-  // padding: 0 10%;
 }
 .profile-image {
   width: 50vh;
@@ -49,3 +45,147 @@
 }
 
 
+// マイページのスタイル
+.mypage-container {
+  margin: 130px 15% 50px 15%;
+}
+.mypage-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+}
+.mypage-title-fixed {
+  position: fixed;
+  top: 100px;
+}
+.mypage-profile-wrapper {
+  width: 25%;
+  height: 75vh;
+  box-shadow: 1px 1px 5px rgba(200, 200, 200, 1);
+  padding: 2%;
+  position: fixed;
+  top: 200px;
+}
+
+.mypage-user-top {
+  display: flex;
+  flex-wrap: row;
+  width: 100%;
+}
+.mypage-user-image {
+  width: 20%;
+  margin-right: 20px;
+}
+.mypage-user-status {
+  background-color: gray;
+  padding: 2%;
+  font-size: 20px;
+  color: white;
+  margin-bottom: 20px;
+  border-radius: 2px;
+}
+
+.mypage-photos-wrapper {
+  width: 60%;
+  margin-left: 40%;
+  margin-top: 200px;
+}
+.mypage-feed-user-profile {
+  width: 94%;
+  height: 10%;
+  position: absolute;
+  top: 3%;
+  left: 3%;
+}
+.mypage-fiid-user-profile-image {
+  width: 15%;
+  float: left;
+}
+.mypage-feed-profile-name {
+  float: left;
+  margin: 23px 0 auto 20px;
+  color: white;
+  text-shadow: 3px 3px 5px black;
+}
+.mypage-feed-datetime {
+  width: 100%;
+  text-align: right;
+  font-size: 20px;
+  color: #555555;
+}
+.mypage-favorite-btn {
+  position: absolute;
+  bottom: 0;
+  left: 20px;
+}
+.mypage-favorite-btn img {
+  width: 30%;
+  filter: drop-shadow(2px 2px white);
+}
+
+
+// ここからshow_followに対応するスタイル
+.show-follow-container {
+  margin: 130px 10% 50px 10%;
+  width: 80%;
+}
+.show-follow-user-name {
+  color: gray;
+  margin-top: 30px;
+}
+.follow-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 30px;
+
+}
+.follow-user {
+  width: 23%;
+  margin: 1%;
+  border: 1px solid gray;
+  position: relative;
+}
+
+.follow-photographer-name {
+  text-align: center;
+}
+.follow-user-status {
+  width: 90%;
+  height: 10%;
+  position: absolute;
+  top: 5%;
+  left: 5%;
+  background-color: rgba(255, 255, 255, 0.8);
+  border-radius: 3px;
+}
+
+
+@media screen and (max-width: 1300px) {
+  .mypage-container {
+    margin: 200px 5% 50px 5%;
+  }
+  .mypage-profile-wrapper {
+    width: 33%;
+  }
+}
+@media screen and (max-width: 900px) {
+  .mypage-container {
+    margin: 130px 2% 50px 2%;
+  }
+  .mypage-profile-wrapper {
+    width: 100%;
+    position: static;
+    height: auto;
+  }
+  .mypage-title-fixed {
+    position: static;
+    margin-bottom: 30px;
+  }
+  .mypage-photos-wrapper {
+    margin: 50px 0 50px 0;
+    width: 100%;
+  }
+  .follow-user {
+    width: 48%;
+    margin: 1%;
+  }
+}

@@ -3,6 +3,7 @@ class UsersController < ApplicationController
 
   def mypage
     @user = current_user
+    @photos = Photo.where("user_id IN (?) OR user_id = ?", @user.following_ids, @user.id).order(id: "DESC")
   end
 
   def edit

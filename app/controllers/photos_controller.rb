@@ -27,19 +27,23 @@ class PhotosController < ApplicationController
     @comment = Comment.new
     @rate = Rate.new
     @genres = @photo.genres
-    # ========= recomendデータ取得用 ===========
+    # ========= recomendデータ取得用 ============
     photos = []
     @genres.each do |genre|
       genre.photos.each do |photo|
         photos << photo
       end
     end
-    @photos =  photos.uniq.sort.reverse - [@photo]
-    # ==========================================
+    unless photos.empty?
+      @photos = photos.uniq.sort.reverse - [@photo]
+    else
+      @photos = Photo.limit(16).order('id DESC') - [@photo]
+    end
+    # ===========================================
   end
 
   def index
-    @photos = Photo.all
+    @photos = Photo.all.order('id DESC')
   end
 
   def edit

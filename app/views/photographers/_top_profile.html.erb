@@ -1,0 +1,11 @@
+<div class="photographer-wrapper">
+  <div class="photographer-icon">
+    <%= link_to photographer_path(user.photographer) do %>
+      <div class="round-circle"><%= image_tag(user.profile_image.url) %></div>
+    <% end %>
+  </div>
+  <div class="photographer-information">
+    <h4><%= user.photographer.name %></h4>
+    <%= render 'relationships/follow-contents', user: user %>
+  </div>
+</div>

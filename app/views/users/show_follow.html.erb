@@ -1,8 +1,26 @@
-<h2><%= @title %></h2>
-<%= @user.name %>
-<% @users.each do |user| %>
-  <%= link_to photographer_path(user.photographer) do %>
-    <%= image_tag user.profile_image.url %>
-    <%= user.photographer.name %>
-  <% end %>
-<% end %>
+<div class="show-follow-container">
+  <h2 class="menu-title"><%= @title %>(<%= @users.count %>)</h2>
+  <h4 class="show-follow-user-name"><%= @user.photographer.name %></h4>
+  <div class="follow-wrapper">
+    <% @users.each do |user| %>
+      <div class="follow-user">
+        <% if user.user_status == 'フォトグラファー' %>
+          <%= link_to photographer_path(user.photographer) do %>
+            <div class="square"><%= image_tag user.profile_image.url %></div>
+            <div class="follow-photographer-name">
+              <%= user.photographer.name %>
+            </div>
+          <% end %>
+        <% else %>
+          <div class="sauare"><%= image_tag user.profile_image.url %></div>
+          <%= user.name %>
+        <% end %>
+        <% if user.user_status == 'フォトグラファー' %>
+          <label class="follow-user-status">
+            <p><%= user.user_status %></p>
+          </label>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+</div>

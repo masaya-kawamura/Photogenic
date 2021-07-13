@@ -1,24 +1,13 @@
-<div class="photos-container">
-  <div class="flex">
+<div class="photos-show-container">
+  <div class="photos-show-flex">
     <div class="photo-contents">
-      <div class="photographer-wrapper">
-        <div class="photographer-icon">
-          <%= link_to photographer_path(@user.photographer) do %>
-            <div class="round-circle"><%= image_tag(@user.profile_image.url) %></div>
-          <% end %>
-        </div>
-        <div class="photographer-information">
-          <h4><%= @user.photographer.name %></h4>
-          <%= render 'relationships/follow-contents', user: @user %>
-        </div>
-      </div>
-
+      <%= render 'photographers/top_profile', user: @user %>
       <div class="photo-flame">
         <div class="square">
           <%= image_tag @photo.photo_image.url %>
         </div>
         <div class="photo-edit-menu">
-          <%= render 'photos/photo_edit_menu' %>
+          <%= render 'photos/photo_edit_menu', photo: @photo %>
         </div>
       </div>
       <div id='social-menu'>
@@ -38,9 +27,8 @@
           <h2 class="menu-title">PHOTO DETAIL</h2>
           <p><%= @photo.detail %></p>
         </div>
-        <div class="photo-social">
       <% end %>
-
+      <div class="photo-social">
         <!--------- ここからCommentの記述部分 ------------>
         <div id="photo-comments">
           <%= render 'comments/index', photo: @photo %>
@@ -58,11 +46,19 @@
 
       </div>
     </div>
+
+    <!--------------ここからrecomend---------------->
     <div class="recomend-wrapper">
       <h2 class="menu-title">RECOMENDS</h2>
-      <% @photos.each do |photo| %>
-        <%= image_tag photo.photo_image.url %>
-      <% end %>
+      <div class="recomend-image-wrapper">
+        <% @photos.first(16).each do |photo| %>
+          <%= link_to photo_path(photo), class: 'recomend-image-flame' do %>
+            <div class="square">
+              <%= image_tag photo.photo_image.url %>
+            </div>
+          <% end %>
+        <% end %>
+      </div>
     </div>
   </div>
 </div>

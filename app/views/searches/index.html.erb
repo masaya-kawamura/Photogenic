@@ -1,16 +1,23 @@
 <div class="main-container">
     <h2 class="menu-title mt-5">GENRE SEARCH</h2>
     <h2 class="subtitle">Photo & Human</h2>
-    <% if @photographers.present? %>
-      <%= render 'photographers/list',  photographer: @photographers %>
-    <% else %>
-      <p>条件に一致するものが見つかりませんでした</p>
-    <% end %>
 
-    <% if @photos.present? %>
-      <%= render 'photos/list', photos: @photos %>
-    <% else %>
-      <p>条件に一致するものが見つかりませんでした</p>
-    <% end %>
+    <div class="search-contents">
+      <h2>フォトグラファーの検索結果</h2>
+      <% if @photographers.present? %>
+        <%= render 'photographers/list',  photographer: @photographers %>
+      <% else %>
+        <p>条件に一致するものが見つかりませんでした</p>
+      <% end %>
+    </div>
+
+    <div class="search-contents">
+      <h2>写真の検索結果</h2>
+      <% if @photos.present? %>
+        <%= render 'photos/list', photos: @photos %>
+      <% else %>
+        <p>条件に一致するものが見つかりませんでした</p>
+      <% end %>
+    </div>
 
 </div>
