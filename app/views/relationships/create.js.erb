@@ -1,2 +1,3 @@
 $("#follow-btn").html("<%= j(render 'relationships/follow_form', user: @user) %>");
 $("#followers").html('<%= @user.follower.count %>');
+$("#profile-stats").html("<%= j(render 'photographers/profile_stats', user: @user) %>");
