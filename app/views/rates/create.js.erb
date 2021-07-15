@@ -1,3 +1,4 @@
 $("#photo-rates").html("<%= j(render 'rates/index', photo: @photo) %>");
 $("#rate-form").html("<%= j(render 'rates/form', photo: @photo, rate: @rate) %>");
 $("#social-menu").html("<%= j(render 'photos/social_menu', photo: @photo) %>");
+$("#flash-message").html("<%= j(render 'layouts/flash_message') %>");

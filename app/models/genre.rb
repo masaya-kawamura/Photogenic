@@ -1,6 +1,7 @@
 class Genre < ApplicationRecord
 
   validates :name, uniqueness: true
+  validates :name, presence: true
 
   has_many :photographer_genre_maps, foreign_key: 'genre_id',
                                       dependent: :destroy

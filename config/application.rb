@@ -8,6 +8,7 @@ module Photogenic
   class Application < Rails::Application
 
     config.load_defaults 5.2
+    config.i18n.default_locale = :ja
 
     Rails.application.configure do
       config.imgix = {

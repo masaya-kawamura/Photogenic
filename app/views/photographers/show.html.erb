@@ -1,6 +1,10 @@
 <div class="profile-container">
   <div class="profile-main-visual">
-    <%= image_tag @user.photos.first.photo_image.url %>
+    <% if @user.cover_image.blank? %>
+      <%= image_tag('no_cover_image.jpg') %>
+    <% else %>
+      <%= image_tag @user.photos.first.photo_image.url %>
+    <% end %>
   </div>
   <div class="profile-photographer-wrapper">
     <div class="profile-photographer-image">

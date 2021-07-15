@@ -8,7 +8,7 @@ class PhotosController < ApplicationController
     photo = current_user.photos.new(photo_params)
     if photo.save
       # ======= ジャンル保存メソッドへ =========
-      genres = params[:photo][:genre].split(' ')
+      genres = params[:photo][:genre].split(/[[:blank:]]+/)
       photo.save_photos(genres)
       # ========================================
       flash[:notice] = "写真を投稿しました"
@@ -56,7 +56,7 @@ class PhotosController < ApplicationController
     photo = Photo.find(params[:id])
     if photo.update(photo_params)
       # ======= ジャンル保存メソッドへ =========
-      genres = params[:photo][:genre].split(' ')
+      genres = params[:photo][:genre].split(/[[:blank:]]+/)
       photo.save_photos(genres)
       # ========================================
       flash[:notice] = "投稿を編集しました"

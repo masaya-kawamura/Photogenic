@@ -10,11 +10,15 @@ class Photo < ApplicationRecord
 
   mount_uploader :photo_image, PhotoUploader
 
-  validates :photo_image, presence: true
+  validates :photo_image, :user_id, presence: true
 
   # =========== もういいねしてる? ============
   def favorited_by?(user)
-    favorites.where(user_id: user.id).exists?
+    if user == nil
+      false
+    else
+      favorites.where(user_id: user.id).exists?
+    end
   end
 
   # =============== ジャンル保存メソッド =================

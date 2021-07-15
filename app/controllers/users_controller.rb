@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
-  before_action :user_signed_in?
+  before_action :authenticate_user!
+  before_action :ensure_correct_user, only: [:edit, :update, :destroy]
 
   def mypage
     @user = current_user
@@ -7,7 +8,7 @@ class UsersController < ApplicationController
   end
 
   def edit
-    @user = current_user
+    @user = User.find(params[:id])
   end
 
   def update
@@ -35,6 +36,14 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @users = @user.following
     render 'show_follow'
+  end
+
+  def ensure_correct_user
+    user = User.find(params[:id])
+    if user.id != current_user.id
+      flash[:alert] = '権限がありません'
+      redirect_to request_referer
+    end
   end
 
     private

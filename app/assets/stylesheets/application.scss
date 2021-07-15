@@ -291,6 +291,32 @@ header {
   display: flex;
 }
 
+// フラッシュメッセージ
+.flash-message {
+  position: fixed;
+  top: 70px;
+  width: 100%;
+  height: auto;
+  color: #fff;
+  z-index: 8;
+}
+.flash-message p {
+  margin: 0 10% 0 10%;
+  text-align: center;
+}
+.notice {
+  background-color: #008000;
+  opacity: 0.8;
+  z-index: 7;
+  height: auto;
+}
+.alert {
+  background-color: #B1063A;
+  opacity: 0.8;
+  z-index: 7;
+  height: auto;
+}
+
 @media screen and (max-width: 900px) {
   .main-container {
     margin: 50px 5% 50px 5%;
@@ -333,5 +359,9 @@ header {
   }
   .users-wrapper .field:first-of-type  {
    padding-top: 50px;
+  }
+  .flash-message p {
+    margin: 0;
+    text-align: center;
   }
 }

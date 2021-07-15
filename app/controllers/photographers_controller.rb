@@ -1,4 +1,7 @@
 class PhotographersController < ApplicationController
+  before_action :authenticate_user!, except: [:show, :index]
+  before_action :public_status_confirmation, only: [:show]
+  before_action :ensure_correct_photographer, only: [:edit, :update, :destroy, :public_status_switching]
 
   def new
     @photographer = Photographer.new
@@ -9,7 +12,7 @@ class PhotographersController < ApplicationController
     photographer = Photographer.new(photographer_params)
     photographer.user_id = current_user.id
     if photographer.save
-      genres = params[:photographer][:genre].split(" ")
+      genres = params[:photographer][:genre].split(/[[:blank:]]+/)
       # photographerインスタンスに対してsave_photographerメソッド呼び出し
       photographer.save_photographer_genres(genres)
       user = photographer.user
@@ -34,7 +37,7 @@ class PhotographersController < ApplicationController
   def update
     photographer = Photographer.find(params[:id])
     if photographer.update(photographer_params)
-      genres = params[:photographer][:genre].split(" ")
+      genres = params[:photographer][:genre].split(/[[:blank:]]+/)
       # photographerインスタンスに対してsave_photographerメソッド呼び出し
       photographer.save_photographer_genres(genres)
       flash[:notice] = "プロフィールを編集しました"
@@ -49,9 +52,19 @@ class PhotographersController < ApplicationController
   end
 
   def index
-    @photographers = Photographer.all
+    @photographers = Photographer.where(public_status: true).order(id: 'DESC')
   end
 
+  # 本人のみ編集が可能
+  def ensure_correct_photographer
+    photographer = Photographer.find(params[:id])
+    if photographer.id != current_user.photographer.id
+      flash[:notice] = "権限がありません"
+      redirect_to request.referer
+    end
+  end
+
+  # プロフィールの公開設定を切り替える
   def public_status_switching
     photographer = Photographer.find(params[:id])
     if photographer.toggle!(:public_status)
@@ -62,6 +75,22 @@ class PhotographersController < ApplicationController
       @user = @photographer.user
       flash[:alert] = "プロフィール公開設定の更新に失敗しました"
       render :show
+    end
+  end
+
+  # プロフィールの公開設定falseだったらリダイレクト
+  #　でも本人だけはアクセスできる。
+  def public_status_confirmation
+    @photographer = Photographer.find(params[:id])
+    if current_user.present? && current_user.id == @photographer.user.id
+      true
+    else
+      if @photographer.public_status == false
+        flash[:notice] = "#{@photographer.name}さんはプロフィールを公開していません"
+        redirect_to request.referer
+      else
+        true
+      end
     end
   end
 

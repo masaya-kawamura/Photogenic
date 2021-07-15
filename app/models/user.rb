@@ -38,8 +38,10 @@ class User < ApplicationRecord
     following.include?(other_user)
   end
 
-    def not_rated?(photo)
-      self.rates.find_by(photo_id: photo.id).nil?
-    end
+  def not_rated?(photo)
+    self.rates.find_by(photo_id: photo.id).nil?
+  end
+
+  validates :name, :email, presence: true
 
 end
