@@ -6,20 +6,28 @@
       <div class="follow-user">
         <% if user.user_status == 'フォトグラファー' %>
           <%= link_to photographer_path(user.photographer) do %>
-            <div class="square"><%= image_tag user.profile_image.url %></div>
+            <div class="square">
+              <%= image_tag user.profile_image.url %>
+            </div>
             <div class="follow-photographer-name">
               <%= user.photographer.name %>
             </div>
           <% end %>
         <% else %>
-          <div class="sauare"><%= image_tag user.profile_image.url %></div>
-          <%= user.name %>
+          <div class="square">
+            <% if user.profile_image.blank? %>
+              <%= image_tag('no_profile_image.jpeg') %>
+            <% else %>
+              <%= image_tag user.profile_image.url %>
+            <% end %>
+          </div>
+          <div class="follow-photographer-name">
+            <%= user.name %>
+          </div>
         <% end %>
-        <% if user.user_status == 'フォトグラファー' %>
-          <label class="follow-user-status">
-            <p><%= user.user_status %></p>
-          </label>
-        <% end %>
+        <label class="follow-user-status">
+          <p><%= user.user_status %></p>
+        </label>
       </div>
     <% end %>
   </div>

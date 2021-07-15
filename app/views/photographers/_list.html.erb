@@ -7,13 +7,6 @@
         </div>
         <h5><%= photographer.name %></h5>
       <% end %>
-      <span class="genres">
-        <% photographer.genres.each do |genre| %>
-          <p class="mx-1">
-            <%= link_to genre.name, genre_path(genre.id) %>
-          </p>
-        <% end %>
-      </span>
     </div>
   <% end %>
 </div>

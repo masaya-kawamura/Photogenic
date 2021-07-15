@@ -30,7 +30,7 @@
             <th class="p-1"><%= link_to @user.photos.count, photographer_path(@user.photographer) %></th>
           </tr>
         <% else %>
-          <p>フォロー中：<%= link_to @user.following.count, following_user_path(@user) %></p>
+          <p class="mt-2">フォロー中：<%= link_to @user.following.count, following_user_path(@user) %></p>
         <% end %>
       </table>
       <%= link_to '登録情報を変更する', edit_user_path(@user), class: 'btn btn-outline-dark mt-1 form-control' %>

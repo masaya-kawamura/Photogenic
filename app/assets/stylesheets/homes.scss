@@ -115,3 +115,33 @@
   background-position: center;
   background-repeat: no-repeat;
 }
+
+@media screen and (max-width: 900px) {
+  .concept {
+  text-align: center;
+  position: absolute;
+  bottom: 5%;
+  width: 80%;
+  margin: 0 auto;
+  text-shadow: black 1px 1px 10px;
+  }
+  .concept-title {
+    font-size: 70px;
+  }
+  .concept h3 {
+  color: white;
+  text-justify: inter-character;
+  padding: 5px 0;
+  font-family: 'Kiwi Maru', serif;
+  line-height: 180%;
+  font-size: 24px;
+  }
+  .about-contents {
+    width: 100%;
+    height: auto;
+  }
+  .about-btn {
+  margin-top: 0;
+  display: inline-block;
+  }
+}

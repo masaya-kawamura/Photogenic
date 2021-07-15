@@ -125,7 +125,7 @@ header {
 }
 
 .users-container {
-   margin: 50px 10% 50px 10%;
+   margin: 130px 10% 50px 10%;
 }
 .users-wrapper {
  margin: 0 auto;
@@ -204,6 +204,13 @@ header {
   display: flex;
   margin-top: 30px;
 }
+.btn-wrapper a {
+  width: 48%;
+  margin: 0 1% 0 1%;
+}
+.btn-block {
+  margin-top: 0;
+}
 
 // === 写真一覧用(Gallery) ===
 .photos-wrapper {
@@ -218,7 +225,7 @@ header {
 
 // コンテンツ間の余白
 .contents-margin {
-  height: 140px;
+  height: 40px;
 }
 
 // ヘッダーナビゲーションのスタイル
@@ -282,4 +289,49 @@ header {
 
 .flex {
   display: flex;
+}
+
+@media screen and (max-width: 900px) {
+  .main-container {
+    margin: 50px 5% 50px 5%;
+    width: 90%;
+  }
+  .subtitle {
+    font-size: 40px;
+  }
+  .photo-item {
+    width: 46%;
+    margin: 2%;
+  }
+  .contents-margin {
+    height: 30px;
+  }
+  .photographer-info {
+    deisplay: flex;
+    flex-wrap: wrap;
+    width: 46%;
+    margin: 2%;
+    border: solid 1px gray;
+  }
+  .btn-wrapper {
+    display: block;
+  }
+  .btn-wrapper a {
+    width: 96%;
+    margin: 0 2% 10px 2%;
+    padding: 10px auto;
+  }
+  .users-container {
+   margin: 130px 5% 50px 5%;
+  }
+  .users-wrapper {
+    width: 100%;
+  }
+
+  .field {
+   margin-bottom: 20px;
+  }
+  .users-wrapper .field:first-of-type  {
+   padding-top: 50px;
+  }
 }

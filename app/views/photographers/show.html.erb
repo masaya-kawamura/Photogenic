@@ -13,30 +13,33 @@
     </div>
   </div>
   <div class="profile-photographer-detail-wrapper">
-    <div class="profile-stats-wrapper">
-      <div id="profile-stats">
-        <%= render 'photographers/profile_stats', user: @user %>
-      </div>
-      <div id="follow-btn">
-        <%= render 'relationships/follow_form', user: @user %>
-      </div>
-    </div>
     <div class="profile-photographer-detaile">
       <div class="profile-introduction">
-        <h2 class="menu-title">INTRODUCTION</h2>
+        <h2 class="menu-title profile-menu-title">INTRODUCTION</h2>
         <p><%= @photographer.introduction %></p>
       </div>
-      <div class="profile-genres">
-        <h2 class="menu-title">GENRES</h2>
-        <div class="profile-gemre-item">
-          <% @photographer.genres.each do |genre| %>
-            <%= link_to genre.name, genre_path(genre), class: 'btn btn-sm btn-outline-dark' %>
-          <% end %>
+      <div class="profile-follow-and-genres">
+        <div class="profile-stats-wrapper">
+          <h2 class="menu-title profile-menu-title">STATS</h2>
+          <div id="profile-stats">
+            <%= render 'photographers/profile_stats', user: @user %>
+          </div>
+          <div id="follow-btn">
+            <%= render 'relationships/follow_form', user: @user %>
+          </div>
+        </div>
+        <div class="profile-genres">
+          <h2 class="menu-title profile-menu-title">GENRES</h2>
+          <div class="profile-gemre-item">
+            <% @photographer.genres.each do |genre| %>
+              <%= link_to genre.name, genre_path(genre), class: 'btn btn-sm btn-outline-dark mb-1' %>
+            <% end %>
+          </div>
         </div>
       </div>
     </div>
     <div class="profile-photo-gallery">
-      <h2 class="menu-title">PHOTO GALLERY</h2>
+      <h2 class="menu-title profile-menu-title">PHOTO GALLERY</h2>
       <%= render 'photos/list', photos: @user.photos %>
     </div>
   </div>
