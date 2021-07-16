@@ -1,5 +1,5 @@
 .photos-show-container {
-  margin: 130px 15% 50px 15%;
+  margin: 130px 15% 100px 15%;
   width: 70%;
 }
 
@@ -101,7 +101,6 @@
 .recomend-wrapper {
   width: 40%;
   padding: 0 1%;
-  margin-top: 8.6vh;
 }
 .recomend-wrapper h2 {
   width: 100%;
@@ -133,6 +132,7 @@
   }
   .recomend-wrapper {
     width: 100%;
+    margin-top: 50px;
   }
 }
 @media screen and (max-width: 600px) {

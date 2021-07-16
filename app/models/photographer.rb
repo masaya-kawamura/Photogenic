@@ -4,7 +4,10 @@ class Photographer < ApplicationRecord
   has_many :photographer_genre_maps, foreign_key: 'photographer_id',
                                        dependent: :destroy
   has_many :genres, through: :photographer_genre_maps
-
+  
+  mount_uploader :photographer_profile_image, PhotographerProfileImageUploader
+  mount_uploader :cover_image, CoverUploader
+  
   # =============== ジャンル保存用の記述 ==================
   def save_photographer_genres(save_genres)
     current_genres = self.genres.pluck(:name) unless self.genres.nil?

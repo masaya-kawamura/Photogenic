@@ -1,9 +1,5 @@
 Rails.application.routes.draw do
 
-  get 'rates/create'
-  get 'rates/edit'
-  get 'rates/update'
-  get 'rates/destroy'
   root to: 'homes#top'
   get 'mypage' => 'users#mypage'
   resources :users, only: [:edit, :update, :destroy] do

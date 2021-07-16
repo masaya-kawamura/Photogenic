@@ -1,11 +1,21 @@
 <div class="users-container">
   <div class="users-wrapper">
-    <h2 class="menu-title">フォトグラファー情報編集</h2>
+    <h2 class="menu-title">プロフィール編集</h2>
     <%= form_with model:@photographer, local: true do |f| %>
 
       <div class="field">
         <%= f.label :name, 'フォトグラファーネーム' %>
         <%= f.text_field :name, value: @photographer.name, autofocus: true, class:'form-control' %>
+      </div>
+
+      <div class="field">
+        <%= f.label :photographer_profile_image, 'プロフィール写真' %>
+        <%= f.file_field :photographer_profile_image %>
+      </div>
+
+      <div class="field">
+        <%= f.label :cover_image, 'カバー写真' %>
+        <%= f.file_field :cover_image %>
       </div>
 
       <div class="field">

@@ -9,6 +9,16 @@
       </div>
 
       <div class="field">
+        <%= f.label :photographer_profile_image, 'プロフィール写真' %>
+        <%= f.file_field :photographer_profile_image %>
+      </div>
+
+      <div class="field">
+        <%= f.label :cover_image, 'カバー写真' %>
+        <%= f.file_field :cover_image %>
+      </div>
+
+      <div class="field">
         <%= f.label :area, '活動地域' %>
         <%= f.text_field :area, value: @user.area, class:'form-control' %>
       </div>

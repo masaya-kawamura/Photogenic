@@ -53,7 +53,6 @@ class UsersController < ApplicationController
         :name,
         :email,
         :profile_image,
-        :cover_image,
         :area
       )
     end

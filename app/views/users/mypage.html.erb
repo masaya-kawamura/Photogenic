@@ -54,7 +54,11 @@
             <div class="mypage-feed-user-profile">
               <div class="mypage-fiid-user-profile-image">
                 <div class="round-circle">
-                  <%= image_tag(photo.user.profile_image.url) %>
+                  <% if photo.user.photographer.photographer_profile_image.blank? %>
+                    <%= image_tag('no_profile_image.jpg') %>
+                  <% else %>
+                    <%= image_tag(photo.user.photographer.photographer_profile_image.url) %>
+                  <% end %>
                 </div>
               </div>
               <h3 class="mypage-feed-profile-name">

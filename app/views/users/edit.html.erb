@@ -20,11 +20,6 @@
     </div>
 
     <div class="field">
-      <%= f.label :cover_image, 'カバー写真' %>
-      <%= f.file_field :cover_image, class:'form-control' %>
-    </div>
-
-    <div class="field">
       <%= f.label :area, '活動地域｜お住まいの地域' %>
       <%= f.text_field :area, autocomplete: 'area', class:'form-control' %>
     </div>
@@ -35,7 +30,7 @@
     <% end %>
 
     <div class="form action">
-      <%= link_to '退会する', '#', class:'form-control btn btn-dark', data: { disable_with: '保存中...' } %>
+      <%= link_to '退会する', '#', data: { disable_with: '保存中...' } %>
     </div>
 
   </div>

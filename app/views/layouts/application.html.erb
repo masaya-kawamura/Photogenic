@@ -11,47 +11,71 @@
   </head>
 
   <body>
-      <header>
-        <nav>
-          <div class="header-contents">
-            <div class="header-icon">
-              <%= link_to "Photographer's Profile", root_path, class: 'header-logo', data: {"turbolinks" => false} %>
-              <div id="open-nav">
-                <%= image_tag 'hamburger-icon.png', class: 'hamburger-icon' %>
-              </div>
+    <header>
+      <nav>
+        <div class="header-contents">
+          <div class="header-icon">
+            <%= link_to "Photographer's Profile", root_path, class: 'header-logo', data: {"turbolinks" => false} %>
+            <div id="open-nav">
+              <%= image_tag 'hamburger-icon.png', class: 'hamburger-icon' %>
             </div>
           </div>
-        </nav>
-      </header>
-      <div id="flash-message">
-        <%= render 'layouts/flash_message' %>
-      </div>
-      <main>
-      <%= yield %>
-      </main>
-      <footer>
-
-      </footer>
-      <nav id="nav" class="show">
-        <ul class="nav-list">
-          <li class="mt-5"><%= render "searches/form" %></li>
-          <!--------- ログイン時 ----------->
-          <% if user_signed_in? %>
-           <li class="nav-item"><%= link_to 'My page', mypage_path %></li><br>
-           <li class="nav-item"><%= link_to "Photographer's", photographers_path %></li><br>
-           <li class="nav-item"><%= link_to 'Gallery', photos_path %></li><br>
-           <li class="nav-item"><%= link_to 'logout', destroy_user_session_path,method: :DELETE %></li><br>
-            <% if current_user.user_status == 'フォトグラファー' %>
-              <li class="nav-item"><%= link_to '写真投稿', new_photo_path %></li>
-            <% end %>
-          <!----------ログアウト時 --------->
-          <% else %>
-           <li class="nav-item"><%= link_to "Photographer's", photographers_path %></li><br>
-           <li class="nav-item"><%= link_to 'Gallery', photos_path %></li><br>
-           <li class="nav-item"><%= link_to 'Signup', new_user_registration_path %></li><br>
-           <li class="nav-item"><%= link_to 'Login', new_user_session_path %></li>
-          <% end %>
-        </ul>
+        </div>
       </nav>
+    </header>
+    <div id="flash-message">
+      <%= render 'layouts/flash_message' %>
+    </div>
+    <main>
+    <%= yield %>
+    </main>
+    <footer>
+      <div class="footer-icon">
+        <% if user_signed_in? %>
+          <%= link_to mypage_path do %>
+            <i class="fa fa-home footer-item"></i>
+          <% end %>
+          <%= link_to photographers_path do %>
+            <i class="fa fa-users footer-item"></i>
+          <% end %>
+          <% if current_user.user_status == 'フォトグラファー' %>
+            <%= link_to new_photo_path do %>
+              <i class="fa fa-plus-square footer-item"></i>
+            <% end %>
+          <% end %>
+          <%= link_to photos_path do %>
+            <i class="fa fa-th-large footer-item"></i>
+          <% end %>
+        <% else %>
+          <%= link_to photographers_path do %>
+            <i class="fa fa-users footer-item"></i>
+          <% end %>
+          <%= link_to photos_path do %>
+            <i class="fa fa-th-large footer-item"></i>
+          <% end %>
+        <% end %>
+      </div>
+    </footer>
+    <nav id="nav" class="show">
+      <ul class="nav-list">
+        <li class="mt-5"><%= render "searches/form" %></li>
+        <!--------- ログイン時 ----------->
+        <% if user_signed_in? %>
+         <li class="nav-item"><%= link_to 'My page', mypage_path %></li><br>
+         <li class="nav-item"><%= link_to "Photographer's", photographers_path %></li><br>
+         <li class="nav-item"><%= link_to 'Gallery', photos_path %></li><br>
+         <li class="nav-item"><%= link_to 'logout', destroy_user_session_path,method: :DELETE %></li><br>
+          <% if current_user.user_status == 'フォトグラファー' %>
+            <li class="nav-item"><%= link_to '写真投稿', new_photo_path %></li>
+          <% end %>
+        <!----------ログアウト時 --------->
+        <% else %>
+         <li class="nav-item"><%= link_to "Photographer's", photographers_path %></li><br>
+         <li class="nav-item"><%= link_to 'Gallery', photos_path %></li><br>
+         <li class="nav-item"><%= link_to 'Signup', new_user_registration_path %></li><br>
+         <li class="nav-item"><%= link_to 'Login', new_user_session_path %></li>
+        <% end %>
+      </ul>
+    </nav>
   </body>
 </html>

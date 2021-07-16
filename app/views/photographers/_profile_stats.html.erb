@@ -1,7 +1,11 @@
 <div class="profile-stats">
   <p>
-    Follower : <%= user.follower.count %>
-    Following : <%= user.following.count %>
-    Photos : <%= user.photos.count %>
+    <%= link_to follower_user_path(user) do %>
+      Follower: <%= user.follower.count %>
+    <% end %>
+    <%= link_to following_user_path(user) do %>
+      Following: <%= user.following.count %>
+    <% end %>
+    Photos: <%= user.photos.count %>
   </p>
 </div>

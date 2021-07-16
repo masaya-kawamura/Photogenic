@@ -1,7 +1,13 @@
 <div class="photographer-wrapper">
   <div class="photographer-icon">
     <%= link_to photographer_path(user.photographer) do %>
-      <div class="round-circle"><%= image_tag(user.profile_image.url) %></div>
+      <div class="round-circle">
+        <% if user.photographer.photographer_profile_image.blank? %>
+          <%= image_tag('no_profile_image.jpg') %>
+        <% else %>
+          <%= image_tag(user.photographer.photographer_profile_image.url) %>
+        <% end %>
+      </div>
     <% end %>
   </div>
   <div class="photographer-information">

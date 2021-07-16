@@ -8,7 +8,6 @@ class User < ApplicationRecord
 
   #========== carrierwaveとの紐つけ==============
   mount_uploader :profile_image, ProfileUploader
-  mount_uploader :cover_image, CoverUploader
 
   # =========== 各モデルとの関連付け ============
   belongs_to :photographer, optional: true, dependent: :destroy

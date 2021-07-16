@@ -3,7 +3,11 @@
     <div class="photographer-info">
       <%= link_to photographer_path(photographer), class: "photographer-image" do %>
         <div class="square">
-          <%= image_tag photographer.user.profile_image.url %>
+          <% if photographer.photographer_profile_image.blank? %>
+            <%= image_tag('no_profile_image.jpg') %>
+          <% else %>
+            <%= image_tag photographer.photographer_profile_image.url %>
+          <% end %>
         </div>
         <h5><%= photographer.name %></h5>
       <% end %>

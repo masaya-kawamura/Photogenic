@@ -1,11 +1,12 @@
-<% if user_signed_in? %>
-  <% unless user == current_user %>
-   <div id="follow_form">
-     <% if current_user.following?(user) %>
-        <%= render 'relationships/unfollow', user: user %>
-      <% else %>
-        <%= render 'relationships/follow', user: user %>
-      <% end %>
-   </div>
+
+<div id="follow_form">
+  <% if user_signed_in? %>
+    <% if current_user.following?(user) %>
+       <%= render 'relationships/unfollow', user: user %>
+    <% else %>
+      <%= render 'relationships/follow', user: user %>
+    <% end %>
+  <% else %>
+    <%= link_to 'フォローする', relationships_path,method: :POST, class: 'btn btn-info form-control' %>
   <% end %>
-<% end %>
+</div>

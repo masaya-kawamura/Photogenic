@@ -55,15 +55,6 @@ class PhotographersController < ApplicationController
     @photographers = Photographer.where(public_status: true).order(id: 'DESC')
   end
 
-  # 本人のみ編集が可能
-  def ensure_correct_photographer
-    photographer = Photographer.find(params[:id])
-    if photographer.id != current_user.photographer.id
-      flash[:notice] = "権限がありません"
-      redirect_to request.referer
-    end
-  end
-
   # プロフィールの公開設定を切り替える
   def public_status_switching
     photographer = Photographer.find(params[:id])
@@ -94,6 +85,15 @@ class PhotographersController < ApplicationController
     end
   end
 
+  # 本人のみ編集が可能
+  def ensure_correct_photographer
+    photographer = Photographer.find(params[:id])
+    if photographer.user.id != current_user.id
+      flash[:notice] = "権限がありません"
+      redirect_to request.referer
+    end
+  end
+
     private
 
     def photographer_params
@@ -101,6 +101,8 @@ class PhotographersController < ApplicationController
         :name,
         :area,
         :introduction,
+        :photographer_profile_image,
+        :cover_image,
         :instagram_url,
         :facebook_url,
         :public_status

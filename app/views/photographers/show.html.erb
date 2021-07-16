@@ -1,51 +1,67 @@
 <div class="profile-container">
   <div class="profile-main-visual">
-    <% if @user.cover_image.blank? %>
+    <% if @photographer.cover_image.blank? %>
       <%= image_tag('no_cover_image.jpg') %>
     <% else %>
-      <%= image_tag @user.photos.first.photo_image.url %>
+      <%= image_tag @photographer.cover_image.url %>
     <% end %>
   </div>
-  <div class="profile-photographer-wrapper">
-    <div class="profile-photographer-image">
-      <div class="round-circle">
-        <%= image_tag @user.profile_image.url %>
+
+  <div class="profile-wrapper">
+    <div class="profile-photographer-wrapper">
+      <div class="profile-photographer-image">
+        <div class=image>
+        <div class="round-circle">
+          <% if @photographer.photographer_profile_image.blank? %>
+            <%= image_tag('no_profile_image.jpg') %>
+          <% else %>
+            <%= image_tag @photographer.photographer_profile_image.url %>
+          <% end %>
+        </div>
+        </div>
+      </div>
+      <div class="photographer-name">
+        <h1><%= @photographer.name %></h1>
       </div>
     </div>
-    <div class="photographer-name">
-      <h1><%= @photographer.name %></h1>
-    </div>
-  </div>
-  <div class="profile-photographer-detail-wrapper">
-    <div class="profile-photographer-detaile">
+    <div class="profile-detail">
+      <div id="profile-stats">
+        <%= render 'photographers/profile_stats', user: @user %>
+      </div>
+      <% if user_signed_in? && current_user.id == @user.id %>
+        <div class="profile-settings-btn">
+          <btn>
+            <% if @photographer.public_status == false %>
+              <%= link_to '公開停止中', public_status_switching_photographer_path(@photographer), method: :POST, class: 'btn btn-outline-success form-control' %>
+            <% else %>
+              <%= link_to 'プロフィール公開中', public_status_switching_photographer_path(@photographer), method: :POST, class: 'btn btn-success form-control' %>
+            <% end %>
+          </btn>
+          <i>
+            <%= link_to edit_photographer_path(@photographer), class: 'btn btn-outline-dark form-control' do %>
+              <span class="fa fa-cog"></span>
+            <% end %>
+          </i>
+        </div>
+      <% else %>
+        <div id="follow-btn">
+          <%= render 'relationships/follow_form', user: @user %>
+        </div>
+      <% end %>
+      <hr>
       <div class="profile-introduction">
-        <h2 class="menu-title profile-menu-title">INTRODUCTION</h2>
         <p><%= @photographer.introduction %></p>
       </div>
-      <div class="profile-follow-and-genres">
-        <div class="profile-stats-wrapper">
-          <h2 class="menu-title profile-menu-title">STATS</h2>
-          <div id="profile-stats">
-            <%= render 'photographers/profile_stats', user: @user %>
-          </div>
-          <div id="follow-btn">
-            <%= render 'relationships/follow_form', user: @user %>
-          </div>
-        </div>
-        <div class="profile-genres">
-          <h2 class="menu-title profile-menu-title">GENRES</h2>
-          <div class="profile-gemre-item">
-            <% @photographer.genres.each do |genre| %>
-              <%= link_to genre.name, genre_path(genre), class: 'btn btn-sm btn-outline-dark mb-1' %>
-            <% end %>
-          </div>
-        </div>
+      <div class="profile-gemre-item">
+        <% @photographer.genres.each do |genre| %>
+          <%= link_to genre.name, genre_path(genre), class: 'btn btn-sm btn-outline-dark mb-1' %>
+        <% end %>
       </div>
     </div>
-    <div class="profile-photo-gallery">
-      <h2 class="menu-title profile-menu-title">PHOTO GALLERY</h2>
-      <%= render 'photos/list', photos: @user.photos %>
-    </div>
+  </div>
+  <div class="profile-photo-gallery">
+    <h2 class="menu-title">PHOTO GALLERY</h2>
+    <%= render 'photos/list', photos: @user.photos %>
   </div>
 </div>
 

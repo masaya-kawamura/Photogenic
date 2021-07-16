@@ -1,4 +1,6 @@
 class PhotosController < ApplicationController
+  before_action :authenticate_user!, only: [:edit, :update, :destroy]
+  before_action :ensure_correct_photographer_photo, only: [:edit, :update, :destroy]
 
   def new
     @photo = Photo.new
@@ -71,6 +73,15 @@ class PhotosController < ApplicationController
     photo = Photo.find(params[:id])
     photo.destroy
     redirect_to photographer_path(current_user.photographer)
+  end
+
+  # 編集や削除は投稿者本人しか実行できない
+  def ensure_correct_photographer_photo
+    @photo = Photo.find(params[:id])
+    if @photo.user.id != current_user.id
+      flash[:alert] = "権限がありません"
+      redirect_to request.referer
+    end
   end
 
     private
