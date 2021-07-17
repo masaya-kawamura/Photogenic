@@ -77,6 +77,18 @@
   filter: drop-shadow(2px 2px white);
 }
 
+.mypage-setting-btn {
+  width: 100%;
+  display: flex;
+}
+.mypage-setting-btn i {
+  width: 18%;
+  margin-right: 2%;
+  height: 30px;
+}
+.mypage-setting-btn btn {
+  width: 80%;
+}
 
 // ここからshow_followに対応するスタイル
 .show-follow-container {

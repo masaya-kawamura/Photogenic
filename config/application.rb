@@ -9,6 +9,7 @@ module Photogenic
 
     config.load_defaults 5.2
     config.i18n.default_locale = :ja
+    config.time_zone = 'Tokyo'
 
     Rails.application.configure do
       config.imgix = {

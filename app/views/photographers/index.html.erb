@@ -1,5 +1,7 @@
 <div class="main-container">
   <h2 class="menu-title mt-5">フォトグラファー一覧</h2>
   <%= render 'photographers/list', photographers: @photographers %>
+
+  <%= paginate @photographers %>
 </div>
 

@@ -33,12 +33,20 @@
           <p class="mt-2">フォロー中：<%= link_to @user.following.count, following_user_path(@user) %></p>
         <% end %>
       </table>
-      <%= link_to '登録情報を変更する', edit_user_path(@user), class: 'btn btn-outline-dark mt-1 form-control' %>
-      <% if @user.user_status == 'フォトグラファー' %>
-        <%= link_to 'プロフィールページを見る', photographer_path(@user.photographer), class: 'btn btn-outline-dark form-control mt-1' %>
-      <% else %>
-        <%= link_to 'フォトグラファー登録する', new_photographer_path, class: 'btn btn-outline-dark form-control mt-1' %>
-      <% end %>
+      <div class="mypage-setting-btn">
+        <i>
+          <%= link_to edit_user_path(@user), class: 'btn btn-outline-dark form-control' do %>
+            <span class="fa fa-cog"></span>
+          <% end %>
+        </i>
+        <btn>
+          <% if @user.user_status == 'フォトグラファー' %>
+            <%= link_to 'プロフィールページを見る', photographer_path(@user.photographer), class: 'btn btn-info form-control' %>
+          <% else %>
+            <%= link_to 'フォトグラファー登録する', new_photographer_path, class: 'btn btn-info form-control' %>
+          <% end %>
+        </btn>
+      </div>
       <hr class="mb-0">
     </div>
 

@@ -28,6 +28,7 @@ class PhotographersController < ApplicationController
   def show
     @photographer = Photographer.find(params[:id])
     @user = @photographer.user
+    @photos = @user.photos.order(id: 'DESC')
   end
 
   def edit
@@ -52,7 +53,7 @@ class PhotographersController < ApplicationController
   end
 
   def index
-    @photographers = Photographer.where(public_status: true).order(id: 'DESC')
+    @photographers = Photographer.where(public_status: true).page(params[:page]).per(8).order(id: 'DESC')
   end
 
   # プロフィールの公開設定を切り替える

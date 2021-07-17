@@ -50,7 +50,11 @@ ul {
 
 a {
  color: #2b2a27;
- text-decoration:none;
+ text-decoration: none;
+}
+a:hover {
+ color: #555;
+ text-decoration: none;
 }
 
 // ヘッダーのスタイル
@@ -84,10 +88,6 @@ header {
   line-height: center;
   margin-top: 13px;
 
-}
-.header-logo:hover {
-  text-decoration: none;
-  color: black;
 }
 
 // メインコンテンツのコンテナ
@@ -125,7 +125,7 @@ header {
 }
 
 .users-container {
-   margin: 130px 10% 50px 10%;
+   margin: 130px 10% 100px 10%;
 }
 .users-wrapper {
  margin: 0 auto;
@@ -335,6 +335,22 @@ footer {
   margin: 20px;
 }
 
+// ページネーションのスタイル
+.pagination {
+  margin: 30px 0;
+  width: 100%;
+  font-size: 20px;
+}
+.pagination span {
+  margin: 10px;
+}
+.pagination span a {
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.4);
+  padding: 5px 10px;
+  border-radius: 5px;
+  text-decoration: none;
+}
+
 @media screen and (max-width: 900px) {
   .main-container {
     margin: 50px 5% 100px 5%;
@@ -378,5 +394,14 @@ footer {
   .flash-message p {
     margin: 0;
     text-align: center;
+  }
+  .pagination {
+    margin: 30px 0;
+    width: 100%;
+    font-size: 15px;
+    justify-content: center;
+  }
+  .pagination span {
+    margin: 3px;
   }
 }

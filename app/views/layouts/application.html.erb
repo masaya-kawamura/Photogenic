@@ -65,9 +65,6 @@
          <li class="nav-item"><%= link_to "Photographer's", photographers_path %></li><br>
          <li class="nav-item"><%= link_to 'Gallery', photos_path %></li><br>
          <li class="nav-item"><%= link_to 'logout', destroy_user_session_path,method: :DELETE %></li><br>
-          <% if current_user.user_status == 'フォトグラファー' %>
-            <li class="nav-item"><%= link_to '写真投稿', new_photo_path %></li>
-          <% end %>
         <!----------ログアウト時 --------->
         <% else %>
          <li class="nav-item"><%= link_to "Photographer's", photographers_path %></li><br>
