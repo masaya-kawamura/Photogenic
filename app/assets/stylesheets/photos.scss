@@ -28,8 +28,11 @@
 
 // 投稿写真ボックス用スタイル
 .photo-contents {
-  width: 60%;
-  padding: 0 1%;
+  width: 58%;
+  padding: 2%;
+  margin-right: 2%;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+  border-radius: 10px;
 }
 .photo-flame {
   width: 100%;
@@ -50,16 +53,11 @@
   width: 90%;
   min-width: 30px;
 }
-
-
-
-.photo-story {
+.photo-caption {
   overflow-wrap:  break-word;
   margin-bottom: 30px;
 }
-.photo-detail {
-  overflow-wrap:  break-word;
-}
+
 
 
 // ソーシャル用のスタイル
@@ -118,6 +116,59 @@
   padding: 0;
 }
 
+// タブメニュー
+.wrap {
+  width: 100%;
+  margin: 0 auto;
+}
+#tab-menu {
+  display: flex;
+  width: 100%;
+  margin-bottom: 0;
+}
+#tab-menu li {
+  list-style-type: none;
+  width: 50%;
+}
+#tab-menu li a {
+  color: #fff;
+  text-decoration: none;
+  display: block;
+  padding: 10px;
+  text-align: center;
+  background-color: #000;
+  border: 1px solid #000;
+  border-bottom: none;
+}
+
+#tab-menu .active {
+  background: #fff;
+  color: #000;
+}
+
+#tab-contents {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+#tab-contents .tab{
+  width: 100%;
+  padding: 30px;
+  background: #fff;
+  border: 1px solid #000;
+  border-top: none;
+}
+#tab-contents p {
+  color: #000;
+  line-height: 2.5;
+}
+
+// コメント&評価の表示切り替え
+#more-contents,
+#view-close-btn {
+  display: none;
+}
+
 @media screen and (max-width: 900px) {
   .photos-show-container {
     margin: 100px auto 100px auto;
@@ -138,7 +189,7 @@
 @media screen and (max-width: 600px) {
   .photos-show-container {
     width: 90%;
-    margin: 130px 5% 50px 5%;
+    margin: 130px 5% 100px 5%;
   }
 }
 

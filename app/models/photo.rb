@@ -40,7 +40,7 @@ class Photo < ApplicationRecord
   # ================ 写真検索用の記述 ==================
   def self.search(word)
     unless word == ""
-      name = Photo.where('story LIKE? OR detail LIKE?', "%#{word}%", "%#{word}%")
+      name = Photo.where('caption LIKE?', "%#{word}%")
       genres = Photo.joins(:genres).where('genres.name LIKE?', "%#{word}%")
       name += genres
       photos = name.uniq

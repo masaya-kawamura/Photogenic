@@ -3,9 +3,9 @@
   <% if comment.user == current_user %>
     <li class="current_user_comment-wrapper">
       <div class="comment-avatar">
-        <%= link_to photographer_path(comment.user.photographer) do %>
-          <div class="round-circle"><%= image_tag(comment.user.profile_image.url) %></div>
-        <% end %>
+        <div class="round-circle">
+          <%= image_tag(comment.user.profile_image.url) %>
+          </div>
       </div>
       <div class="comment-content">
         <h6><%= "@ #{comment.user.name}" %></h6>
@@ -21,11 +21,10 @@
   <% else %>
     <li class="comment-wrapper">
       <div class="comment-avatar">
-        <%= link_to photographer_path(comment.user.photographer) do %>
-          <div class="round-circle"><%= image_tag(comment.user.profile_image.url) %></div>
-        <% end %>
+        <div class="round-circle">
+          <%= image_tag(comment.user.profile_image.url) %>
+        </div>
       </div>
-
       <div class="comment-content">
         <h6><%= "@ #{comment.user.name}" %></h6>
         <p><%= comment.comment %></p>

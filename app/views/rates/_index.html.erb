@@ -21,15 +21,16 @@
   <% end %>
 
     <script>
-      $('#rate_<%= rate.id %>').raty({
-        size: 20,
-        starOff:  '<%= asset_path('star-off.png') %>',
-        starOn:   '<%= asset_path('star-on.png') %>',
-        starHalf: '<%= asset_path('star-half.png') %>',
-        half: true,
-        readOnly: true,
-        score: <%= rate.rate %>
-      });
+      $('#rate_<%= rate.id %>').empty();
+        $('#rate_<%= rate.id %>').raty({
+          size: 20,
+          starOff:  '<%= asset_path('star-off.png') %>',
+          starOn:   '<%= asset_path('star-on.png') %>',
+          starHalf: '<%= asset_path('star-half.png') %>',
+          half: true,
+          readOnly: true,
+          score: <%= rate.rate %>
+        });
     </script>
 </div>
 <% end %>

@@ -13,37 +13,47 @@
       <div id='social-menu'>
         <%= render 'photos/social_menu', photo: @photo %>
       </div>
+      <% if @photo.caption.present? %>
+        <div class="photo-caption">
+          <p><%= @photo.caption %></p>
+        </div>
+      <% end %>
       <div class="mb-5">
         <%= render 'genres/tags', genres: @photo.genres %>
       </div>
-      <% if @photo.story.present? %>
-        <div class="photo-story">
-          <h2 class="menu-title">PHOTO STORY</h2>
-          <p><%= @photo.story %></p>
-        </div>
-      <% end %>
-      <% if @photo.detail.present? %>
-        <div class="photo-detail">
-          <h2 class="menu-title">PHOTO DETAIL</h2>
-          <p><%= @photo.detail %></p>
-        </div>
-      <% end %>
-      <div class="photo-social">
-        <!--------- ここからCommentの記述部分 ------------>
-        <div id="photo-comments">
-          <%= render 'comments/index', photo: @photo %>
-        </div>
-        <!------------- Comment入力フォーム -------------->
-        <%= render 'comments/form', photo: @photo, comment: @comment %>
-        <!---------------ここからRateの記述--------------->
-        <div id="photo-rates">
-          <%= render 'rates/index', photo: @photo %>
-        </div>
-        <!--------------- Rate入力フォーム --------------->
-        <div id="rate-form">
-          <%= render 'rates/form', photo: @photo, rate: @rate %>
-        </div>
 
+
+      <div class="wrap">
+        <ul id="tab-menu">
+          <li><a href="#tab1" class="active">コメント</a></li>
+          <li><a href="#tab2" class="">評価</a></li>
+        </ul>
+
+        <div id="tab-contents">
+
+          <div id="tab1" class="tab">
+            <!--------- ここからCommentの記述部分 ------------>
+            <div id="photo-comments">
+              <%= render 'comments/index', photo: @photo %>
+            </div>
+            <!------------- Comment入力フォーム -------------->
+            <div id="comment-form">
+              <%= render 'comments/form', photo: @photo, comment: @comment %>
+            </div>
+          </div>
+
+          <div id="tab2" class="tab">
+            <!---------------ここからRateの記述--------------->
+            <div id="photo-rates">
+              <%= render 'rates/index', photo: @photo %>
+            </div>
+            <!--------------- Rate入力フォーム --------------->
+            <div id="rate-form">
+              <%= render 'rates/form', photo: @photo, rate: @rate %>
+            </div>
+          </div>
+
+        </div>
       </div>
     </div>
 

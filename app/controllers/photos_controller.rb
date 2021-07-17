@@ -45,7 +45,7 @@ class PhotosController < ApplicationController
   end
 
   def index
-    @photos = Photo.all.order('id DESC')
+    @photos = Photo.all.page(params[:page]).per(8).order('id DESC')
   end
 
   def edit
@@ -87,7 +87,7 @@ class PhotosController < ApplicationController
     private
 
     def photo_params
-      params.require(:photo).permit(:photo_image, :story, :detail)
+      params.require(:photo).permit(:photo_image, :caption)
     end
 
 end

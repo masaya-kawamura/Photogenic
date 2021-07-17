@@ -2,7 +2,7 @@
 
 // マイページのスタイル
 .mypage-container {
-  margin: 130px 15% 50px 15%;
+  margin: 130px 15% 100px 15%;
 }
 .mypage-wrapper {
   display: flex;
@@ -80,7 +80,7 @@
 
 // ここからshow_followに対応するスタイル
 .show-follow-container {
-  margin: 130px 10% 50px 10%;
+  margin: 130px 10% 100px 10%;
   width: 80%;
 }
 .show-follow-user-name {
@@ -116,7 +116,7 @@
 
 @media screen and (max-width: 1300px) {
   .mypage-container {
-    margin: 200px 5% 50px 5%;
+    margin: 200px 5% 100px 5%;
   }
   .mypage-profile-wrapper {
     width: 33%;
@@ -124,7 +124,7 @@
 }
 @media screen and (max-width: 900px) {
   .mypage-container {
-    margin: 100px 2% 50px 2%;
+    margin: 100px 2% 100px 2%;
   }
   .mypage-profile-wrapper {
     width: 100%;
