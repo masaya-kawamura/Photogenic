@@ -3,7 +3,13 @@
   <div class="rates-wrapper">
     <div class="rate-value">
       <div class="rate-user-avatar">
-        <div class="round-circle"><%= image_tag rate.user.profile_image.url %></div>
+        <div class="round-circle">
+          <% if rate.user.profile_image.blank? %>
+            <%= image_tag('no_profile_image.jpg') %>
+          <% else %>
+            <%= image_tag(rate.user.profile_image.url) %>
+          <% end %>
+        </div>
       </div>
       <div class="rate-box">
         <div id="rate_<%= rate.id %>"></div>

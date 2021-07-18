@@ -4,15 +4,19 @@
     <li class="current_user_comment-wrapper">
       <div class="comment-avatar">
         <div class="round-circle">
-          <%= image_tag(comment.user.profile_image.url) %>
-          </div>
+          <% if comment.user.profile_image.blank? %>
+            <%= image_tag('no_profile_image.jpg') %>
+          <% else %>
+            <%= image_tag(comment.user.profile_image.url) %>
+          <% end %>
+        </div>
       </div>
       <div class="comment-content">
         <h6><%= "@ #{comment.user.name}" %></h6>
         <p><%= comment.comment %></p>
         <span class="comment-date-time"><%= comment.created_at.strftime('%Y年%m月%d日 %H:%M:%S') %></span>
         <% if comment.user == current_user %>
-          <%= link_to photo_comment_path(comment.photo.id, comment.id), method: :DELETE, remote: true do %>
+          <%= link_to photo_comment_path(comment.photo.id, comment.id), method: :DELETE, data: {confirm: 'コメントを削除しますか' }, remote: true do %>
             <%= image_tag 'comment_destroy.png' %>
           <% end %>
         <% end %>
