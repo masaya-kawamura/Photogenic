@@ -16,7 +16,6 @@ class PhotosController < ApplicationController
       flash[:notice] = "写真を投稿しました"
       redirect_to photo_path(photo.id)
     else
-      flash[:alert] = "写真を投稿できませんでした"
       @photo = photo
       render :new
     end

@@ -10,7 +10,8 @@ class Photo < ApplicationRecord
 
   mount_uploader :photo_image, PhotoUploader
 
-  validates :photo_image, :user_id, presence: true
+  validates :photo_image, presence: { message: 'を選択してください' }
+  validates :caption, length: { maximum: 250 }
 
   # =========== もういいねしてる? ============
   def favorited_by?(user)

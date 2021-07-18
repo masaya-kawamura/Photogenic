@@ -26,12 +26,12 @@
       </div>
 
       <div class="field">
-        <%= f.label :genre, '撮影ジャンル（半角スペースで区切って複数入力できます。' %>
+        <%= f.label :genre, '撮影ジャンル（スペースで区切って入力' %>
         <%= f.text_field :genre, placeholder: "人物 料理 風景", class: 'form-control' %>
       </div>
 
       <div class="field">
-        <%= f.label :introduction, '紹介文' %>
+        <%= f.label :introduction, '紹介文 ※250文字以内' %>
         <textarea class="form-control" rows="5" name="photographer[introduction]" id="photographer_introduction"></textarea>
       </div>
 
@@ -54,7 +54,7 @@
       </div>
 
       <div class="action field">
-        <%= f.submit '登録を完了する', data: { disable_with: '登録中...' } %>
+        <%= f.submit '登録を完了する', class: 'form-control btn btn-info', data: { disable_with: '登録中...' } %>
       </div>
     <% end %>
   </div>

@@ -7,3 +7,6 @@ ja:
         name: 'フォトグラファーネーム'
         introduction: '紹介文'
         area: '活動地域'
+      photo:
+        photo_image: '写真'
+        caption: '写真の説明'

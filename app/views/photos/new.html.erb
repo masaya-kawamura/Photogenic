@@ -2,24 +2,24 @@
   <div class="users-wrapper">
     <h2 class="menu-title">写真投稿</h2>
     <%= form_with model: @photo, local: true do |f| %>
-
+      <%= render 'shered/errors', model: f.object %>
       <div class="field">
         <%= f.label :photo_image, '投稿写真' %>
         <%= f.file_field :photo_image, class:'form-control', type:'file', id:'formFile' %>
       </div>
 
       <div class="field">
-        <%= f.label :genre, '撮影ジャンル' %>
+        <%= f.label :genre, '撮影ジャンル ※スペースで区切って入力' %>
         <%= f.text_field :genre, placeholder: '人物 風景 料理', class: 'form-control' %>
       </div>
 
       <div class="field">
-        <%= f.label :caption, '写真の説明' %>
-        <textarea class="form-control" rows="5" name="photo[caption]" id="photo_caption"></textarea>
+        <%= f.label :caption, '写真の説明  ※250文字以内' %>
+        <textarea class="form-control" rows="5" name="photo[caption]" id="photo_caption"><%= @photo.caption %></textarea>
       </div>
 
       <div class="action field">
-        <%= f.submit '写真を投稿', class:'form-control btn btn-dark', data: { disable_with: '投稿中...' } %>
+        <%= f.submit '写真を投稿', class:'form-control btn btn-info', data: { disable_with: '投稿中...' } %>
       </div>
     <% end %>
   </div>
