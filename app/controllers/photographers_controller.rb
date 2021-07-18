@@ -21,6 +21,7 @@ class PhotographersController < ApplicationController
       redirect_to mypage_path
     else
       @photographer = photographer
+      @user = current_user
       render :new
     end
   end
@@ -33,6 +34,8 @@ class PhotographersController < ApplicationController
 
   def edit
     @photographer = Photographer.find(params[:id])
+    genre_names_array = @photographer.genres.pluck(:name)
+    @genre_names = genre_names_array.join(' ')
   end
 
   def update

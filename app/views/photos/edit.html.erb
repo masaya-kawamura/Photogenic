@@ -3,6 +3,8 @@
     <h2 class="menu-title">写真情報編集</h2>
     <%= form_with model: @photo, local: true do |f| %>
 
+      <%= render 'shered/errors', model: f.object %>
+
       <div class="field">
         <%= f.label :genre, '撮影ジャンル' %>
         <%= f.text_field :genre, value: @genre_names, placeholder: '人物 風景 料理', class: 'form-control' %>

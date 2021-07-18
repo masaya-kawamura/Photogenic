@@ -124,19 +124,11 @@ header {
   color: #2b2a27;
 }
 
-.users-container {
-   margin: 130px 10% 100px 10%;
-}
-.users-wrapper {
- margin: 0 auto;
- width: 400px;
-}
-
 .field {
  margin-bottom: 20px;
 }
 .users-wrapper .field:first-of-type  {
- padding-top: 50px;
+ padding-top: 20px;
 }
 
 // レスポンシブな正円画像を生成
@@ -171,6 +163,20 @@ header {
   width: 100%;
   height: 100%;
 }
+
+// フォームエラーメッセージ関連のスタイル
+.errors-message {
+  width: 100%;
+  padding: 20px;
+  background-color: #B1063A;
+  opacity: 0.8;
+  color: #fff;
+}
+.errors-message li {
+  margin-left: 20px;
+  list-style: square;
+}
+
 
 // ===photographer一覧用===
 .photographer-container {

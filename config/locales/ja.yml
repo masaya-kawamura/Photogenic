@@ -1,0 +1,9 @@
+ja:
+  activerecord:
+    models:
+      photographer: 'フォトグラファー'
+    attributes:
+      photographer:
+        name: 'フォトグラファーネーム'
+        introduction: '紹介文'
+        area: '活動地域'

@@ -3,6 +3,8 @@
     <h2 class="menu-title">フォトグラファー登録</h2>
     <%= form_with model:@photographer, local: true do |f| %>
 
+      <%= render 'shered/errors', model: f.object %>
+
       <div class="field">
         <%= f.label :name, 'フォトグラファーネーム' %>
         <%= f.text_field :name, value: @user.name, autofocus: true, class:'form-control' %>
