@@ -6,7 +6,7 @@
       <%= render 'shered/errors', model: f.object %>
 
       <div class="field">
-        <%= f.label :name, 'フォトグラファーネーム' %>
+        <%= f.label :name, 'フォトグラファーネーム ※必須' %>
         <%= f.text_field :name, value: @user.name, autofocus: true, class:'form-control' %>
       </div>
 
