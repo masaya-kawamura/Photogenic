@@ -76,7 +76,8 @@ class PhotosController < ApplicationController
   def destroy
     photo = Photo.find(params[:id])
     photo.destroy
-    redirect_to photographer_path(current_user.photographer)
+    flash[:notice] = '写真を削除しました'
+    redirect_to mypage_path
   end
 
   # 編集や削除は投稿者本人しか実行できない

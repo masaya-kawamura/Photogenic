@@ -203,11 +203,75 @@ RSpec.describe PhotosController , type: :controller do
         expect(response).to redirect_to '/mypage'
       end
     end
+    context 'フォトグラファーじゃなかったら' do
+      before do
+        @user = FactoryBot.create(:user)
+        @photo = FactoryBot.create(:photo, user_id: @user.id)
+      end
+      it '302レスポンスを返すこと' do
+        sign_in @user
+        patch :update, params: { id: @photo.id, photo: @photo_params }
+        expect(response).to have_http_status '302'
+      end
+      it 'mypageにリダイレクトすること' do
+        sign_in @user
+        patch :update, params: { id: @photo.id, photo: @photo_params }
+        expect(response).to redirect_to '/mypage'
+      end
+    end
+    context 'ログインユーザーじゃなかったら' do
+      it '302レスポンスを返すこと' do
+        patch :update, params: { id: @photo.id, photo: @photo_params }
+        expect(response).to have_http_status '302'
+      end
+      it 'loginページにリダイレクトすること' do
+        patch :update, params: { id: @photo.id, photo: @photo_params }
+        expect(response).to redirect_to '/login'
+      end
+    end
   end
-  #   context 'フォトグラファーじゃなかったら' do
-  #     before do
-  #       @user = @user.update(user_status: '一般ユーザー')
-  #       @photo
 
-  # end
+  describe '#destroy' do
+    before do
+      @user = FactoryBot.create(:user, user_status: 'フォトグラファー')
+      @photo = FactoryBot.create(:photo, user_id: @user.id)
+    end
+    describe 'ユーザーがフォトグラファーだった場合' do
+      context 'ユーザーが写真の投稿主だったら' do
+        it '写真を削除できること' do
+          sign_in @user
+          expect {
+            delete :destroy, params: { id: @photo.id }
+          }.to change(@user.photos, :count).by(-1)
+        end
+      end
+      context '本人が投稿した写真じゃなかったら' do
+        before do
+          @other_user  = FactoryBot.create(:user)
+          @other_user_photo = FactoryBot.create(:photo, user_id: @other_user.id)
+        end
+        it '写真を削除できないこと' do
+          sign_in @user
+          expect {
+            delete :destroy, params: { id: @other_user_photo.id }
+          }.to_not change(@other_user.photos, :count)
+        end
+        it 'mypageにリダイレクトすること' do
+          sign_in @user
+          delete :destroy, params: { id: @other_user_photo.id }
+          expect(response).to redirect_to '/mypage'
+        end
+      end
+    end
+    context 'ログインユーザーじゃなかったら' do
+      it '302レスポンスを返すこと' do
+        delete :destroy, params: { id: @photo.id }
+        expect(response).to have_http_status '302'
+      end
+      it 'loginページにリダイレクトすること' do
+        delete :destroy, params: { id: @photo.id }
+        expect(response).to redirect_to '/login'
+      end
+    end
+  end
 end
