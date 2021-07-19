@@ -93,8 +93,8 @@ class PhotographersController < ApplicationController
   def ensure_correct_photographer
     photographer = Photographer.find(params[:id])
     if photographer.user.id != current_user.id
-      flash[:notice] = "権限がありません"
-      redirect_to request.referer
+      flash[:alert] = "権限がありません"
+      redirect_to mypage_path
     end
   end
 

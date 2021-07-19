@@ -1,0 +1,7 @@
+<div class="users-container">
+  <div class="users-wrapper">
+    <h2 class="mb-4">本当に退会しますか？</h2>
+    <%= link_to '退会しない', mypage_path, class: 'btn btn-primary form-control mb-4' %>
+    <%= link_to '退会する', user_path(current_user), method: :DELETE, class: 'btn btn-danger form-control mb-4' %>
+  </div>
+</div>

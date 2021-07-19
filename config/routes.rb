@@ -6,6 +6,9 @@ Rails.application.routes.draw do
     member do
       get :following, :follower
     end
+    collection do
+      get :withdrawal_confirmation
+    end
   end
   resources :relationships, only: [:create, :destroy]
   resources :photographers do

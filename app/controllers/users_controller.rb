@@ -21,7 +21,15 @@ class UsersController < ApplicationController
     end
   end
 
+  def withdrawal_confirmation
+  end
+
   def destroy
+    user = current_user
+    user.destroy
+    reset_session
+    flash[:notice] = '退会処理が完了しました。'
+    redirect_to root_path
   end
 
   def follower
@@ -42,7 +50,7 @@ class UsersController < ApplicationController
     user = User.find(params[:id])
     if user.id != current_user.id
       flash[:alert] = '権限がありません'
-      redirect_to request_referer
+      redirect_to mypage_path
     end
   end
 

@@ -20,8 +20,8 @@ RSpec.describe User,'Userモデルに関するテスト' do
       expect(user.errors[:email]).to include('が入力されていません。')
     end
     it 'メールアドレスが重複している場合に、バリデーションされエラ〜メッセージが表示されるか' do
-      user1 = FactoryBot.create(:user)
-      user2 = FactoryBot.build(:user)
+      user1 = FactoryBot.create(:user, email: 'yamada@example.com')
+      user2 = FactoryBot.build(:user, email: 'yamada@example.com')
       user2.valid?
       expect(user2.errors[:email]).to include("は既に使用されています。")
     end
@@ -31,7 +31,7 @@ RSpec.describe User,'Userモデルに関するテスト' do
       expect(user.errors[:password]).to include('が入力されていません。')
     end
     it 'パスワードと確認パスワードが一致しなかった場合は保存でできない' do
-      expect(FactoryBot.build(:user,password:"password",password_confirmation: "passlonodon")).to_not be_valid
+      expect(FactoryBot.build(:user, password:"password", password_confirmation: "passward")).to_not be_valid
     end
   end
 end

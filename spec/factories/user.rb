@@ -1,7 +1,7 @@
 FactoryBot.define do
-  factory :user do
+  factory :user, aliases:[:owner] do
     name                    { '山田 太郎' }
-    email                   { 'yamada@example.com' }
+    sequence(:email)        { |n| "yamada#{n}@example.com" }
     password                { Faker::Internet.password(min_length: 6) }
     password_confirmation   { password }
   end
