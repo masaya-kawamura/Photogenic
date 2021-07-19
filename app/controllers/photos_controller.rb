@@ -1,5 +1,6 @@
 class PhotosController < ApplicationController
-  before_action :authenticate_user!, only: [:edit, :update, :destroy]
+  before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
+  before_action :is_photographer?, only: [:new, :create, :edit, :update, :destroy]
   before_action :ensure_correct_photographer_photo, only: [:edit, :update, :destroy]
 
   def new
@@ -10,8 +11,10 @@ class PhotosController < ApplicationController
     photo = current_user.photos.new(photo_params)
     if photo.save
       # ======= ジャンル保存メソッドへ =========
-      genres = params[:photo][:genre].split(/[[:blank:]]+/)
-      photo.save_photos(genres)
+      if params[:photo][:genre].present?
+        genres = params[:photo][:genre].split(/[[:blank:]]+/)
+        photo.save_photos(genres)
+      end
       # ========================================
       flash[:notice] = "写真を投稿しました"
       redirect_to photo_path(photo.id)
@@ -57,8 +60,10 @@ class PhotosController < ApplicationController
     photo = Photo.find(params[:id])
     if photo.update(photo_params)
       # ======= ジャンル保存メソッドへ =========
-      genres = params[:photo][:genre].split(/[[:blank:]]+/)
-      photo.save_photos(genres)
+      if params[:photo][:genre].present?
+        genres = params[:photo][:genre].split(/[[:blank:]]+/)
+        photo.save_photos(genres)
+      end
       # ========================================
       flash[:notice] = "投稿を編集しました"
       redirect_to photo_path(photo)
@@ -79,7 +84,14 @@ class PhotosController < ApplicationController
     @photo = Photo.find(params[:id])
     if @photo.user.id != current_user.id
       flash[:alert] = "権限がありません"
-      redirect_to request.referer
+      redirect_to mypage_path
+    end
+  end
+
+  def is_photographer?
+    if current_user.user_status != 'フォトグラファー'
+      flash[:alert] = '写真の投稿にはフォトグラファー登録が必要です'
+      redirect_to mypage_path
     end
   end
 
