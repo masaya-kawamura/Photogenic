@@ -12,9 +12,11 @@ class PhotographersController < ApplicationController
     photographer = Photographer.new(photographer_params)
     photographer.user_id = current_user.id
     if photographer.save
-      genres = params[:photographer][:genre].split(/[[:blank:]]+/)
-      # photographerインスタンスに対してsave_photographerメソッド呼び出し
-      photographer.save_photographer_genres(genres)
+      if params[:photographer][:genre].present?
+        genres = params[:photographer][:genre].split(/[[:blank:]]+/)
+        # photographerインスタンスに対してsave_photographerメソッド呼び出し
+        photographer.save_photographer_genres(genres)
+      end
       user = photographer.user
       user.update(user_status: "フォトグラファー", photographer_id: photographer.id)
       flash[:notice] = "フォトグラファー登録が完了しました"
@@ -41,18 +43,17 @@ class PhotographersController < ApplicationController
   def update
     photographer = Photographer.find(params[:id])
     if photographer.update(photographer_params)
-      genres = params[:photographer][:genre].split(/[[:blank:]]+/)
-      # photographerインスタンスに対してsave_photographerメソッド呼び出し
-      photographer.save_photographer_genres(genres)
+      if params[:photographer][:genre].present?
+        genres = params[:photographer][:genre].split(/[[:blank:]]+/)
+        # photographerインスタンスに対してsave_photographerメソッド呼び出し
+        photographer.save_photographer_genres(genres)
+      end
       flash[:notice] = "プロフィールを編集しました"
       redirect_to photographer_path(photographer)
     else
       @photographer = photographer
       render :edit
     end
-  end
-
-  def destroy
   end
 
   def index
@@ -62,15 +63,9 @@ class PhotographersController < ApplicationController
   # プロフィールの公開設定を切り替える
   def public_status_switching
     photographer = Photographer.find(params[:id])
-    if photographer.toggle!(:public_status)
-      flash[:notice] = "プロフィールの公開設定を更新しました"
-      redirect_to photographer_path(photographer)
-    else
-      @photographer = photographer
-      @user = @photographer.user
-      flash[:alert] = "プロフィール公開設定の更新に失敗しました"
-      render :show
-    end
+    photographer.toggle!(:public_status)
+    flash[:notice] = "プロフィールの公開設定を更新しました"
+    redirect_to photographer_path(photographer)
   end
 
   # プロフィールの公開設定falseだったらリダイレクト
