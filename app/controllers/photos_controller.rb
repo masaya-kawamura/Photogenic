@@ -38,10 +38,10 @@ class PhotosController < ApplicationController
         photos << photo
       end
     end
-    unless photos.empty?
-      @photos = photos.uniq.sort.reverse - [@photo]
-    else
+    if photos.empty?
       @photos = Photo.limit(16).order('id DESC') - [@photo]
+    else
+      @photos = photos.uniq.sort.reverse - [@photo]
     end
     # ===========================================
   end
@@ -96,10 +96,9 @@ class PhotosController < ApplicationController
     end
   end
 
-    private
+  private
 
-    def photo_params
-      params.require(:photo).permit(:photo_image, :caption)
-    end
-
+  def photo_params
+    params.require(:photo).permit(:photo_image, :caption)
+  end
 end

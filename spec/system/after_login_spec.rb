@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 RSpec.feature "ログイン後のテスト（一般ユーザー）", type: :system do
-
   # let!(:user) { FactoryBot.create(:user) }
 
   before do
@@ -16,6 +15,7 @@ RSpec.feature "ログイン後のテスト（一般ユーザー）", type: :syst
     before do
       visit mypage_path
     end
+
     it '表示の確認' do
       expect(page).to have_content '一般ユーザー'
       expect(page).to have_content 'フォロー中'
@@ -28,13 +28,14 @@ RSpec.feature "ログイン後のテスト（一般ユーザー）", type: :syst
     end
   end
 
-  describe '写真の詳細ページのテスト'  do
+  describe '写真の詳細ページのテスト' do
     before do
       @photographer_user = FactoryBot.create(:user, name: '写真家 太郎', email: 'photographer@example.com')
       @photo = FactoryBot.create(:photo, user_id: @photographer_user.id)
       FactoryBot.create(:photographer, user_id: @photographer_user.id)
       visit photo_path(@photo.id)
     end
+
     describe 'フォローボタンのテスト' do
       context 'フォローボタンを押下するとフォローすることができる', js: true do
         it 'フォトグラファーをフォローする' do
@@ -43,11 +44,13 @@ RSpec.feature "ログイン後のテスト（一般ユーザー）", type: :syst
           expect(@photographer_user.follower.count).to eq 1
         end
       end
+
       context 'フォローを外すボタンを押下するとフォローが解除される', js: true do
         before do
           Relationship.create(follower_id: @user.id, followed_id: @photographer_user.id)
           visit photo_path(@photo.id)
         end
+
         it 'フォロー解除のテスト' do
           click_button 'フォローを外す'
           expect(page).to have_content '0 フォロワー'
@@ -71,6 +74,7 @@ RSpec.feature "ログイン後のテスト（一般ユーザー）", type: :syst
       before 'Goodボタンを押していいねを実行する' do
         click_on('Favorite')
       end
+
       it 'いいねされているか' do
         expect(page).to have_css 'a#unfavorite'
         expect(@photo.favorites.count).to eq 1

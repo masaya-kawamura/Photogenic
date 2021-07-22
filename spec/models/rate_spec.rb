@@ -3,7 +3,7 @@
 require 'rails_helper'
 
 RSpec.describe Rate, 'Rateモデルのテスト' do
-  subject {rate.valid? }
+  subject { rate.valid? }
 
   let(:user) { create(:user) }
   let(:photo) { create(:photo, user_id: user.id) }
@@ -14,6 +14,7 @@ RSpec.describe Rate, 'Rateモデルのテスト' do
       is_expected.to eq true
     end
   end
+
   describe 'バリデーションのテスト' do
     context 'rateカラムに関するテスト' do
       it 'rateが空だった場合には保存できないようになっている' do
@@ -21,6 +22,7 @@ RSpec.describe Rate, 'Rateモデルのテスト' do
         is_expected.to eq false
       end
     end
+
     context 'commentカラムに関するテスト' do
       it 'rate.commentが400文字を超えていたら保存できないようになっている' do
         rate.comment = Faker::Lorem.characters(number: 401)

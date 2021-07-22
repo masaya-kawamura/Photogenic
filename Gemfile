@@ -9,7 +9,6 @@ gem 'puma', '~> 3.11'
 gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '>= 1.3.0'
 
-
 gem 'coffee-rails', '~> 4.2'
 gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.5'
@@ -26,6 +25,7 @@ group :development do
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
   gem 'spring-commands-rspec'
+  gem 'rubocop-airbnb'
 end
 
 group :test do
@@ -42,16 +42,12 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'devise'
 gem 'devise-i18n'
 gem 'devise-i18n-views'
-
 gem 'rails-i18n'
 
 gem "refile", require: "refile/rails", github: 'manfe/refile'
 gem "refile-mini_magick"
 gem 'imgix-rails'
 gem 'carrierwave', '~> 2.0'
-gem 'fog-aws'
-
-gem 'pry-byebug'
 
 gem 'bootstrap', '~> 4.5'
 gem 'jquery-rails'
@@ -61,8 +57,12 @@ gem 'kaminari', '~> 0.17.0'
 gem 'enum_help'
 
 gem 'dotenv-rails'
+gem 'pry-byebug'
+
+
 group :production do
   gem 'mysql2'
 end
 
 gem 'aws-sdk'
+gem 'fog-aws'

@@ -1,5 +1,4 @@
 class User < ApplicationRecord
-
   enum user_status: { '一般ユーザー': 0, 'フォトグラファー': 1, '退会済みユーザー': 2 }
 
   # =============== devise関連===================
@@ -15,12 +14,12 @@ class User < ApplicationRecord
   has_many :favorites, dependent: :destroy
   has_many :comments, dependent: :destroy
   has_many :active_relationships, class_name: 'Relationship',
-                                 foreign_key: "follower_id",
-                                   dependent: :destroy
+                                  foreign_key: "follower_id",
+                                  dependent: :destroy
   has_many :following, through: :active_relationships, source: :followed
   has_many :passive_relationships, class_name: 'Relationship',
-                                  foreign_key: "followed_id",
-                                    dependent: :destroy
+                                   foreign_key: "followed_id",
+                                   dependent: :destroy
   has_many :follower, through: :passive_relationships, source: :follower
   has_many :rates, dependent: :destroy
 
@@ -38,9 +37,8 @@ class User < ApplicationRecord
   end
 
   def not_rated?(photo)
-    self.rates.find_by(photo_id: photo.id).nil?
+    rates.find_by(photo_id: photo.id).nil?
   end
 
   validates :name, :email, presence: true
-
 end

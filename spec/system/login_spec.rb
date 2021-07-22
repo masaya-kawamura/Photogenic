@@ -1,12 +1,11 @@
 require 'rails_helper'
 
 RSpec.feature "ログインのテスト", type: :system do
-
   let(:user) { FactoryBot.create(:user) }
 
-    before do
-      visit new_user_session_path
-    end
+  before do
+    visit new_user_session_path
+  end
 
   describe 'ログイン画面の(new_user_session_path)テスト' do
     it '有効な会員の場合にはログインできるかのテスト' do

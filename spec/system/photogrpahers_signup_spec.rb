@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 RSpec.describe "フォトグラファー登録のテスト", type: :system do
-
   before do
     @user = FactoryBot.create(:user)
     visit new_user_session_path
@@ -12,6 +11,7 @@ RSpec.describe "フォトグラファー登録のテスト", type: :system do
 
   describe 'フォトグラファー新規登録のテスト' do
     let(:photographer) { FactoryBot.build(:photographer) }
+
     before '新規登録のテスト' do
       visit new_photographer_path
       fill_in 'photographer[name]', with: photographer.name
@@ -21,6 +21,7 @@ RSpec.describe "フォトグラファー登録のテスト", type: :system do
       fill_in 'photographer[instagram_url]', with: photographer.instagram_url
       fill_in 'photographer[facebook_url]', with: photographer.facebook_url
     end
+
     it '有効な入力の場合には新規登録ができる' do
       click_button '登録を完了する'
       expect(page).to have_current_path mypage_path

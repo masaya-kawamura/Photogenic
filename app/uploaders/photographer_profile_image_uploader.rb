@@ -1,7 +1,5 @@
 class PhotographerProfileImageUploader < CarrierWave::Uploader::Base
-
   include CarrierWave::MiniMagick
-
 
   if Rails.env.production?
     storage :fog
@@ -21,5 +19,4 @@ class PhotographerProfileImageUploader < CarrierWave::Uploader::Base
   def extension_allowlist
     %w(jpg jpeg gif png)
   end
-
 end

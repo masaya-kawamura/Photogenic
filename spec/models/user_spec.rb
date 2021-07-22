@@ -2,12 +2,13 @@
 
 require 'rails_helper'
 
-RSpec.describe User,'Userモデルに関するテスト' do
+RSpec.describe User, 'Userモデルに関するテスト' do
   describe '実際に保存してみる' do
     it "有効な入力内容の場合は保存されるか" do
       expect(FactoryBot.create(:user)).to be_valid
     end
   end
+
   context '空白バリデーションチェック' do
     it '名前の入力がない場合はバリデーションされ空白のエラ〜メッセージが表示される' do
       user = FactoryBot.build(:user, name: nil)
@@ -15,7 +16,7 @@ RSpec.describe User,'Userモデルに関するテスト' do
       expect(user.errors[:name]).to include("が入力されていません。")
     end
     it 'メールアドレスが空白の場合はバリデーションされ空白のエラ＾メッセージが表示されるか' do
-      user = FactoryBot.build(:user, email:nil)
+      user = FactoryBot.build(:user, email: nil)
       user.valid?
       expect(user.errors[:email]).to include('が入力されていません。')
     end
@@ -31,7 +32,7 @@ RSpec.describe User,'Userモデルに関するテスト' do
       expect(user.errors[:password]).to include('が入力されていません。')
     end
     it 'パスワードと確認パスワードが一致しなかった場合は保存でできない' do
-      expect(FactoryBot.build(:user, password:"password", password_confirmation: "passward")).to_not be_valid
+      expect(FactoryBot.build(:user, password: "password", password_confirmation: "passward")).not_to be_valid
     end
   end
 end

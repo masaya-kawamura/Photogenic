@@ -1,15 +1,14 @@
 require 'rails_helper'
 
 RSpec.describe "before_login", type: :system do
-
   let(:user) { FactoryBot.create(:user) }
 
-  describe 'ログイン前のテスト'do
-
+  describe 'ログイン前のテスト' do
     describe 'トップ画面(root_path)のテスト' do
       before do
         visit root_path
       end
+
       it 'トップページにリンクが正しく設置されているかのテスト' do
         expect(page).to have_link '', href: root_path
         expect(page).to have_link '', href: photographers_path
@@ -24,6 +23,7 @@ RSpec.describe "before_login", type: :system do
         @photographer = FactoryBot.create(:photographer, user_id: user.id, public_status: true)
         visit photographers_path
       end
+
       it 'urlが正しいかのテスト' do
         expect(page).to have_current_path '/photographers'
       end
@@ -32,17 +32,19 @@ RSpec.describe "before_login", type: :system do
         expect(page).to have_content @photographer.name
       end
       it 'フォトグラファープロフィールページへのリンクが設置されているかのテスト' do
-        expect(page).to have_link'', href: photographer_path(@photographer.id)
+        expect(page).to have_link '', href: photographer_path(@photographer.id)
       end
       context '公開設定falseのフォトグラファーの場合' do
         before do
-          private_user = FactoryBot.create(:user)
+          FactoryBot.create(:user)
           @private_photographer = FactoryBot.create(
             :photographer,
             user_id: user.id,
             name: '非公開フォトグラファー',
-            public_status: false)
+            public_status: false
+          )
         end
+
         it '一覧画面に表示されない' do
           expect(page).not_to have_content @private_photographer.name
         end
@@ -55,6 +57,7 @@ RSpec.describe "before_login", type: :system do
         @photo = FactoryBot.create(:photo, user_id: user.id)
         visit photographer_path(@photographer.id)
       end
+
       it 'フォトグラファーのプロフィール写真とカバー写真が表示されている' do
         expect(page).to have_selector("img[src$='user_profile.jpg']")
         expect(page).to have_selector("img[src$='cover.jpg']")
@@ -72,6 +75,7 @@ RSpec.describe "before_login", type: :system do
         @photo = FactoryBot.create(:photo, user_id: user.id)
         visit photos_path
       end
+
       it 'urlが正しいかのテスト' do
         expect(page).to have_current_path '/photos'
       end
@@ -79,7 +83,7 @@ RSpec.describe "before_login", type: :system do
         expect(page).to have_selector("img[src$='post_photo.jpg']")
       end
       it '写真のリンク正しく設置されているか' do
-         expect(page).to have_link'', href: photo_path(@photo.id)
+        expect(page).to have_link '', href: photo_path(@photo.id)
       end
     end
 
@@ -89,6 +93,7 @@ RSpec.describe "before_login", type: :system do
         @photo = FactoryBot.create(:photo, user_id: user.id)
         visit photo_path(@photo.id)
       end
+
       it '投稿写真、投稿者、投稿者の名前が正常に表示されるか' do
         expect(page).to have_selector("img[src$='user_profile.jpg']")
         expect(page).to have_content @photographer.name

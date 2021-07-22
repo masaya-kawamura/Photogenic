@@ -1,12 +1,12 @@
 require 'rails_helper'
 
 RSpec.describe UsersController, type: :controller do
-
-  describe '#mypage'do
+  describe '#mypage' do
     context 'ログイン済みユーザーの場合' do
       before do
         @user = FactoryBot.create(:user)
       end
+
       it '正常なレスポンスを返すこと' do
         sign_in @user
         get :mypage
@@ -18,7 +18,8 @@ RSpec.describe UsersController, type: :controller do
         expect(response).to have_http_status '200'
       end
     end
-    context 'ログインしていないユーザーの場合'do
+
+    context 'ログインしていないユーザーの場合' do
       it '302レスポンスを返すこと' do
         get :mypage
         expect(response).to have_http_status '302'
@@ -35,18 +36,21 @@ RSpec.describe UsersController, type: :controller do
       before do
         @user = FactoryBot.create(:user)
       end
-      it '正常なレスポンスを返すこと'do
+
+      it '正常なレスポンスを返すこと' do
         sign_in @user
         get :edit, params: { id: @user.id }
         expect(response).to be_successful
       end
     end
+
     context 'ログインしていないユーザーの場合' do
       it 'login画面にリダイレクトすること' do
         get :edit, params: { id: 1 }
         expect(response).to redirect_to "/login"
       end
     end
+
     context '本人以外がedit画面にアクセスした場合' do
       it 'マイページにリダレクトすること' do
         user = FactoryBot.create(:user)
@@ -63,6 +67,7 @@ RSpec.describe UsersController, type: :controller do
       before do
         @user = FactoryBot.create(:user)
       end
+
       it 'ユーザー情報を更新できること' do
         edit_user = FactoryBot.attributes_for(:user, name: '山田二郎')
         sign_in @user
@@ -70,11 +75,13 @@ RSpec.describe UsersController, type: :controller do
         expect(@user.reload.name).to eq '山田二郎'
       end
     end
+
     context '更新が本人じゃなかった場合' do
       before do
         @user = FactoryBot.create(:user)
         @other_user = FactoryBot.create(:user)
       end
+
       it '登録情報を更新できないこと' do
         edit_user = FactoryBot.attributes_for(:user, name: '山田 二郎')
         sign_in @user
@@ -88,6 +95,7 @@ RSpec.describe UsersController, type: :controller do
     before  do
       @user = FactoryBot.create(:user)
     end
+
     context 'ログインユーザーの場合' do
       it '正常なレスポンスを返す' do
         sign_in @user
@@ -95,6 +103,7 @@ RSpec.describe UsersController, type: :controller do
         expect(response).to be_successful
       end
     end
+
     context 'ログインユーザじゃなかった場合' do
       it 'login画面にリダイレクト' do
         get :withdrawal_confirmation
@@ -108,23 +117,26 @@ RSpec.describe UsersController, type: :controller do
       before do
         @user = FactoryBot.create(:user)
       end
+
       it '退会処理が行えること' do
         sign_in @user
-        expect {
+        expect do
           delete :destroy, params: { id: @user.id }
-        }.to change(User, :count).by(-1)
+        end.to change(User, :count).by(-1)
       end
     end
+
     context '本人じゃない場合' do
       before do
         @user = FactoryBot.create(:user)
         @other_user = FactoryBot.create(:user)
       end
+
       it '退会処理が行えないこと' do
         sign_in @user
-        expect {
+        expect do
           delete :destroy, params: { id: @other_user.id }
-        }.to_not change(User, :count)
+        end.not_to change(User, :count)
       end
       it 'mypageにリダイレクトすること' do
         sign_in @user
@@ -132,6 +144,7 @@ RSpec.describe UsersController, type: :controller do
         expect(response).to redirect_to '/mypage'
       end
     end
+
     context 'ログインユーザーじゃなかった場合' do
       it 'login画面にリダレクトすること' do
         delete :destroy, params: { id: 1 }
@@ -142,9 +155,9 @@ RSpec.describe UsersController, type: :controller do
         expect(response).to have_http_status '302'
       end
       it 'ユーザーを削除できないこと' do
-        expect {
+        expect do
           delete :destroy, params: { id: 1 }
-        }.to_not change(User, :count)
+        end.not_to change(User, :count)
       end
     end
   end

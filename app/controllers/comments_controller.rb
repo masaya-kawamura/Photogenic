@@ -18,10 +18,9 @@ class CommentsController < ApplicationController
     flash.now[:notice] = "コメントを削除しました"
   end
 
-    private
+  private
 
-    def comment_params
-      params.require(:comment).permit(:comment)
-    end
-
+  def comment_params
+    params.require(:comment).permit(:comment)
+  end
 end

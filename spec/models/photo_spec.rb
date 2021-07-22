@@ -13,13 +13,15 @@ RSpec.describe Photo, 'Photoモデルのテスト' do
       is_expected.to eq true
     end
   end
+
   describe 'バリデーションのテスト' do
     context 'photo_imageカラムのテスト' do
       it '写真が選択されて以内場合は保存できない' do
         photo.photo_image = nil
-          is_expected.to eq false
+        is_expected.to eq false
       end
     end
+
     context 'captionカラムのテスト' do
       it 'captionが250文字以内の場合は保存できる' do
         is_expected.to eq true
@@ -30,6 +32,7 @@ RSpec.describe Photo, 'Photoモデルのテスト' do
       end
     end
   end
+
   describe 'アソシエーションのテスト' do
     context 'Userモデルのとの関係' do
       it 'N:1になっている' do

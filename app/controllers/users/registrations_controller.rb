@@ -7,7 +7,6 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # def create_genres
 
-
   # GET /resource/sign_up
   # def new
   #   super

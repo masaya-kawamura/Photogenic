@@ -69,7 +69,7 @@ class PhotographersController < ApplicationController
   end
 
   # プロフィールの公開設定falseだったらリダイレクト
-  #　でも本人だけはアクセスできる。
+  # 　でも本人だけはアクセスできる。
   def public_status_confirmation
     @photographer = Photographer.find(params[:id])
     if current_user.present? && current_user.id == @photographer.user.id
@@ -93,19 +93,18 @@ class PhotographersController < ApplicationController
     end
   end
 
-    private
+  private
 
-    def photographer_params
-      params.require(:photographer).permit(
-        :name,
-        :area,
-        :introduction,
-        :photographer_profile_image,
-        :cover_image,
-        :instagram_url,
-        :facebook_url,
-        :public_status
-      )
-    end
-
+  def photographer_params
+    params.require(:photographer).permit(
+      :name,
+      :area,
+      :introduction,
+      :photographer_profile_image,
+      :cover_image,
+      :instagram_url,
+      :facebook_url,
+      :public_status
+    )
+  end
 end

@@ -1,7 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe PhotosController , type: :controller do
-
+RSpec.describe PhotosController, type: :controller do
   describe '#index' do
     it '正常にレスポンスを返すこと' do
       get :index
@@ -16,6 +15,7 @@ RSpec.describe PhotosController , type: :controller do
   describe '#show' do
     let(:user) { FactoryBot.create(:user) }
     let(:photo) { FactoryBot.create(:photo, user_id: user.id) }
+
     it '正常なレスポンスを返すこと' do
       get :show, params: { id: photo.id }
       expect(response).to be_successful
@@ -29,6 +29,7 @@ RSpec.describe PhotosController , type: :controller do
   describe '#new' do
     context 'ユーザがフォトグラファーだった場合' do
       let(:user) { FactoryBot.create(:user, user_status: 'フォトグラファー') }
+
       it '正常にレスポンスを返すこと' do
         sign_in user
         get :new
@@ -43,6 +44,7 @@ RSpec.describe PhotosController , type: :controller do
 
     context 'ユーザーがフォトグラファーじゃなかったら' do
       let(:user) { FactoryBot.create(:user) }
+
       it 'mypageにリダイレクトすること' do
         sign_in user
         get :new
@@ -54,6 +56,7 @@ RSpec.describe PhotosController , type: :controller do
         expect(response).to have_http_status '302'
       end
     end
+
     context 'ログインユーザーじゃなかった場合' do
       it 'loginページにリダイレクトすること' do
         get :new
@@ -71,19 +74,22 @@ RSpec.describe PhotosController , type: :controller do
       before do
         @user = FactoryBot.create(:user, user_status: 'フォトグラファー')
       end
+
       it '写真を投稿し保存することできる' do
         photo_params = FactoryBot.attributes_for(:photo, user_id: @user.id)
         sign_in @user
-        expect {
+        expect do
           post :create, params: { photo: photo_params }
-        }.to change(@user.photos, :count).by(1)
+        end.to change(@user.photos, :count).by(1)
       end
     end
+
     context 'フォトグラファーじゃかったら' do
       before do
         @user = FactoryBot.create(:user)
         @photo_params = FactoryBot.attributes_for(:photo)
       end
+
       it '302レスポンスを返すこと' do
         sign_in @user
         post :create, params: { photo: @photo_params }
@@ -95,10 +101,12 @@ RSpec.describe PhotosController , type: :controller do
         expect(response).to redirect_to '/mypage'
       end
     end
+
     context 'ログインユーザーじゃなかったら' do
       before do
         @photo_params = FactoryBot.attributes_for(:photo)
       end
+
       it '302レスポンスを返す' do
         post :create, params: { photo: @photo_params }
         expect(response).to have_http_status '302'
@@ -109,12 +117,14 @@ RSpec.describe PhotosController , type: :controller do
       end
     end
   end
+
   describe '#edit' do
     context 'ユーザーがフォトグラファーだったら' do
       before do
-        @user= FactoryBot.create(:user, user_status: 'フォトグラファー')
+        @user = FactoryBot.create(:user, user_status: 'フォトグラファー')
         @photo = FactoryBot.create(:photo, user_id: @user.id)
       end
+
       it '正常なレスポンスを返す' do
         sign_in @user
         get :edit, params: { id: @photo.id }
@@ -126,12 +136,14 @@ RSpec.describe PhotosController , type: :controller do
         expect(response).to have_http_status '200'
       end
     end
+
     context 'フォトグラファー本人ではなかったら' do
       before do
         @user = FactoryBot.create(:user)
         @other_user = FactoryBot.create(:user)
         @photo = FactoryBot.create(:photo, user_id: @other_user.id)
       end
+
       it '302レスポンスを返す' do
         sign_in @user
         get :edit, params: { id: @photo.id }
@@ -143,11 +155,13 @@ RSpec.describe PhotosController , type: :controller do
         expect(response).to redirect_to '/mypage'
       end
     end
+
     context 'ユーザーが一般ユーザーだったら' do
       before do
         @user = FactoryBot.create(:user)
-        @photo = FactoryBot.create(:photo, user_id: @user.id )
+        @photo = FactoryBot.create(:photo, user_id: @user.id)
       end
+
       it '302レスポンスを返す' do
         sign_in @user
         get :edit, params: { id: @photo.id }
@@ -159,11 +173,13 @@ RSpec.describe PhotosController , type: :controller do
         expect(response).to redirect_to '/mypage'
       end
     end
+
     context 'ログインユーザーじゃなかったら' do
       before do
         @user = FactoryBot.create(:user)
         @photo = FactoryBot.create(:photo, user_id: @user.id)
       end
+
       it '302レスポンスを返す' do
         get :edit, params: { id: @photo.id }
         expect(response).to have_http_status '302'
@@ -181,6 +197,7 @@ RSpec.describe PhotosController , type: :controller do
       @photo = FactoryBot.create(:photo, user_id: @user.id)
       @photo_params = FactoryBot.attributes_for(:photo, caption: 'New Photo Caption')
     end
+
     context 'ユーザーがフォトグラファーだったら' do
       it 'photoを更新できること' do
         sign_in @user
@@ -188,14 +205,16 @@ RSpec.describe PhotosController , type: :controller do
         expect(@photo.reload.caption).to eq 'New Photo Caption'
       end
     end
+
     context '本人じゃなかったら' do
       before do
         @other_user = FactoryBot.create(:user, user_status: 'フォトグラファー')
       end
+
       it 'photoを更新できないこと' do
         sign_in @other_user
         patch :update, params: { id: @photo.id, photo: @photo_params }
-        expect(@photo.reload.caption).to_not eq 'New Photo Caption'
+        expect(@photo.reload.caption).not_to eq 'New Photo Caption'
       end
       it 'mypageへリダイレクトすること' do
         sign_in @other_user
@@ -203,11 +222,13 @@ RSpec.describe PhotosController , type: :controller do
         expect(response).to redirect_to '/mypage'
       end
     end
+
     context 'フォトグラファーじゃなかったら' do
       before do
         @user = FactoryBot.create(:user)
         @photo = FactoryBot.create(:photo, user_id: @user.id)
       end
+
       it '302レスポンスを返すこと' do
         sign_in @user
         patch :update, params: { id: @photo.id, photo: @photo_params }
@@ -219,6 +240,7 @@ RSpec.describe PhotosController , type: :controller do
         expect(response).to redirect_to '/mypage'
       end
     end
+
     context 'ログインユーザーじゃなかったら' do
       it '302レスポンスを返すこと' do
         patch :update, params: { id: @photo.id, photo: @photo_params }
@@ -236,25 +258,28 @@ RSpec.describe PhotosController , type: :controller do
       @user = FactoryBot.create(:user, user_status: 'フォトグラファー')
       @photo = FactoryBot.create(:photo, user_id: @user.id)
     end
+
     describe 'ユーザーがフォトグラファーだった場合' do
       context 'ユーザーが写真の投稿主だったら' do
         it '写真を削除できること' do
           sign_in @user
-          expect {
+          expect do
             delete :destroy, params: { id: @photo.id }
-          }.to change(@user.photos, :count).by(-1)
+          end.to change(@user.photos, :count).by(-1)
         end
       end
+
       context '本人が投稿した写真じゃなかったら' do
         before do
-          @other_user  = FactoryBot.create(:user)
+          @other_user = FactoryBot.create(:user)
           @other_user_photo = FactoryBot.create(:photo, user_id: @other_user.id)
         end
+
         it '写真を削除できないこと' do
           sign_in @user
-          expect {
+          expect do
             delete :destroy, params: { id: @other_user_photo.id }
-          }.to_not change(@other_user.photos, :count)
+          end.not_to change(@other_user.photos, :count)
         end
         it 'mypageにリダイレクトすること' do
           sign_in @user
@@ -263,6 +288,7 @@ RSpec.describe PhotosController , type: :controller do
         end
       end
     end
+
     context 'ログインユーザーじゃなかったら' do
       it '302レスポンスを返すこと' do
         delete :destroy, params: { id: @photo.id }

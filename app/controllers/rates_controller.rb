@@ -20,10 +20,9 @@ class RatesController < ApplicationController
     flash.now[:notice] = '評価を削除しました'
   end
 
-    private
+  private
 
-    def rate_params
-      params.require(:rate).permit(:rate, :comment)
-    end
-
+  def rate_params
+    params.require(:rate).permit(:rate, :comment)
+  end
 end
