@@ -10,7 +10,7 @@ class User < ApplicationRecord
   mount_uploader :profile_image, ProfileUploader
 
   # =========== 各モデルとの関連付け ============
-  belongs_to :photographer, optional: true, dependent: :destroy
+  has_one :photographer, dependent: :destroy
   has_many :photos, dependent: :destroy
   has_many :favorites, dependent: :destroy
   has_many :comments, dependent: :destroy

@@ -1,11 +1,11 @@
 <% if photo.favorited_by?(current_user) %>
-  <%= link_to photo_favorites_path(photo.id), method: :DELETE, remote: true do %>
-    <%= image_tag 'liked_icon.png' %>
+  <%= link_to photo_favorites_path(photo.id), method: :DELETE, id: 'unfavorite',  remote: true do %>
+    <%= image_tag 'liked_icon.png', alt: 'Unfavorit' %>
   <% end %>
   <%= photo.favorites.count %>
 <% else %>
-  <%= link_to photo_favorites_path(photo.id), method: :POST, remote: true do %>
-    <%= image_tag 'like_icon.png' %>
+  <%= link_to photo_favorites_path(photo.id), method: :POST, id: 'favorite', remote: true do %>
+    <%= image_tag 'like_icon.png', alt: 'Favorite' %>
   <% end %>
   <%= photo.favorites.count %>
 <% end %>

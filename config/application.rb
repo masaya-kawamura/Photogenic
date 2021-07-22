@@ -23,7 +23,7 @@ module Photogenic
     # generateコマンド実行時のrspecファイル作成に関する設定
     config.generators do |g|
       g.test_framework :rspec,
-      # cintriller_specs: false,
+      # contriller_specs: false,
       # fixtures: false,
       view_specs: false,
       helper_specs: false,

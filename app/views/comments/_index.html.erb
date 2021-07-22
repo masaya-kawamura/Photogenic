@@ -15,10 +15,8 @@
         <h6><%= "@ #{comment.user.name}" %></h6>
         <p><%= comment.comment %></p>
         <span class="comment-date-time"><%= comment.created_at.strftime('%Y年%m月%d日 %H:%M:%S') %></span>
-        <% if comment.user == current_user %>
-          <%= link_to photo_comment_path(comment.photo.id, comment.id), method: :DELETE, data: {confirm: 'コメントを削除しますか' }, remote: true do %>
-            <%= image_tag 'comment_destroy.png' %>
-          <% end %>
+        <%= link_to photo_comment_path(comment.photo.id, comment.id), method: :DELETE, id: 'delete_comment',  data: {confirm: 'コメントを削除しますか' }, remote: true do %>
+          <%= image_tag 'comment_destroy.png', alt: 'deleteComment' %>
         <% end %>
       </div>
     </li>
@@ -33,11 +31,6 @@
         <h6><%= "@ #{comment.user.name}" %></h6>
         <p><%= comment.comment %></p>
         <span class="comment-date-time"><%= comment.created_at.strftime('%Y年%m月%d日 %H:%M:%S') %>
-        <% if comment.user == current_user %>
-          <%= link_to photo_comment_path(comment.photo.id, comment.id), method: :DELETE, remote: true do %>
-            <%= image_tag 'comment_destroy.png' %>
-          <% end %>
-        <% end %>
       </div>
     </li>
   <% end %>
