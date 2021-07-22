@@ -9,7 +9,7 @@
         <div class="mypage-user-image">
           <div class="round-circle">
             <% if @user.profile_image.blank? %>
-              <%= image_tag('no_profile_image.jpeg') %>
+              <%= image_tag('no_profile_image.jpg') %>
             <% else %>
               <%= image_tag @user.profile_image.url %>
             <% end %>
