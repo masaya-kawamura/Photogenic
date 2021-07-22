@@ -1,6 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe "フォトグラファーログイン後のテスト", type: :system do
+
   before do
     @user = FactoryBot.create(:user, user_status: 'フォトグラファー')
     @photographer = FactoryBot.create(:photographer, user_id: @user.id)
