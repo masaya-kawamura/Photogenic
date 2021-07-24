@@ -20,9 +20,9 @@ class PhotoUploader < CarrierWave::Uploader::Base
     %w(jpg jpeg gif png)
   end
 
-  def filename
-    file_name = original_filename.force_encoding("UTF-8")
-    "photo.#{file.extension}" if file_name
-  end
+  # def filename
+  #   file_name = original_filename.force_encoding("UTF-8")
+  #   "photo.#{file.extension}" if file_name
+  # end
 
 end
