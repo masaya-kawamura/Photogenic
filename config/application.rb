@@ -8,6 +8,7 @@ module Photogenic
   class Application < Rails::Application
 
     config.load_defaults 5.2
+    config.encoding = 'utf-8'
     config.i18n.default_locale = :ja
     config.i18n.load_path += Dir[Rails.root.join('config', 'locales', '**', '*.yml')]
     config.time_zone = 'Tokyo'
