@@ -19,4 +19,8 @@ class ProfileUploader < CarrierWave::Uploader::Base
   def extension_allowlist
     %w(jpg jpeg gif png)
   end
+
+  def filename
+     "user-profile#{model.id}.#{file.extension}" if original_filename
+  end
 end
