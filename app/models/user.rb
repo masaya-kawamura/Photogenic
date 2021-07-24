@@ -3,7 +3,7 @@ class User < ApplicationRecord
 
   # =============== devise関連===================
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable
+         :recoverable, :rememberable, :validatable, :confirmable
 
   #========== carrierwaveとの紐つけ==============
   mount_uploader :profile_image, ProfileUploader

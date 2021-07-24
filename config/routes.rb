@@ -18,7 +18,7 @@ Rails.application.routes.draw do
   resources :photos do
     resource :favorites, only: [:create, :destroy]
     resources :comments, only: [:create, :destroy]
-    resources :rates, onry: [:create, :destroy]
+    resources :rates,    onry: [:create, :destroy]
   end
 
   get 'search' => "searches#search"
@@ -28,14 +28,16 @@ Rails.application.routes.draw do
   devise_for :users,
              path: '',
              path_names: {
-               sign_up: '',
-               sign_in: 'login',
-               sign_out: 'logout',
+               sign_up:      '',
+               sign_in:      'login',
+               sign_out:     'logout',
                registration: 'signup',
              },
              controllers: {
                registrations: "users/registrations",
-               passwords: "users/passwords",
-               sessions: "users/sessions",
+               passwords:     "users/passwords",
+               sessions:      "users/sessions",
+               confirmations: "users/confirmations",
+               unlocks:       "users/unlocks",
              }
 end
