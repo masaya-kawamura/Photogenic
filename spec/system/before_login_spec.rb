@@ -28,7 +28,7 @@ RSpec.describe "before_login", type: :system do
         expect(page).to have_current_path '/photographers'
       end
       it 'フォトグラファーのプロフィール画像と名前が表示されているかのテスト' do
-        expect(page).to have_selector("img[src$='user_profile.jpg']")
+        expect(page).to have_selector("img[src$='photographer-profile-image.jpg']")
         expect(page).to have_content @photographer.name
       end
       it 'フォトグラファープロフィールページへのリンクが設置されているかのテスト' do
@@ -59,13 +59,13 @@ RSpec.describe "before_login", type: :system do
       end
 
       it 'フォトグラファーのプロフィール写真とカバー写真が表示されている' do
-        expect(page).to have_selector("img[src$='user_profile.jpg']")
-        expect(page).to have_selector("img[src$='cover.jpg']")
+        expect(page).to have_selector("img[src$='photographer-profile-image.jpg']")
+        expect(page).to have_selector("img[src$='cover-image.jpg']")
         expect(page).to have_content @photographer.name
         expect(page).to have_content @photographer.introduction
       end
       it 'フォトグラファーの写真が表示されている' do
-        expect(page).to have_selector("img[src$='post_photo.jpg']")
+        expect(page).to have_selector("img[src$='photo.jpg']")
       end
     end
 
@@ -80,7 +80,7 @@ RSpec.describe "before_login", type: :system do
         expect(page).to have_current_path '/photos'
       end
       it '写真が正しく表示されているか' do
-        expect(page).to have_selector("img[src$='post_photo.jpg']")
+        expect(page).to have_selector("img[src$='photo.jpg']")
       end
       it '写真のリンク正しく設置されているか' do
         expect(page).to have_link '', href: photo_path(@photo.id)
@@ -95,9 +95,9 @@ RSpec.describe "before_login", type: :system do
       end
 
       it '投稿写真、投稿者、投稿者の名前が正常に表示されるか' do
-        expect(page).to have_selector("img[src$='user_profile.jpg']")
+        expect(page).to have_selector("img[src$='photographer-profile-image.jpg']")
         expect(page).to have_content @photographer.name
-        expect(page).to have_selector("img[src$='post_photo.jpg']")
+        expect(page).to have_selector("img[src$='photo.jpg']")
       end
       it '非ログイン時に、コメント入力フォームは表示しない' do
         expect(page).not_to have_field 'comment[comment]'

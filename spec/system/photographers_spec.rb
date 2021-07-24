@@ -25,7 +25,7 @@ RSpec.describe "フォトグラファーログイン後のテスト", type: :sys
       click_button '写真を投稿'
       expect(page).to have_content '写真を投稿しました'
       expect(page).to have_content @photographer.name
-      expect(page).to have_selector("img[src$='post_photo.jpg']")
+      expect(page).to have_selector("img[src$='photo.jpg']")
     end
     it '写真の選択がない場合には投稿できない' do
       visit new_photo_path

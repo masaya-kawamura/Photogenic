@@ -44,6 +44,6 @@ class PostPhotoUploader < CarrierWave::Uploader::Base
 
   # Override the filename of the uploaded files:
   def filename
-     "post-photo#{model.id}.#{file.extension}" if original_filename
+     "post-photo.#{file.extension}" if original_filename
   end
 end

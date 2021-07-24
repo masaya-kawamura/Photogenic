@@ -21,6 +21,6 @@ class ProfileUploader < CarrierWave::Uploader::Base
   end
 
   def filename
-     "user-profile#{model.id}.#{file.extension}" if original_filename
+     "user-profile-image.#{file.extension}" if original_filename
   end
 end

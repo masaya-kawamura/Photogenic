@@ -43,6 +43,6 @@ class CoverUploader < CarrierWave::Uploader::Base
   end
 
   def filename
-     "cover-image#{model.id}.#{file.extension}" if original_filename
+     "cover-image.#{file.extension}" if original_filename
   end
 end
