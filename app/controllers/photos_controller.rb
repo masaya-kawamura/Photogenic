@@ -104,6 +104,8 @@ class PhotosController < ApplicationController
   end
 
   def change_filename_encoding
-    params[:photo][:photo_image].headers.force_encoding('utf-8')
+    if params[:photo][:photo_image].present?
+      params[:photo][:photo_image].headers.force_encoding('utf-8')
+    end
   end
 end

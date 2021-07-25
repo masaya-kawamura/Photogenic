@@ -18,8 +18,8 @@ RSpec.feature "新規登録のテスト", type: :feature do
     end
     scenario '新規会員登録後、マイページにリダイレクトする' do
       click_button '新規登録'
-      expect(current_path).to eq mypage_path
-      expect(page).to have_content 'アカウント登録が完了しました。'
+      expect(current_path).to eq '/'
+      expect(page).to have_content '本人確認用のメールを送信しました。'
     end
   end
 
