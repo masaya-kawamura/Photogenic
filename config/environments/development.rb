@@ -34,7 +34,7 @@ Rails.application.configure do
   config.action_mailer.perform_caching = true
 
   if Rails.env.production?
-    config.action_mailer.default_url_options = { host: '52.196.224.85' }
+    config.action_mailer.default_url_options = { host: 'http://52.196.224.85/' }
   else
     config.action_mailer.default_url_options = { protcol: 'https', host: 'https://165df428a95044b7b372dba1e3715a17.vfs.cloud9.ap-northeast-1.amazonaws.com/' }
   end
