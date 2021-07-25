@@ -39,5 +39,6 @@ Rails.application.routes.draw do
                sessions:      "users/sessions",
                confirmations: "users/confirmations",
                unlocks:       "users/unlocks",
+               omniouth_collbacks: "users/omniauth_callbacks",
              }
 end

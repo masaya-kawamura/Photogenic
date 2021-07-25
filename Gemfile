@@ -43,6 +43,10 @@ gem 'devise'
 gem 'devise-i18n'
 gem 'rails-i18n'
 
+gem 'omniauth'
+gem 'omniauth-facebook'
+gem 'omniauth-twitter'
+
 gem "refile", require: "refile/rails", github: 'manfe/refile'
 gem "refile-mini_magick"
 gem 'imgix-rails'

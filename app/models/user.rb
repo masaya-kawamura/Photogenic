@@ -3,7 +3,8 @@ class User < ApplicationRecord
 
   # =============== devise関連===================
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable, :confirmable
+         :recoverable, :rememberable, :validatable,
+         :confirmable, :lockable, :omniauthable
 
   #========== carrierwaveとの紐つけ==============
   mount_uploader :profile_image, ProfileUploader
@@ -36,9 +37,52 @@ class User < ApplicationRecord
     following.include?(other_user)
   end
 
+  # ======= 評価してるかどうか検証するメソッド =========
   def not_rated?(photo)
     rates.find_by(photo_id: photo.id).nil?
   end
 
+  # ======= バリデーションの設定 ================
   validates :name, :email, presence: true
+
+  # ======== SNSログイン認証 =============
+  def self.form_omniauth(auth)
+    find_or_create_by(provider: auth["provider"], uid: auth["uid"]) do |user|
+      user.provider = auth["provider"]
+      user.uid = auth["uid"]
+      user.name = auth["info"]["nickname"]
+    end
+  end
+
+  def self.new_with_session(params, session)
+    if session["devise.user_attributes"]
+      new(session["devise.user_attributes"]) do |user|
+        user.attributes = params
+      end
+    else
+      super
+    end
+  end
+
+  def self.find_for_oauth(auth)
+    user = User.where(uid: auth.uid, provider: auth.provider).first
+
+    unless user
+      user = User.create(
+        uid: auth.uid,
+        provider: auth.provider,
+        email: User.dummy_email(auth),
+        password: Devise.friendly_token[0, 20]
+      )
+    end
+    user.skip_confirmation!
+    user
+  end
+  
+    private
+    
+    def self.dummy_email(auth)
+      "#{auth.uid}-#{auth.provider}@example.com"
+    end
+
 end
