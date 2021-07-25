@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
   before_action :authenticate_user!
   before_action :ensure_correct_user, only: [:edit, :update, :destroy]
+  before_action :ensure_nomal_user, only: :destroy
 
   def mypage
     @user = current_user
@@ -51,6 +52,12 @@ class UsersController < ApplicationController
     if user.id != current_user.id
       flash[:alert] = '権限がありません'
       redirect_to mypage_path
+    end
+  end
+
+  def ensure_nomal_user
+    if current_user.email == 'guest@example.com'
+      redirect_to mypage_path, alert: 'このアカウントは削除できません。'
     end
   end
 

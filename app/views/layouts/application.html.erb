@@ -53,6 +53,7 @@
           <%= link_to photos_path do %>
             <i class="fa fa-th-large footer-item"></i>
           <% end %>
+          <%= link_to 'ゲストログイン(閲覧用)', guest_sign_in_path, method: :POST, class: 'btn btn-info btn-sm guest_login mb-2' %>
         <% end %>
       </div>
     </footer>

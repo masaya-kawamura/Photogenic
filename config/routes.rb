@@ -40,4 +40,7 @@ Rails.application.routes.draw do
                confirmations: "users/confirmations",
                unlocks:       "users/unlocks",
              }
+  devise_scope :user do
+    post 'guest_sign_in' , :to => "users/sessions#guest_sign_in"
+  end
 end

@@ -40,5 +40,14 @@ class User < ApplicationRecord
     rates.find_by(photo_id: photo.id).nil?
   end
 
+  # =========== ゲストフォトグラファー生成 ===============
+  def self.guest
+    find_or_create_by!(email: 'guest@example.com') do |user|
+      user.password = SecureRandom.urlsafe_base64
+      user.confirmed_at = Time.now
+      user.name = 'Guest Photographer'
+    end
+  end
+
   validates :name, :email, presence: true
 end

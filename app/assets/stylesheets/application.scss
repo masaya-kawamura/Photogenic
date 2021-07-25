@@ -120,7 +120,7 @@ header {
 .subtitle {
   font-family: 'AntroVectra';
   margin: 50px 0;
-  font-size: 60px;
+  font-size: 40px;
   color: #2b2a27;
 }
 
@@ -322,6 +322,12 @@ header {
   opacity: 0.8;
   z-index: 7;
   height: auto;
+}
+
+// ゲストログイン用
+.guest_login {
+  width: 50%;
+  max-width: 400px;
 }
 
 // フッターの記述
