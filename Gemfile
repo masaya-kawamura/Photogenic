@@ -54,6 +54,7 @@ gem 'jp_prefecture'
 gem 'font-awesome-sass', '~> 5.13'
 gem 'kaminari', '~> 0.17.0'
 gem 'enum_help'
+gem 'impressionist', '~>1.6.1'
 
 gem 'dotenv-rails'
 gem 'pry-byebug'

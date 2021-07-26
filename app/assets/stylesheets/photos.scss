@@ -169,6 +169,20 @@
   display: none;
 }
 
+//ランキングリスト
+.ranking-item th {
+  width: 100px;
+}
+.ranking-item td .square {
+  width: 150px;
+}
+.ranking-image {
+  width: 200px;
+}
+.ranking-sort-link {
+  float: right;
+}
+
 @media screen and (max-width: 900px) {
   .photos-show-container {
     margin: 100px auto 100px auto;
@@ -184,6 +198,18 @@
   .recomend-wrapper {
     width: 100%;
     margin-top: 50px;
+  }
+  .ranking-item th {
+    width: 80px;
+  }
+  .ranking-item td .square {
+    width: 100px;
+  }
+  .ranking-image {
+    width: 130px;
+  }
+  .ranking-photo-caption {
+    display: none;
   }
 }
 @media screen and (max-width: 600px) {

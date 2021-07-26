@@ -1,0 +1,29 @@
+<div class='main-container'>
+  <h2 class="menu-title mt-5 mb-4">写真ランキング</h2>
+  <div class="ranking-title">
+    <span>
+      <%= @title %>
+    </span>
+    <span class="ranking-sort-link">
+      <%= link_to '週間', ranking_index_photos_path %> |
+      <%= link_to '月間', ranking_index_photos_path(date: 'month') %> |
+      <%= link_to '全期間', ranking_index_photos_path(date: 'all') %>
+    </span>
+  </div>
+  <table class="table ranking-list">
+    <% @photos.first(30).each.with_index(1) do |photo, i| %>
+      <tr class="ranking-item ranking-first">
+        <th><%= i %><span>位</span></th>
+        <td class="ranking-image">
+          <%= link_to photo_path(photo) do %>
+            <div class="square"><%= image_tag(photo.photo_image.url) %></div>
+          <% end %>
+        </td>
+        <td>
+          <h4><%= link_to photo.user.photographer.name, photographer_path(photo.user.photographer.id) %></h4>
+          <p class="ranking-photo-caption"><%= photo.caption %></p>
+        </td>
+      </tr>
+    <% end %>
+  </table>
+</div>

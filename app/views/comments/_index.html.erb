@@ -24,7 +24,11 @@
     <li class="comment-wrapper">
       <div class="comment-avatar">
         <div class="round-circle">
-          <%= image_tag(comment.user.profile_image.url) %>
+          <% if comment.user.profile_image.blank? %>
+            <%= image_tag('no_profile_image.jpg') %>
+          <% else %>
+            <%= image_tag(comment.user.profile_image.url) %>
+          <% end %>
         </div>
       </div>
       <div class="comment-content">

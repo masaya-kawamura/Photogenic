@@ -49,4 +49,10 @@ class Photo < ApplicationRecord
       photos.sort.reverse
     end
   end
+
+  # ====================== 週間ランキング関連 ========================
+  is_impressionable :counter_cache => true, :unique => true
+  scope :this_week, ->    { where(created_at: 6.day.ago.beginning_of_day..Time.zone.now.end_of_day) }
+  scope :this_month, ->   { where(created_at: 30.day.ago.beginning_of_day..Time.zone.now.end_of_day) }
+  scope :impressions, ->  { where.not(impressions_count: 0) }
 end

@@ -59,9 +59,9 @@
 
     <!--------------ここからrecomend---------------->
     <div class="recomend-wrapper">
-      <h2 class="menu-title">RECOMENDS</h2>
+      <h2 class="menu-title">おすすめの写真</h2>
       <div class="recomend-image-wrapper">
-        <% @photos.first(16).each do |photo| %>
+        <% @photos.first(14).each do |photo| %>
           <%= link_to photo_path(photo), class: 'recomend-image-flame' do %>
             <div class="square">
               <%= image_tag photo.photo_image.url %>

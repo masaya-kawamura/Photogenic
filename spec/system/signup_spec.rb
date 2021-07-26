@@ -6,7 +6,7 @@ RSpec.feature "新規登録のテスト", type: :feature do
   feature '新規登録成功のテスト' do
     background do
       visit new_user_registration_path
-      click_link "Signup"
+      click_link "新規登録"
       fill_in 'user[name]', with: user.name
       fill_in 'user[email]', with: user.email
       fill_in 'user[area]', with: user.area

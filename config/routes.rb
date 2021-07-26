@@ -19,6 +19,9 @@ Rails.application.routes.draw do
     resource :favorites, only: [:create, :destroy]
     resources :comments, only: [:create, :destroy]
     resources :rates,    onry: [:create, :destroy]
+    collection do
+      get :ranking_index
+    end
   end
 
   get 'search' => "searches#search"

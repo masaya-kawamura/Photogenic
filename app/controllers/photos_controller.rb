@@ -3,6 +3,8 @@ class PhotosController < ApplicationController
   before_action :is_photographer?, only: [:new, :create, :edit, :update, :destroy]
   before_action :ensure_correct_photographer_photo, only: [:edit, :update, :destroy]
 
+  impressionist :actions => [:show]
+
   def new
     @photo = Photo.new
   end
@@ -51,6 +53,19 @@ class PhotosController < ApplicationController
     @photos = Photo.all.page(params[:page]).per(8).order('id DESC')
   end
 
+  def ranking_index
+    if params[:date] == 'month'
+      @photos = Photo.this_month.impressions.order(impressions_count: 'DESC')
+      @title = '月間ランキング'
+    elsif params[:date] == 'all'
+      @photos = Photo.all.impressions.order(impressions_count: 'DESC')
+      @title = '全期間ランキング'
+    else
+      @photos = Photo.this_week.impressions.order(impressions_count: 'DESC')
+      @title = '週間ランキング'
+    end
+  end
+
   def edit
     @photo = Photo.find(params[:id])
     genre_names_array = @photo.genres.pluck(:name)
@@ -81,31 +96,32 @@ class PhotosController < ApplicationController
     redirect_to mypage_path
   end
 
-  # 編集や削除は投稿者本人しか実行できない
-  def ensure_correct_photographer_photo
-    @photo = Photo.find(params[:id])
-    if @photo.user.id != current_user.id
-      flash[:alert] = "権限がありません"
-      redirect_to mypage_path
+    private
+
+    def photo_params
+      params.require(:photo).permit(:photo_image, :caption)
     end
-  end
 
-  def is_photographer?
-    if current_user.user_status != 'フォトグラファー'
-      flash[:alert] = '写真の投稿にはフォトグラファー登録が必要です'
-      redirect_to mypage_path
+    def change_filename_encoding
+      if params[:photo][:photo_image].present?
+        params[:photo][:photo_image].headers.force_encoding('utf-8')
+      end
     end
-  end
 
-  private
-
-  def photo_params
-    params.require(:photo).permit(:photo_image, :caption)
-  end
-
-  def change_filename_encoding
-    if params[:photo][:photo_image].present?
-      params[:photo][:photo_image].headers.force_encoding('utf-8')
+      # 編集や削除は投稿者本人しか実行できない
+    def ensure_correct_photographer_photo
+      @photo = Photo.find(params[:id])
+      if @photo.user.id != current_user.id
+        flash[:alert] = "権限がありません"
+        redirect_to mypage_path
+      end
     end
-  end
+
+    def is_photographer?
+      if current_user.user_status != 'フォトグラファー'
+        flash[:alert] = '写真の投稿にはフォトグラファー登録が必要です'
+        redirect_to mypage_path
+      end
+    end
+
 end

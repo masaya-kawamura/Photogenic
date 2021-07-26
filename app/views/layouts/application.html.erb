@@ -62,16 +62,18 @@
         <li class="mt-5"><%= render "searches/form" %></li>
         <!--------- ログイン時 ----------->
         <% if user_signed_in? %>
-         <li class="nav-item"><%= link_to 'My page', mypage_path %></li><br>
-         <li class="nav-item"><%= link_to "Photographer's", photographers_path %></li><br>
-         <li class="nav-item"><%= link_to 'Gallery', photos_path %></li><br>
-         <li class="nav-item"><%= link_to 'logout', destroy_user_session_path,method: :DELETE %></li><br>
+         <li class="nav-item"><%= link_to 'マイページ', mypage_path %></li><br>
+         <li class="nav-item"><%= link_to "フォトグラファー一覧", photographers_path %></li><br>
+         <li class="nav-item"><%= link_to '写真ギャラリー', photos_path %></li><br>
+         <li class="nav-item"><%= link_to '写真ランキング', ranking_index_photos_path %></li><br>
+         <li class="nav-item"><%= link_to 'ログアウト', destroy_user_session_path,method: :DELETE %></li><br>
         <!----------ログアウト時 --------->
         <% else %>
-         <li class="nav-item"><%= link_to "Photographer's", photographers_path %></li><br>
-         <li class="nav-item"><%= link_to 'Gallery', photos_path %></li><br>
-         <li class="nav-item"><%= link_to 'Signup', new_user_registration_path %></li><br>
-         <li class="nav-item"><%= link_to 'Login', new_user_session_path %></li>
+         <li class="nav-item"><%= link_to "フォトグラファー一覧", photographers_path %></li><br>
+         <li class="nav-item"><%= link_to '写真ギャラリー', photos_path %></li><br>
+         <li class="nav-item"><%= link_to '写真ランキング', ranking_index_photos_path %></li><br>
+         <li class="nav-item"><%= link_to '新規登録', new_user_registration_path %></li><br>
+         <li class="nav-item"><%= link_to 'ログイン', new_user_session_path %></li>
         <% end %>
       </ul>
     </nav>
