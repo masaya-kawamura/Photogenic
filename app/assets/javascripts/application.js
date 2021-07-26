@@ -42,3 +42,13 @@ document.addEventListener("turbolinks:load", function() {
   });
 });
 
+document.addEventListener("turbolinks:load", function() {
+  $(document).ready(function() {
+    $('.ranking-slid').slick({
+        dots: true,
+        autoplay: true,
+        autoplaySpeed: 3000,
+    });
+  });
+});
+

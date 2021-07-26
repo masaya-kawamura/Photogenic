@@ -1,6 +1,13 @@
+<div class="ranking-slid">
+  <% @photos.first(5).each do |photo| %>
+    <div class="slid-item"><%= image_tag(photo.photo_image.url) %></div>
+  <% end %>
+</div>
+<div class="ranking-"></div>
+
 <div class='main-container'>
-  <h2 class="menu-title mt-5 mb-4">写真ランキング</h2>
-  <div class="ranking-title">
+  <h2 class="menu-title">写真ランキング</h2>
+  <div class="ranking-menu">
     <span>
       <%= @title %>
     </span>
