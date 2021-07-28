@@ -141,3 +141,36 @@
 .chat-user {
   min-width: 45px;
 }
+
+@media screen and ( max-width: 900px ) {
+  .chats-container {
+    margin: 100px 0 100px 0;
+  }
+  .chat-title {
+    width: 90%;
+    margin-left: 0;
+    left: 5%;
+  }
+  .chat-contents {
+    position: fixed;
+    top: 170px;
+    bottom: 150px;
+    left: 5%;
+    width: 90%;
+    height: auto;
+    overflow: scroll;
+    box-shadow: 1px 1px 10px 2px #ccc inset;
+    z-index: 2;
+    margin-left: 0;
+  }
+  .chat-users {
+    display: none;
+  }
+  .chat-form {
+    position: fixed;
+    bottom: 80px;
+    left: 5%;
+    width: 90%;
+    padding: 20px 0 20px 0;
+  }
+}
