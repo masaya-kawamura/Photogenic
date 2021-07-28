@@ -44,8 +44,15 @@
           </i>
         </div>
       <% else %>
-        <div id="follow-btn">
-          <%= render 'relationships/follow_form', user: @user %>
+        <div class="profile-settings-btn">
+          <btn id="follow-btn">
+            <%= render 'relationships/follow_form', user: @user %>
+          </btn>
+          <i>
+            <%= link_to chat_path(@user.id), class: 'btn btn-outline-dark form-control' do %>
+              <span class="fa fa-envelope fa-lg"></span>
+            <% end %>
+          </i>
         </div>
       <% end %>
       <hr>

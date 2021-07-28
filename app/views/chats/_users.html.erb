@@ -1,0 +1,31 @@
+<ul class="chat-users-list">
+  <% users.each do |user| %>
+    <% if user == @user %>
+      <%= link_to chat_path(user.id) do %>
+        <li class="chat-users-list-item current-chat-user">
+          <div class="round-circle">
+            <% if user.profile_image.blank? %>
+              <%= image_tag('no_profile_image') %>
+            <% else %>
+              <%= image_tag(user.profile_image.url) %>
+            <% end %>
+          </div>
+          <h5><%= user.name %></h5>
+        </li>
+      <% end %>
+    <% else %>
+      <%= link_to chat_path(user.id) do %>
+        <li class="chat-users-list-item">
+          <div class="round-circle">
+            <% if user.profile_image.blank? %>
+              <%= image_tag('no_profile_image') %>
+            <% else %>
+              <%= image_tag(user.profile_image.url) %>
+            <% end %>
+          </div>
+          <h5><%= user.name %></h5>
+        </li>
+      <% end %>
+    <% end %>
+  <% end %>
+</ul>

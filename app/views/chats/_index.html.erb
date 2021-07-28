@@ -1,0 +1,37 @@
+<% @chats.each do |chat| %>
+  <% if chat.user != current_user %>
+    <div class="chat-message-box chat-left">
+        <div class="chat-user">
+          <div class="round-circle">
+            <% if chat.user.profile_image.blank? %>
+              <%= image_tag('no_profile_image') %>
+            <% else %>
+              <%= image_tag(chat.user.profile_image.url) %>
+            <% end %>
+          </div>
+        </div>
+      <div class="chat-message-text"><%= chat.message %></div>
+    </div>
+  <% elsif chat.user == current_user %>
+    <div class="chat-message-box-right">
+      <div class="chat-right">
+        <%= link_to '', chat_path(chat.id), method: :DELETE,
+          class: 'fa fa-trash-o mb-2 mr-2 fa-lg chat-delete-btn',
+          data: { confirm: 'メッセージを削除しますか？' }, remote: true %>
+        <div class="chat-message-text">
+          <%= chat.message %>
+        </div>
+        <div class="chat-user">
+          <div class="round-circle">
+            <% if chat.user.profile_image.blank? %>
+              <%= image_tag('no_profile_image') %>
+            <% else %>
+              <%= image_tag(chat.user.profile_image.url) %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+      <p><%= chat.created_at.strftime('%m/%d日 %H:%M') %></p>
+    </div>
+  <% end %>
+<% end %>

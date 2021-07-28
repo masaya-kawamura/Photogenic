@@ -1,0 +1,38 @@
+<div class="chats-container">
+  <div class="chat-users">
+    <div class="chat-users-title">
+      <h5>ユーザー一覧</h5>
+    </div>
+    <div class="chat-users-scloll" id="chat-users">
+      <%= render 'chats/users', users: @users %>
+    </div>
+  </div>
+  <div class="chat-title">
+    <div class="round-circle">
+      <% if @user.profile_image.blank? %>
+        <%= image_tag('no_profile_image.jpg') %>
+      <% else %>
+        <%= image_tag(@user.profile_image.url) %>
+      <% end %>
+    </div>
+    <h3><%= @user.name %></h3>
+  </div>
+  <div class="chat-contents">
+    <div class="chat_log" id="chat-contents">
+      <%= render 'chats/index', chats: @chats %>
+    </div>
+  </div>
+  <div class="chat-form">
+    <%= form_with model: @chat, remote:true do |f| %>
+        <%= f.text_field :message, autofocus: true, class: 'form-control' %>
+        <%= f.hidden_field :room_id %>
+        <%= f.submit '送信', class: 'btn btn-info', id: 'chat-btn' %>
+    <% end %>
+  </div>
+</div>
+<script>
+$(document).on('turbolinks:load', function() {
+  let target = document.getElementById('chat-contents');
+  target.scrollIntoView(false);
+});
+</script>

@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+
   root to: 'homes#top'
   get 'mypage' => 'users#mypage'
   resources :users, only: [:edit, :update, :destroy] do
@@ -23,6 +24,7 @@ Rails.application.routes.draw do
       get :ranking_index
     end
   end
+  resources :chats, only: [:show, :create, :destroy]
 
   get 'search' => "searches#search"
   get "/genres/:id" => 'genres#index', as: 'genre'

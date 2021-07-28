@@ -1,0 +1,143 @@
+.chats-container {
+  width: 80%;
+  margin: 100px 10% 100px 10%;
+  display: flex;
+}
+.chat-users-list {
+  height: 100%;
+  width: 100%;
+  overflow: scroll;
+}
+.chat-users {
+  width: 27%;
+  height: auto;
+  border: 1px solid #666;
+  position: fixed;
+  top: 100px;
+  bottom: 100px;
+}
+.chat-users-list-item {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  border-bottom: 1px solid #999;
+}
+.chat-users-list-item .round-circle {
+  width: 50px;
+  margin-right: 5px;
+}
+.chat-users-list-item h5 {
+  margin: 0;
+}
+.chat-users-title {
+  width: 100%;
+  height: 70px;
+  background-color: #000;
+  color: #fff;
+  text-align: center;
+  display: table;
+}
+.chat-users-title h5 {
+  display: table-cell;
+  vertical-align: middle;
+}
+.current-chat-user {
+  background-color: #eee;
+}
+.chat-title {
+  position: fixed;
+  top: 100px;
+  right: 10%;
+  width: 50%;
+  display: flex;
+  align-items: center;
+}
+.chat-title .round-circle {
+  width: 60px;
+  margin-right: 10px;
+}
+.chat-title h2 {
+  margin-bottom: 0;
+  display: table-cell;
+  vertical-align: middle;
+}
+.chat-contents {
+  position: fixed;
+  top: 170px;
+  bottom: 150px;
+  right: 10%;
+  width: 50%;
+  height: auto;
+  overflow: scroll;
+  margin-left: 5%;
+  box-shadow: 1px 1px 10px 2px #ccc inset;
+  z-index: 2;
+}
+.chat_log {
+  padding: 0 20px 0 20px;
+}
+.chat-delete-btn {
+  color: #bbb;
+}
+.chat-form {
+  position: fixed;
+  bottom: 80px;
+  right: 10%;
+  width: 50%;
+  padding: 20px 0 20px 0;
+}
+.chat-form form {
+  width: 100%;
+  display: flex;
+  flex-wrap: no-wrap;
+  box-sizing: border-box;
+}
+.chat-form form #chat_message {
+  width: 83%;
+  margin-right: 2%;
+}
+.chat-form form .btn {
+  width: 15%;
+}
+
+.chat-left {
+  text-align: left;
+  display: flex;
+  align-items: flex-end;
+}
+.chat-left .chat-message-text {
+  display: inline-block;
+  padding: 10px;
+  border: 1px solid #000;
+  border-radius: 30px 30px 30px 0;
+  margin-bottom: 5px;
+}
+.chat-right {
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+}
+.chat-right .chat-message-text {
+  display: inline-block;
+  padding: 10px;
+  border: 1px solid #000;
+  background-color: #000;
+  border-radius: 30px 30px 0 30px;
+  color: #fff;
+  margin-bottom: 5px;
+}
+.chat-message-box-right {
+  margin: 20px 0 20px auto;
+  font-size: 13px;
+  width: 80%;
+  align-items: rigth;
+}
+.chat-message-box-right p {
+  text-align: right;
+  margin-right: 50px;
+  color: #666;
+  font-size: 10px;
+}
+.chat-user {
+  min-width: 45px;
+}

@@ -1,0 +1,4 @@
+$('.chat_log').html("<%= j(render 'chats/index', chats: @chats) %>");
+$('.chat-contents').animate({ scrollTop: $('.chat-contents')[0].scrollHeight});
+$('input[type=text]').val("")
+$('#chat-users').html("<%= j(render 'chats/users', users: @users) %>");
