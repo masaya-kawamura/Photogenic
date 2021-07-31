@@ -52,3 +52,25 @@ document.addEventListener("turbolinks:load", function() {
   });
 });
 
+document.addEventListener("turbolinks:load", function() {
+  $(document).ready(function() {
+    $('.top-gallery-slid').slick({
+        autoplay: true,
+        autoplaySpeed: 2000,
+        arrows: false,
+    });
+  });
+});
+
+document.addEventListener("turbolinks:load", function() {
+  $(document).ready(function() {
+    $('.top-photographers-slid').slick({
+        slidesToShow: 3,
+        slidesToScrol: 1,
+        autoplay: true,
+        autoplaySpeed: 2000,
+        arrows: false,
+    });
+  });
+});
+

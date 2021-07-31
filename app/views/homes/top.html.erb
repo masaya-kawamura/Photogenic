@@ -1,74 +1,70 @@
-<div id='mainvisual'></div>
-<div class="concept-wrapper">
-  <div class="concept">
-    <h1 class="concept-title">Weekly Photogenic</h1>
-    <h1 class="title">CONCEPT</h1>
-    <h3 class="caption">
-    カメラが好きな人とつながる
-    写真が欲しい人とつながる<br>
-    共有・依頼をもっと手軽に
-    カメラマンプロフィールサイト</h3>
-    <div class="concept-border"></div>
-  </div>
-</div>
-<div class="main-container">
-  <div class="about-container">
-    <div class="about-contents">
-      <h2 class="menu-title">ABOUT</h2>
-      <h2 class="subtitle">Photographers Profile</h2>
-      <h4 class="mb-4">フォトグラファープロファイルへようこそ</h4>
-      <p>当サイトは、フォトグラファーのプロフィールサイトです。
-         写真ギャラリーの閲覧やフォトグラファーの検索は誰でも会員登録なしで行えます。
-         「あなたの近くであなたのお気に入りのフォトグラファーが見つかるかも!」<br>
-      </p>
-      <p>※写真へのコメントや評価はログインが必要です。</p>
-      <div class="about-btn">
-        <%= link_to '写真ギャラリーを見る', photos_path, class:'btn btn-outline-dark btn-block' %>
-        <%= link_to 'フォトグラファーを見る', photographers_path, class:'btn btn-outline-dark btn-block' %>
+<div class="background">
+  <div id='mainvisual'></div>
+  <div class="top-container">
+    <ul class="top-list">
+      <li class="top-list-item">
+        <%= link_to photos_path do %>
+          <div class="square">
+            <%= image_tag('top_list_gallery') %>
+          </div>
+        <% end %>
+      </li>
+      <li class="top-list-item">
+        <%= link_to photographers_path do %>
+          <div class="square">
+            <%= image_tag('top_list_photographers') %>
+          </div>
+        <% end %>
+      </li>
+      <li class="top-list-item">
+        <%= link_to search_path do %>
+          <div class="square">
+            <%= image_tag('top_list_search') %>
+          </div>
+        <% end %>
+      </li>
+    </ul>
+    <div class="top-gallery">
+      <h2 class="top-gallery-title">PHOTO GALLERY</h2>
+      <div class="top-gallery-slid">
+        <% @photos.first(8).each do |photo| %>
+          <div class="slid-item"><%= image_tag(photo.photo_image.url) %></div>
+        <% end %>
       </div>
+      <ul class="top-gallery-list">
+        <% @photos.first(4).each do |photo| %>
+          <li class="top-gallery-list-item">
+            <%= link_to photo_path(photo) do %>
+              <div class="square"><%= image_tag(photo.photo_image.url) %></div>
+            <% end %>
+          </li>
+        <% end %>
+      </ul>
+      <%= link_to 'View more...', photos_path, class: "view-more" %>
     </div>
-    <div class="about-contents">
-      <div id='about-image'></div>
-    </div>
-  </div>
-  <hr>
-  <div class="contents-margin"></div>
-
-  <h2 class="menu-title">Photographer's</h2>
-  <h2 class="subtitle">Leading Photographer's</h2>
-  <%= render 'photographers/list', photographers: @photographers %>
-  <div class="btn-wrapper">
-    <%= link_to '写真ギャラリーを見る', photos_path, class:'btn btn-outline-dark' %>
-    <%= link_to 'フォトグラファーを見る', photographers_path, class:'btn btn-outline-dark' %>
-  </div>
-  <hr>
-  <div class="contents-margin"></div>
-
-  <h2 class="menu-title">Gallery</h2>
-  <h2 class="subtitle">Photo Gallery</h2>
-  <%= render 'photos/list', photos: @photos %>
-  <div class="btn-wrapper">
-    <%= link_to '写真ギャラリーを見る', photos_path, class:'btn btn-outline-dark' %>
-    <%= link_to 'フォトグラファーを見る', photographers_path, class:'btn btn-outline-dark' %>
-  </div>
-  <hr>
-  <div class="contents-margin"></div>
-
-  <div class="about-container">
-    <div class="about-contents">
-      <h2 class="menu-title">for PHOTOGRAPHER'S</h2>
-      <h2 class="subtitle">Photographers Profile</h2>
-      <p class="discription">フォトグラファーズプロファイルでは、カメラマンを募集しています。<br>カメラマン登録は無料で行え、登録すると自身の写真のアピールだけではなく、自分専用のプロフィールページを作成する事ができます。<br>登録は簡単です。下記より新規登録を行ってください。</p>
-      <p>※登録後、フォトグラファーを登録をしなければプロフィールが公開されることはありません。</p>
-      <div class="about-btn">
-        <%= link_to '新規登録に進む', new_user_registration_path, class:'btn btn-outline-dark btn-lg btn-block' %>
+    <div class="top-photographers">
+      <h2 class="top-gallery-title">POHTOGRAPHER'S</h2>
+      <div class="top-photographers-slid">
+        <% @photographers.first(8).each do |photographer| %>
+          <% if photographer.photographer_profile_image.blank? %>
+            <div class="top-photographers-slid-item">
+              <div class="round-circle">
+                <%= image_tag('no_profile_image.jpg') %>
+              </div>
+            </div>
+          <% else %>
+            <div class="top-photographers-slid-item">
+              <%= link_to photographer_path(photographer) do %>
+                <div class="round-circle">
+                  <%= image_tag(photographer.photographer_profile_image.url) %>
+                </div>
+              <% end %>
+            </div>
+          <% end %>
+        <% end %>
       </div>
-    </div>
-    <div class="about-contents">
-      <!--<img src="/assets/mypage_image.png">-->
-      <div id='profilepage-image'></div>
+      <%= link_to 'View more...', photographers_path, class: "view-more" %>
     </div>
   </div>
-
 </div>
 

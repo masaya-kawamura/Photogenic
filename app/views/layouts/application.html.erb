@@ -17,11 +17,37 @@
     <header>
       <nav>
         <div class="header-contents">
-          <div class="header-icon">
-            <%= link_to "Photographer's Profile", root_path, class: 'header-logo', data: {"turbolinks" => false} %>
-            <div id="open-nav">
-              <%= image_tag 'hamburger-icon.png', class: 'hamburger-icon' %>
-            </div>
+          <div  class="header-logo">
+            <%= link_to "Photographer's Profile", root_path, data: {"turbolinks" => false} %>
+          </div>
+          <ul class="header-list">
+            <li class="header-list-item">
+              <%= link_to photographers_path do %></h5>
+                <h5>ABOUT</h5>
+                <p>サイトについて</p>
+              <% end %>
+            </li>
+            <li class="header-list-item">
+              <%= link_to photographers_path do %>
+                <h5>PHOTOGRAPHER'S</h5>
+                <p>フォトグラファー一覧</p>
+              <% end %>
+            </li>
+            <li class="header-list-item">
+              <%= link_to photos_path do %>
+                <h5>GALLERY</h5>
+                <p>写真一覧</p>
+              <% end %>
+            </li>
+            <li class="header-list-item">
+              <%= link_to new_user_session_path do %>
+                <h5>LOGIN</h5>
+                <p>ログイン</p>
+              <% end %>
+            </li>
+          </ul>
+          <div id="open-nav">
+            <%= image_tag 'header_list.png', class: 'hamburger-icon' %>
           </div>
         </div>
       </nav>
