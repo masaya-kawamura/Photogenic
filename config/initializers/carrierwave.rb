@@ -7,6 +7,7 @@ CarrierWave.configure do |config|
     config.storage :fog
     config.fog_provider = 'fog/aws'
     config.fog_directory = 'photographers-profile'
+    config.asset_host = 'https://d2x2h72hrv7ji6.cloudfront.net'
     config.fog_credentials = {
       provider: 'AWS',
       aws_access_key_id: Rails.application.credentials.aws[:access_key_id],
