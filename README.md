@@ -3,10 +3,10 @@
 <img width="1677" alt="photographers-profile_top-image" src="https://user-images.githubusercontent.com/77452658/128898141-0b8d9d90-3383-4642-8b7d-2e0a7871a23b.png">
 URL: https://photographerprofile.net
 
-## ◆サイト概要
+## サイト概要
 写真が好きな人や若手のフォトグラファーを中心にフォトグラファープロフィールを公開したり、写真を共有したりできるサイトです。
 
-## サイトテーマ
+### サイトテーマ
 写真を得意とする個人と、その能力を活用したい写真が不得意な個人を繋ぐ。
 
 ### ◆ テーマを選んだ理由
